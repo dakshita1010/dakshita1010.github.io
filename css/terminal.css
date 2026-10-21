@@ -54,13 +54,13 @@
   border-radius: 50%;
   display: inline-block;
 }
-.dot.red { background: #f43f5e; }
-.dot.yellow { background: #f59e0b; }
-.dot.green { background: #38bdf8; }
+.dot.red { background: var(--rp-love); }
+.dot.yellow { background: var(--rp-gold); }
+.dot.green { background: var(--rp-foam); }
 
 .term-title-center {
   font-size: 0.82rem;
-  color: var(--text-muted);
+  color: var(--rp-subtle);
   letter-spacing: 0.5px;
   font-weight: 600;
   display: flex;
@@ -74,7 +74,7 @@
   gap: 12px;
 }
 
-/* Pastel dot group from reference image */
+/* Rosé Pine pastel dot cluster */
 .pastel-dots-cluster {
   display: flex;
   align-items: center;
@@ -87,11 +87,11 @@
   border-radius: 50%;
   display: inline-block;
 }
-.pastel-dot.d1 { background: #fb7185; }
-.pastel-dot.d2 { background: #fde047; }
-.pastel-dot.d3 { background: #38bdf8; }
-.pastel-dot.d4 { background: #cbd5e1; }
-.pastel-dot.d5 { background: #f1f5f9; }
+.pastel-dot.d1 { background: var(--rp-love); }
+.pastel-dot.d2 { background: var(--rp-rose); }
+.pastel-dot.d3 { background: var(--rp-gold); }
+.pastel-dot.d4 { background: var(--rp-foam); }
+.pastel-dot.d5 { background: var(--rp-iris); }
 
 /* --------------------------------------------------------------------------
    2. TERMINAL SCREEN / SCROLLABLE CONTENT

@@ -1,41 +1,59 @@
 /* ==========================================================================
-   IMMERSIVE REAL TERMINAL THEME (GRAPHITE GREY & CORAL RED)
+   ROSÉ PINE DESIGN SYSTEM (AUTHENTIC NERD FONT & LINUX WORKSTATION PALETTE)
+   Palette: https://rosepinetheme.com (Rosé Pine Main)
    ========================================================================== */
 
 :root {
-  /* Dark Graphite Slate Palette */
-  --bg-primary: #11171b;
-  --bg-secondary: #162026;
-  --bg-terminal: #141d22;
-  --bg-terminal-header: #1c272e;
-  --bg-terminal-footer: #0f1519;
-  --bg-input: #0e1418;
+  /* Rosé Pine Canonical Tokens */
+  --rp-base: #191724;          /* Main Background */
+  --rp-surface: #1f1d2e;       /* Card / Surface Background */
+  --rp-overlay: #26233a;       /* Topbar / Overlay Elements */
+  --rp-muted: #6e6a86;         /* Dim Text / Comments */
+  --rp-subtle: #908caa;        /* Secondary Text / Borders */
+  --rp-text: #e0def4;          /* Primary High-Contrast Text */
+  --rp-love: #eb6f92;          /* Rose-Red Accent */
+  --rp-gold: #f6c177;          /* Warm Honey Amber */
+  --rp-rose: #ebbcba;          /* Coral Blush */
+  --rp-pine: #31748f;          /* Deep Slate Cyan */
+  --rp-foam: #9ccfd8;          /* Soft Sky Foam */
+  --rp-iris: #c4a7e7;          /* Soft Lavender */
+  --rp-hl-low: #21202e;
+  --rp-hl-med: #403d52;        /* Card Borders */
+  --rp-hl-high: #524f67;       /* Hover Borders */
 
-  /* Red & Coral Accents (Zero Green) */
-  --accent-red: #f43f5e;
-  --accent-red-bright: #fb7185;
-  --accent-red-dim: rgba(244, 63, 94, 0.14);
-  --accent-red-glow: rgba(244, 63, 94, 0.35);
+  /* Semantic Theme Mappings */
+  --bg-primary: var(--rp-base);
+  --bg-secondary: var(--rp-surface);
+  --bg-terminal: #171520;
+  --bg-terminal-header: #211f30;
+  --bg-terminal-footer: #14121c;
+  --bg-input: #12101a;
 
-  /* Cool Cyan & Amber Highlights */
-  --accent-cyan: #38bdf8;
-  --accent-cyan-dim: rgba(56, 189, 248, 0.12);
-  --accent-amber: #f59e0b;
-  --accent-purple: #c084fc;
+  /* Rose & Coral Highlights (Zero Green) */
+  --accent-red: var(--rp-love);
+  --accent-red-bright: var(--rp-rose);
+  --accent-red-dim: rgba(235, 111, 146, 0.12);
+  --accent-red-glow: rgba(235, 111, 146, 0.25);
+
+  /* Secondary Accents */
+  --accent-cyan: var(--rp-foam);
+  --accent-cyan-dim: rgba(156, 207, 216, 0.12);
+  --accent-amber: var(--rp-gold);
+  --accent-purple: var(--rp-iris);
 
   /* Typography */
-  --text-main: #f1f5f9;
-  --text-muted: #8fa3ab;
-  --text-dim: #5c707a;
+  --text-main: var(--rp-text);
+  --text-muted: var(--rp-subtle);
+  --text-dim: var(--rp-muted);
 
   /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-card: rgba(255, 255, 255, 0.12);
-  --border-accent: rgba(244, 63, 94, 0.4);
+  --border-subtle: var(--rp-overlay);
+  --border-card: var(--rp-hl-med);
+  --border-accent: rgba(235, 111, 146, 0.45);
 
-  /* Fonts */
-  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
-  --font-display: 'Outfit', sans-serif;
+  /* Authentic Monospace & Nerd Font Stack */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Liberation Mono', 'Lilex', 'Cascadia Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-display: 'Fira Code', 'JetBrains Mono', monospace;
 }
 
 *, *::before, *::after {
@@ -54,36 +72,40 @@ body {
   min-height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: var(--bg-primary);
-  background: radial-gradient(circle at 50% 0%, #1a252c 0%, var(--bg-primary) 70%);
+  background-color: var(--rp-base);
+  /* Developer Dot-Grid Background (Neovim / Dotfiles feel) */
+  background-image: radial-gradient(rgba(110, 106, 134, 0.18) 1px, transparent 1px);
+  background-size: 26px 26px;
   color: var(--text-main);
   font-family: var(--font-mono);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   display: block;
+  line-height: 1.6;
 }
 
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--rp-base);
 }
 ::-webkit-scrollbar-thumb {
-  background: #25343d;
-  border-radius: 3px;
+  background: var(--rp-hl-med);
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-red);
 }
 
 ::selection {
-  background: var(--accent-red-dim);
-  color: #fff;
+  background: var(--rp-hl-med);
+  color: var(--rp-text);
 }
 
-/* Background Matrix Canvas */
+/* Background Matrix Canvas (Optional toggle via 'matrix' command) */
 #matrix-canvas {
   position: fixed;
   top: 0;
@@ -92,46 +114,51 @@ body {
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.15;
+  opacity: 0.12;
   display: none;
 }
 #matrix-canvas.active {
   display: block;
 }
 
-/* Cyber Button */
+/* Authentic Rosé Pine Action Button */
 .cyber-btn {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.76rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  padding: 5px 12px;
+  letter-spacing: 0.4px;
+  padding: 6px 14px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   text-decoration: none;
   cursor: pointer;
   border-radius: 4px;
   border: 1px solid var(--border-accent);
   background: var(--accent-red-dim);
   color: var(--accent-red);
-  transition: all 0.15s ease;
+  transition: all 0.15s ease-in-out;
 }
 
 .cyber-btn:hover {
   background: var(--accent-red);
-  color: #fff;
-  box-shadow: 0 0 12px var(--accent-red-glow);
+  color: #191724;
+  box-shadow: 0 0 14px var(--accent-red-glow);
   transform: translateY(-1px);
 }
 
 .cyber-btn-outline {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: var(--border-subtle);
+  background: var(--rp-surface);
+  border-color: var(--border-card);
   color: var(--text-muted);
 }
 .cyber-btn-outline:hover {
   border-color: var(--accent-red);
-  color: #fff;
-  background: rgba(244, 63, 94, 0.12);
+  color: var(--text-main);
+  background: var(--accent-red-dim);
+}
+
+.cyber-btn-sm {
+  padding: 4px 10px;
+  font-size: 0.72rem;
 }

@@ -29,21 +29,15 @@
     '~': {
       type: 'dir',
       children: {
-        'about.txt': { type: 'file', content: getAboutContent },
-        'education.txt': { type: 'file', content: getEducationContent },
-        'projects': { type: 'dir', children: {
-          'ThreatLens.sh': { type: 'file', content: getThreatLensContent },
-          'Federated-NIDS.sh': { type: 'file', content: getFederatedNidsContent },
-          'HoverNotes.exe': { type: 'file', content: getHoverNotesContent }
-        }},
-        'research': { type: 'dir', children: {
-          'asit2026-ebpf.txt': { type: 'file', content: getResearchContent }
-        }},
-        'experience': { type: 'dir', children: {
-          'isro-internship.log': { type: 'file', content: getExperienceContent }
-        }},
-        'skills.txt': { type: 'file', content: getSkillsContent },
-        'social.txt': { type: 'file', content: getSocialContent },
+        'about.md': { type: 'file', content: getAboutContent },
+        'academics.txt': { type: 'file', content: getEducationContent },
+        'ThreatLens.py': { type: 'file', content: getThreatLensContent },
+        'federated_nids.py': { type: 'file', content: getFederatedNidsContent },
+        'HoverNotes.js': { type: 'file', content: getHoverNotesContent },
+        'asit2026_ebpf_defense.c': { type: 'file', content: getResearchContent },
+        'isro_internship.log': { type: 'file', content: getExperienceContent },
+        'toolkit.json': { type: 'file', content: getSkillsContent },
+        'uplink.sh': { type: 'file', content: getSocialContent },
         'resume.pdf': { type: 'file', content: () => { openResumeModal(); return 'Opening resume dossier modal...'; } }
       }
     }
@@ -281,11 +275,11 @@
     const entry = document.createElement('div');
     entry.innerHTML = `
       <div class="term-auth-prompt font-mono">
-        <span class="auth-user">$dakshita_mathur</span> <span class="auth-sudo">sudo</span> <span class="auth-path">${currentDir}</span>
+        <span style="color:var(--rp-foam);">╭─ dakshita@archbox</span> <span style="color:var(--rp-gold);">${currentDir}</span> <span style="color:var(--rp-iris); font-size:0.75rem;"> main</span>
       </div>
       <div class="term-executed-row">
-        <span class="term-prompt-chevron">&gt;</span>
-        <span style="color:#fff;">${escapeHtml(trimmed)}</span>
+        <span style="color:var(--rp-love); font-weight:700;">╰─❯</span>
+        <span style="color:var(--rp-text); font-weight:600;">${escapeHtml(trimmed)}</span>
       </div>
     `;
     logContainer.appendChild(entry);
@@ -299,14 +293,26 @@
       let targetObj = currentDir === '~' ? VFS['~'].children : VFS['~'].children[currentDir.replace('~/', '')]?.children;
       if (!targetObj) targetObj = VFS['~'].children;
 
-      let list = Object.keys(targetObj).map(name => {
-        const item = targetObj[name];
-        if (item.type === 'dir') return `<span class="dir-folder">${name}/</span>`;
-        if (name.endsWith('.sh') || name.endsWith('.exe')) return `<span class="dir-exec">${name}*</span>`;
-        return `<span class="dir-file">${name}</span>`;
-      }).join('&nbsp;&nbsp;&nbsp;&nbsp;');
-
-      logOutput(`<div class="dir-tree-view">${list}</div>`);
+      if (args === '-la' || args === '-l') {
+        let lines = Object.keys(targetObj).map(name => {
+          const item = targetObj[name];
+          const isDir = item.type === 'dir';
+          const perm = isDir ? 'drwxr-xr-x' : (name.endsWith('.py') || name.endsWith('.sh') || name.endsWith('.c') ? '-rwxr-xr-x' : '-rw-r--r--');
+          const size = isDir ? '4.0K' : (name.length * 140 + 'B');
+          const icon = isDir ? '󰉋' : (name.endsWith('.py') ? '󰌠' : name.endsWith('.c') ? '󰆧' : '󰈚');
+          const colorClass = isDir ? 'dir-folder' : (name.endsWith('.py') || name.endsWith('.sh') || name.endsWith('.c') ? 'dir-exec' : 'dir-file');
+          return `<div><span style="color:var(--rp-muted);">${perm}  dakshita users  ${size.padEnd(6)}</span>  <span class="${colorClass}">${icon} ${name}${isDir ? '/' : ''}</span></div>`;
+        }).join('');
+        logOutput(`<div class="dir-tree-view" style="line-height:1.7;">${lines}</div>`);
+      } else {
+        let list = Object.keys(targetObj).map(name => {
+          const item = targetObj[name];
+          if (item.type === 'dir') return `<span class="dir-folder">󰉋 ${name}/</span>`;
+          if (name.endsWith('.py') || name.endsWith('.sh') || name.endsWith('.c') || name.endsWith('.exe')) return `<span class="dir-exec"> ${name}*</span>`;
+          return `<span class="dir-file">󰈚 ${name}</span>`;
+        }).join('&nbsp;&nbsp;&nbsp;&nbsp;');
+        logOutput(`<div class="dir-tree-view">${list}</div>`);
+      }
     }
     else if (cmd === 'pwd') {
       logOutput(`<div style="color:var(--text-muted); font-size:0.85rem;">/home/dakshita${currentDir === '~' ? '' : '/' + currentDir.replace('~/', '')}</div>`);
