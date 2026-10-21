@@ -3,107 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dakshita Mathur | CyberHub Security Operations & Research Portfolio</title>
-  <meta name="description" content="Cybersecurity Researcher & Systems Developer. In-kernel eBPF defense author (ASIT-2026), ThreatLens threat intelligence architect, and Federated Learning NIDS developer." />
-  <meta name="theme-color" content="#07090e" />
+  <title>Dakshita Mathur | Cybersecurity Researcher & Systems Developer</title>
+  <meta name="description" content="Portfolio of Dakshita Mathur: Cybersecurity researcher, eBPF in-kernel defense author (ASIT-2026), ThreatLens architect, and Federated Learning NIDS developer." />
+  <meta name="theme-color" content="#080b11" />
 
-  <!-- Fonts: Google Fonts (JetBrains Mono & Outfit) -->
+  <!-- Google Fonts: JetBrains Mono & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/cyber-theme.css" />
-  <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/terminal.css" />
+  <link rel="stylesheet" href="css/components.css" />
 </head>
-<body>
-  <!-- CRT Scanlines Filter Overlay -->
+<body data-theme="emerald">
+  <!-- CRT Scanlines Overlay -->
   <div class="scanlines" id="scanlines-overlay"></div>
 
-  <!-- Animated Cyber Neural Canvas & Background Grid -->
+  <!-- Background Animated Canvas & Grid -->
   <canvas id="cyber-canvas"></canvas>
   <div class="cyber-grid-overlay"></div>
 
   <!-- =========================================================================
-       SOC HEADER & LIVE TELEMETRY
+       TOP NAVIGATION BAR (TRINITY / BLOCKTRADE INSPIRED)
        ========================================================================= -->
-  <header class="cyber-header">
-    <!-- Live Telemetry Status Bar -->
-    <div class="telemetry-strip">
-      <div class="container telemetry-grid">
-        <div class="telemetry-item">
-          <span class="status-dot green pulse"></span>
-          <span class="telemetry-label">DEFCON:</span>
-          <span class="telemetry-val green">LEVEL 5 // NORMAL OPS</span>
-        </div>
-        <div class="telemetry-item">
-          <span class="status-dot cyan"></span>
-          <span class="telemetry-label">eBPF KERNEL:</span>
-          <span class="telemetry-val cyan">PROBES ACTIVE (ASIT-2026)</span>
-        </div>
-        <div class="telemetry-item">
-          <span class="status-dot purple"></span>
-          <span class="telemetry-label">FL NODES:</span>
-          <span class="telemetry-val purple">5/5 SYNCED (86% ACC)</span>
-        </div>
-        <div class="telemetry-item">
-          <span class="telemetry-label">SYSTEM TIME:</span>
-          <span class="telemetry-val" id="telemetry-clock-ist">--:--:-- IST</span>
-          <span class="telemetry-label" style="margin-left: 4px;">/</span>
-          <span class="telemetry-val text-dim" id="telemetry-clock-utc" style="font-size:0.68rem; color:var(--text-dim);">--:--:-- UTC</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Main Navigation Bar -->
-    <div class="container nav-container">
-      <a href="#hero" class="nav-brand">
-        <div class="nav-logo-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <header class="soc-navbar">
+    <div class="container soc-nav-inner">
+      <!-- Left Brand -->
+      <a href="#section-terminal" class="soc-brand">
+        <div class="brand-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             <path d="m9 12 2 2 4-4"/>
           </svg>
         </div>
-        <div class="nav-brand-text">
-          DAKSHITA<span class="highlight">.SYS</span>
-          <span class="version-tag">SOC v2.6</span>
+        <div class="brand-name">
+          DAKSHITA<span class="text-green">.SOC</span>
         </div>
+        <span class="brand-badge font-mono">v2.6</span>
       </a>
 
-      <!-- Navigation Menu -->
+      <!-- View Switcher Tabs (Trinity Style) -->
       <nav>
-        <ul class="nav-menu" id="nav-menu">
-          <li><a href="#about" class="nav-link">// 01. DOSSIER</a></li>
-          <li><a href="#research" class="nav-link">// 02. eBPF RESEARCH</a></li>
-          <li><a href="#projects" class="nav-link">// 03. OPERATIONS</a></li>
-          <li><a href="#threat-lab" class="nav-link">// 04. CYBER LAB</a></li>
-          <li><a href="#skills" class="nav-link">// 05. ARSENAL</a></li>
-          <li><a href="#experience" class="nav-link">// 06. MISSION LOGS</a></li>
-          <li><a href="#terminal" class="nav-link">// 07. TERMINAL</a></li>
-          <li><a href="#contact" class="nav-link">// 08. UPLINK</a></li>
+        <ul class="soc-nav-tabs">
+          <li><a href="#section-terminal" class="nav-tab-item active" data-target="terminal">&gt;_ TERMINAL</a></li>
+          <li><a href="#section-dashboard" class="nav-tab-item" data-target="dashboard">📊 SOC DASHBOARD</a></li>
+          <li><a href="#research-panel" class="nav-tab-item">🔬 RESEARCH</a></li>
+          <li><a href="#operations-table" class="nav-tab-item">💼 OPERATIONS</a></li>
+          <li><a href="#contact-panel" class="nav-tab-item">📡 UPLINK</a></li>
         </ul>
       </nav>
 
-      <!-- Action Controls -->
-      <div class="nav-actions">
-        <!-- Audio Synth Toggle Button -->
-        <button class="control-btn" id="audio-toggle-btn" title="Toggle High-Tech Audio FX (Default Muted)" aria-label="Toggle Audio Effects">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-          </svg>
-          <span class="font-mono" style="font-size:0.7rem;">AUDIO</span>
+      <!-- Right Controls & Status -->
+      <div class="soc-nav-right">
+        <!-- Latency Badge -->
+        <div class="latency-pill" title="Simulated SOC Telemetry Ping">
+          <span class="status-dot green pulse"></span>
+          <span id="nav-latency">Stable (18ms)</span>
+        </div>
+
+        <!-- Audio Toggle Button -->
+        <button class="cyber-btn cyber-btn-outline cyber-btn-sm" id="audio-toggle-btn" title="Toggle Tactile Audio FX">
+          AUDIO
         </button>
 
-        <!-- Scanline Filter Toggle Button -->
-        <button class="control-btn active" id="scanline-toggle-btn" title="Toggle CRT Scanline Overlay" aria-label="Toggle Scanlines">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-            <line x1="8" y1="21" x2="16" y2="21"></line>
-            <line x1="12" y1="17" x2="12" y2="21"></line>
-          </svg>
-          <span class="font-mono" style="font-size:0.7rem;">CRT</span>
+        <!-- CRT Scanline Toggle -->
+        <button class="cyber-btn cyber-btn-outline cyber-btn-sm active" id="scanline-toggle-btn" title="Toggle CRT Scanline Overlay">
+          CRT
+        </button>
+
+        <!-- Theme Switcher (Emerald, Cyan, Violet) -->
+        <button class="cyber-btn cyber-btn-outline cyber-btn-sm" id="theme-toggle-btn" title="Switch Color Theme">
+          THEME
         </button>
 
         <!-- Access CV Modal Trigger -->
@@ -111,932 +83,443 @@
           [ ACCESS CV ]
         </button>
 
-        <!-- Mobile Drawer Toggle -->
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Mobile Menu">☰</button>
+        <!-- GitHub Profile Chip -->
+        <a href="https://github.com/dakshita1010" target="_blank" rel="noopener noreferrer" class="profile-chip" title="Visit GitHub">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          <span>dakshita1010</span>
+        </a>
       </div>
     </div>
   </header>
 
   <main>
     <!-- =========================================================================
-         SECTION: HERO TACTICAL BRIEFING
+         1. INTERACTIVE TERMINAL SECTION (DESIGNBY.CC & <ZAFAR/> INSPIRED)
          ========================================================================= -->
-    <section class="section-wrapper hero-section" id="hero">
-      <div class="container hero-grid">
-        <!-- Left Column: Primary Identity -->
-        <div class="hero-content">
-          <div class="hero-badge-strip">
-            <span class="hero-status-pill">
-              <span class="status-dot green pulse"></span>
-              ACTIVE OPERATOR // VIT-AP CSE
-            </span>
-            <span class="hero-id-tag">ID: SEC-RES-1010</span>
-          </div>
-
-          <h1 class="hero-name glitch-text" data-text="DAKSHITA MATHUR">
-            DAKSHITA MATHUR
-          </h1>
-
-          <div class="hero-title-role">
-            <span>CYBERSECURITY RESEARCHER</span>
-            <span class="role-separator">&bull;</span>
-            <span style="color:var(--neon-green)">SYSTEMS DEVELOPER</span>
-            <span class="role-separator">&bull;</span>
-            <span style="color:#c084fc">ML PRACTITIONER</span>
-          </div>
-
-          <p class="hero-briefing">
-            B.Tech Computer Science student at <strong>VIT-AP</strong> with hands-on research and engineering experience spanning 
-            <strong>eBPF in-kernel ransomware containment</strong>, <strong>threat intelligence architecture</strong>, and 
-            <strong>privacy-preserving federated machine learning</strong>. Proven track record presenting peer-reviewed research 
-            at ASIT-2026 and engineering secure, resilient software utilities.
-          </p>
-
-          <div class="hero-cta-group">
-            <a href="#terminal" class="cyber-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="4 17 10 11 4 5"></polyline>
-                <line x1="12" y1="19" x2="20" y2="19"></line>
-              </svg>
-              INITIALIZE TERMINAL
-            </a>
-            <a href="#projects" class="cyber-btn cyber-btn-outline">
-              CLASSIFIED OPERATIONS
-            </a>
-            <button class="cyber-btn cyber-btn-purple trigger-resume-modal">
-              PREVIEW DOSSIER
-            </button>
-          </div>
-        </div>
-
-        <!-- Right Column: Real-time Telemetry Card -->
-        <div class="hero-hud-panel cyber-card">
-          <div class="corner-decor-tr">[SYS_TELEMETRY]</div>
-
-          <div class="hud-panel-header">
-            <div class="hud-panel-title">OPERATIONAL READINESS</div>
-            <span class="status-dot green pulse"></span>
-          </div>
-
-          <div class="hud-metric-row">
-            <div class="hud-metric-box">
-              <div class="metric-value green">8.54</div>
-              <div class="metric-label">VIT-AP CGPA / 10.0</div>
-            </div>
-            <div class="hud-metric-box">
-              <div class="metric-value purple">ASIT-26</div>
-              <div class="metric-label">RESEARCH PAPER PRESENTER</div>
-            </div>
-            <div class="hud-metric-box">
-              <div class="metric-value cyan">86%</div>
-              <div class="metric-label">FL-NIDS DETECTION ACCURACY</div>
-            </div>
-            <div class="hud-metric-box">
-              <div class="metric-value green">98/100</div>
-              <div class="metric-label">ISRO PROJECT SCORE</div>
-            </div>
-          </div>
-
-          <div class="hud-live-feed">
-            <div class="feed-header">
-              <span>LIVE KERNEL PROBES LOG</span>
-              <span class="text-green">MONITORING</span>
-            </div>
-            <div class="feed-log-item">
-              <span class="log-time">[00:01:04]</span>
-              <span class="log-tag">[eBPF]</span>
-              <span>kprobe/sys_enter_write intercepted</span>
-            </div>
-            <div class="feed-log-item">
-              <span class="log-time">[00:01:09]</span>
-              <span class="log-tag">[ENTROPY]</span>
-              <span>Shannon score nominal (H=4.12)</span>
-            </div>
-            <div class="feed-log-item">
-              <span class="log-time">[00:01:15]</span>
-              <span class="log-tag">[FL-SYNC]</span>
-              <span>FedAvg aggregated round 10/10</span>
-            </div>
-            <div class="feed-log-item">
-              <span class="log-time">[00:01:22]</span>
-              <span class="log-tag">[STATUS]</span>
-              <span>Zero hostile signatures active</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         SECTION: DOSSIER & EDUCATION (ABOUT)
-         ========================================================================= -->
-    <section class="section-wrapper" id="about">
+    <section class="terminal-section" id="section-terminal" style="margin-top: 50px;">
       <div class="container">
-        <div class="section-header">
-          <div class="section-pretitle">PERSONNEL DOSSIER</div>
-          <h2 class="section-title">CAREER OBJECTIVE & ACADEMIC PEDIGREE</h2>
-          <p class="section-subtitle">
-            Rigorous foundations across computer systems, low-level architecture, network security protocols, and applied artificial intelligence.
-          </p>
-          <div class="section-header-line"></div>
-        </div>
-
-        <div class="about-grid">
-          <!-- Left Column: Tactical Bio -->
-          <div class="dossier-card cyber-card">
-            <div class="corner-decor-tr">[BIO_DATA]</div>
-            <h3 style="font-size:1.3rem; color:#fff; margin-bottom:14px; font-weight:700;">
-              TACTICAL MISSION & BIO
-            </h3>
-            <p class="dossier-text">
-              B.Tech Computer Science student at <strong>VIT-AP</strong> with hands-on experience in cybersecurity, machine learning, 
-              software development, and technical research. Proficient in programming, application development, machine learning 
-              frameworks, and Linux-based environments, with proven capability applying these skills to practical security projects.
-            </p>
-            <p class="dossier-text" style="margin-bottom: 24px;">
-              Seeking opportunities to apply problem-solving, technical, and analytical skills while learning, contributing to 
-              impactful projects, and growing across diverse technology and security engineering roles.
-            </p>
-
-            <div class="dossier-meta-list">
-              <div class="dossier-meta-item">
-                <div class="meta-field">OPERATOR NAME</div>
-                <div class="meta-value">Dakshita Mathur</div>
-              </div>
-              <div class="dossier-meta-item">
-                <div class="meta-field">CALLSIGN / GITHUB</div>
-                <div class="meta-value text-cyan">dakshita1010</div>
-              </div>
-              <div class="dossier-meta-item">
-                <div class="meta-field">DIRECT COMS</div>
-                <div class="meta-value" style="font-size:0.75rem;">dakshita.mathur03@gmail.com</div>
-              </div>
-              <div class="dossier-meta-item">
-                <div class="meta-field">CLEARANCE LEVEL</div>
-                <div class="meta-value text-green">SECURITY RESEARCHER</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Column: Educational Milestones -->
-          <div class="edu-timeline">
-            <!-- VIT-AP -->
-            <div class="edu-card">
-              <div class="edu-header">
-                <div>
-                  <div class="edu-institution">Vellore Institute of Technology, AP</div>
-                  <div class="edu-degree">Bachelor of Technology, Computer Science and Engineering</div>
-                </div>
-                <div class="edu-period">Sep 2023 – Present</div>
-              </div>
-              <div class="edu-grade-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                CGPA: 8.54 / 10.0
-              </div>
-            </div>
-
-            <!-- Rani Laxmi Bai -->
-            <div class="edu-card">
-              <div class="edu-header">
-                <div>
-                  <div class="edu-institution">Rani Laxmi Bai Memorial School, Lucknow</div>
-                  <div class="edu-degree">Class XII, Senior Secondary (CBSE)</div>
-                </div>
-                <div class="edu-period">July 2022</div>
-              </div>
-              <div class="edu-grade-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                SCORE: 85.2%
-              </div>
-            </div>
-
-            <!-- St. Xavier's -->
-            <div class="edu-card">
-              <div class="edu-header">
-                <div>
-                  <div class="edu-institution">St. Xavier’s Senior Secondary School, Chandigarh</div>
-                  <div class="edu-degree">Class X, Secondary Education (ICSE)</div>
-                </div>
-                <div class="edu-period">July 2020</div>
-              </div>
-              <div class="edu-grade-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                SCORE: 89.2%
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         SECTION: RESEARCH & PUBLICATIONS
-         ========================================================================= -->
-    <section class="section-wrapper" id="research">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-pretitle">PEER-REVIEWED RESEARCH</div>
-          <h2 class="section-title">IN-KERNEL DEFENSE VIA eBPF TELEMETRY</h2>
-          <p class="section-subtitle">
-            Published and presented technical research on low-latency kernel-space ransomware containment at an international conference.
-          </p>
-          <div class="section-header-line"></div>
-        </div>
-
-        <div class="research-featured-box cyber-card">
-          <div class="corner-decor-tr">[CONF_PAPER_2026]</div>
-
-          <div class="research-meta-tags">
-            <span class="pub-tag conf">ASIT-2026 INTERNATIONAL CONFERENCE</span>
-            <span class="pub-tag date">SEPTEMBER 2026</span>
-            <span class="pub-tag status">OFFICIALLY PRESENTED</span>
-          </div>
-
-          <h3 class="research-title">
-            In-Kernel Defense: Low-Latency In-Kernel Ransomware Containment with eBPF
-          </h3>
-
-          <div class="research-venue">
-            Hinweis Fifth International Conference on Advances in Software Engineering and Information Technology (ASIT-2026)
-          </div>
-
-          <div class="research-grid-spec">
-            <!-- Left: Technical Contributions -->
-            <div>
-              <ul class="research-points">
-                <li class="research-point-item">
-                  <span class="point-bullet">[01]</span>
-                  <div>
-                    <strong style="color:#fff;">Kernel-Level Behavioral Monitoring:</strong>
-                    Proposed an eBPF-based ransomware containment framework using kernel-level behavioral monitoring, 
-                    entropy analysis, and multi-signal risk scoring for early threat detection.
-                  </div>
-                </li>
-                <li class="research-point-item">
-                  <span class="point-bullet">[02]</span>
-                  <div>
-                    <strong style="color:#fff;">Rapid Shannon Entropy Analysis:</strong>
-                    Interception of file write syscall payloads directly inside kernel space to detect sudden spikes in data randomness 
-                    indicative of ransomware encryption routines prior to disk commitment.
-                  </div>
-                </li>
-                <li class="research-point-item">
-                  <span class="point-bullet">[03]</span>
-                  <div>
-                    <strong style="color:#fff;">Sub-Millisecond Automated Process Suspension:</strong>
-                    Designed an automated response mechanism to suspend suspicious processes via kernel hooks, enabling low-latency 
-                    ransomware containment with reduced reliance on user-space monitoring daemons.
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Right: Interactive Architecture Visualizer -->
-            <div class="arch-diagram-card">
-              <div class="arch-header">
-                <span>eBPF IN-KERNEL CONTAINMENT FLOW</span>
-                <span class="text-green">ONLINE</span>
-              </div>
-              <div class="arch-nodes-container">
-                <div class="arch-node kernel">
-                  <span>1. Syscall Intercept (`sys_enter_write`)</span>
-                  <span style="color:#c084fc;">eBPF Hook</span>
-                </div>
-                <div class="arch-connector">&darr;</div>
-                <div class="arch-node detector">
-                  <span>2. Shannon Entropy & Burst Rate Analysis</span>
-                  <span style="color:var(--neon-cyan);">H &gt; 7.8</span>
-                </div>
-                <div class="arch-connector">&darr;</div>
-                <div class="arch-node detector">
-                  <span>3. Multi-Signal Risk Engine Evaluation</span>
-                  <span style="color:var(--neon-cyan);">Threat Index</span>
-                </div>
-                <div class="arch-connector">&darr;</div>
-                <div class="arch-node responder">
-                  <span>4. Automated Zero-Latency Suspension</span>
-                  <span style="color:var(--neon-green);">SIGSTOP Intercept</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         SECTION: CLASSIFIED OPERATIONS (PROJECTS)
-         ========================================================================= -->
-    <section class="section-wrapper" id="projects">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-pretitle">CLASSIFIED OPERATIONS</div>
-          <h2 class="section-title">ENGINEERED SYSTEMS & SECURITY PLATFORMS</h2>
-          <p class="section-subtitle">
-            End-to-end security architectures, distributed machine learning pipelines, and productive desktop utilities with open source repositories.
-          </p>
-          <div class="section-header-line"></div>
-        </div>
-
-        <div class="projects-grid">
-          <!-- 1. ThreatLens -->
-          <div class="project-card cyber-card">
-            <div>
-              <div class="project-header">
-                <span class="project-badge threat">THREAT INTELLIGENCE</span>
-                <span class="font-mono text-dim" style="font-size:0.7rem;">OP_01</span>
-              </div>
-
-              <h3 class="project-title">ThreatLens – URL & File Hash Threat Intelligence</h3>
-              <p class="project-desc">
-                A cybersecurity threat intelligence platform that analyzes URLs, file hashes, and local files using the VirusTotal API 
-                and local cryptographic computation to deliver comprehensive risk assessments.
-              </p>
-
-              <ul class="project-features">
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Built Flask-based platform using VirusTotal API to analyze URLs, hashes, and files with successful end-to-end testing across 5 test cases.</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Implemented local SHA-256 hashing, automated security-vendor detection analysis, custom risk scoring, and risk-level classification.</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Added SQLite-backed scan history, JSON report generation, and a Chart.js dashboard for security-result visualization and reporting.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <div class="project-tech-tags">
-                <span class="tech-tag">Flask</span>
-                <span class="tech-tag">VirusTotal API</span>
-                <span class="tech-tag">SHA-256</span>
-                <span class="tech-tag">SQLite</span>
-                <span class="tech-tag">Chart.js</span>
-                <span class="tech-tag">REST APIs</span>
-              </div>
-
-              <div class="project-card-footer">
-                <a href="https://github.com/dakshita1010/ThreatLens" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-sm">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  GITHUB REPO
-                </a>
-                <a href="#threat-lab" class="cyber-btn cyber-btn-sm cyber-btn-outline">
-                  TEST IN LAB
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- 2. Federated-NIDS -->
-          <div class="project-card cyber-card">
-            <div>
-              <div class="project-header">
-                <span class="project-badge network">PRIVACY & DISTRIBUTED ML</span>
-                <span class="font-mono text-dim" style="font-size:0.7rem;">OP_02</span>
-              </div>
-
-              <h3 class="project-title">Federated-NIDS – Privacy-Preserving Intrusion Detection</h3>
-              <p class="project-desc">
-                Network Intrusion Detection System using Federated Learning for 4G/5G networks, allowing distributed cellular base stations 
-                to train collective defense models without centralizing raw network traffic.
-              </p>
-
-              <ul class="project-features">
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Built a privacy-preserving NIDS using Federated Learning, training models across distributed clients without centralizing traffic, achieving 86% detection accuracy.</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Trained PyTorch neural-network classifiers on CICIDS2017 dataset for multi-class detection of DoS, DDoS, and port-scanning attacks across 5 client nodes.</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Simulated a multi-client federated environment using Flower (flwr) framework, coordinating 10 training rounds using FedAvg aggregation.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <div class="project-tech-tags">
-                <span class="tech-tag">PyTorch</span>
-                <span class="tech-tag">Flower (flwr)</span>
-                <span class="tech-tag">Federated Learning</span>
-                <span class="tech-tag">CICIDS2017</span>
-                <span class="tech-tag">FedAvg</span>
-                <span class="tech-tag">4G/5G Security</span>
-              </div>
-
-              <div class="project-card-footer">
-                <a href="https://github.com/maplelattte/federated-nids" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-sm">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  GITHUB REPO
-                </a>
-                <span class="font-mono text-green" style="font-size:0.75rem;">86% ACCURACY</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. HoverNotes -->
-          <div class="project-card cyber-card">
-            <div>
-              <div class="project-header">
-                <span class="project-badge desktop">SYSTEM UTILITY & GUI</span>
-                <span class="font-mono text-dim" style="font-size:0.7rem;">OP_03</span>
-              </div>
-
-              <h3 class="project-title">HoverNotes – Always-on-Top Desktop Notes App</h3>
-              <p class="project-desc">
-                A lightweight, productivity-oriented floating notes application for Windows designed for developers, researchers, 
-                and multi-taskers needing persistent reference material above active windows.
-              </p>
-
-              <ul class="project-features">
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Developed Electron-based Windows desktop app with global hotkeys, click-through ghost mode (Alt+Shift+G), adjustable transparency, and multi-note tabs.</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Implemented persistent local storage, collapsible mini-dock, and a quick editor supporting checklists, bullet notes, and timestamps.</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Optimized background CPU overhead and designed unobtrusive system tray minimize behaviors.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <div class="project-tech-tags">
-                <span class="tech-tag">Electron</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">Windows API</span>
-                <span class="tech-tag">Local Storage</span>
-                <span class="tech-tag">CSS3</span>
-                <span class="tech-tag">Ghost Mode</span>
-              </div>
-
-              <div class="project-card-footer">
-                <a href="https://github.com/dakshita1010/hover-notes" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-sm">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  GITHUB REPO
-                </a>
-                <span class="font-mono text-amber" style="font-size:0.75rem;">ALT+SHIFT+G GHOST</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         SECTION: INTERACTIVE CYBER LAB (THREATLENS SIMULATOR)
-         ========================================================================= -->
-    <section class="section-wrapper" id="threat-lab">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-pretitle">INTERACTIVE SANDBOX</div>
-          <h2 class="section-title">THREAT INTELLIGENCE LAB (THREATLENS LIVE)</h2>
-          <p class="section-subtitle">
-            Simulate the ThreatLens workflow right in your browser: calculates authentic SHA-256 hashes locally via Web Crypto API and visualizes multi-vendor risk scoring.
-          </p>
-          <div class="section-header-line"></div>
-        </div>
-
-        <div class="threat-lab-card cyber-card">
-          <div class="corner-decor-tr">[THREATLENS_SIMULATOR]</div>
-
-          <div class="lab-control-grid">
-            <!-- Left: Input Control -->
-            <div class="lab-input-group">
-              <label for="lab-input" class="lab-label">
-                &gt; SUBMIT TARGET (URL, FILE NAME, OR PAYLOAD STRING):
-              </label>
-              <input 
-                type="text" 
-                id="lab-input" 
-                class="lab-text-input" 
-                placeholder="e.g., https://secure-bank-login.phish.ru/payload.exe"
-                value="https://suspicious-telemetry-drop.net/trojan.exe" 
-              />
-
-              <div class="lab-quick-presets">
-                <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-dim); margin-right:4px;">PRESETS:</span>
-                <button class="preset-chip lab-preset-btn" data-value="https://malicious-ransomware-distrib.com/crypt.exe">MALICIOUS SAMPLE</button>
-                <button class="preset-chip lab-preset-btn" data-value="https://unknown-shortener.xyz/temp-script.ps1">SUSPICIOUS URL</button>
-                <button class="preset-chip lab-preset-btn" data-value="https://github.com/dakshita1010/ThreatLens">CLEAN GITHUB HOST</button>
-              </div>
-
-              <div style="margin-top: 10px;">
-                <button id="lab-analyze-btn" class="cyber-btn cyber-btn-green" style="width:100%;">
-                  [ RUN THREAT INTELLIGENCE SCAN ]
-                </button>
-              </div>
-            </div>
-
-            <!-- Right: Live Monitor Display -->
-            <div class="lab-monitor-panel">
-              <div class="monitor-status-header">
-                <span class="monitor-title">&gt; SCAN TELEMETRY MONITOR</span>
-                <span class="status-dot green pulse"></span>
-              </div>
-
-              <div>
-                <div class="hash-display-label">LOCAL CLIENT-SIDE SHA-256 HASH (WEB CRYPTO API):</div>
-                <div class="hash-display-box" id="lab-hash-output">
-                  Computing Hash...
-                </div>
-                <button id="lab-copy-hash" class="preset-chip" style="margin-top:6px; font-size:0.65rem;">
-                  COPY HASH
-                </button>
-              </div>
-
-              <div class="risk-meter-container">
-                <div class="risk-meter-label-row">
-                  <span style="color:var(--text-dim);">VENDOR CONSENSUS:</span>
-                  <span id="lab-vendor-score" style="color:#fff; font-weight:700;">Awaiting Scan...</span>
-                </div>
-                <div class="risk-bar-track">
-                  <div class="risk-bar-fill" id="lab-risk-bar"></div>
-                </div>
-              </div>
-
-              <div id="lab-risk-verdict" class="risk-verdict-badge" style="color:var(--neon-green); background:rgba(0,255,136,0.1);">
-                [ STANDBY FOR ANALYSIS ]
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         SECTION: TECHNICAL ARSENAL (SKILLS)
-         ========================================================================= -->
-    <section class="section-wrapper" id="skills">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-pretitle">TECHNICAL ARSENAL</div>
-          <h2 class="section-title">DEFENSIVE & OFFENSIVE CAPABILITIES</h2>
-          <p class="section-subtitle">
-            Core competencies organized into specialized security, machine learning, low-level programming, and software engineering domains.
-          </p>
-          <div class="section-header-line"></div>
-        </div>
-
-        <div class="skills-category-grid">
-          <!-- 1. Languages -->
-          <div class="skill-cat-card cyber-card">
-            <div class="cat-header">
-              <svg class="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-              <div class="cat-title">LANGUAGES</div>
-            </div>
-            <div class="skill-tags-group">
-              <span class="skill-pill highlight">Java</span>
-              <span class="skill-pill highlight">Python</span>
-              <span class="skill-pill highlight">C/C++</span>
-              <span class="skill-pill">JavaScript</span>
-              <span class="skill-pill">SQL</span>
-              <span class="skill-pill">Bash / Shell</span>
-            </div>
-          </div>
-
-          <!-- 2. Cybersecurity -->
-          <div class="skill-cat-card cyber-card">
-            <div class="cat-header">
-              <svg class="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              <div class="cat-title">CYBERSECURITY</div>
-            </div>
-            <div class="skill-tags-group">
-              <span class="skill-pill highlight">Network Security</span>
-              <span class="skill-pill highlight">Threat Intelligence</span>
-              <span class="skill-pill highlight">Malware Analysis</span>
-              <span class="skill-pill highlight">Intrusion Detection</span>
-              <span class="skill-pill">Risk Scoring</span>
-              <span class="skill-pill">Heuristic Analysis</span>
-            </div>
-          </div>
-
-          <!-- 3. Security & Networking -->
-          <div class="skill-cat-card cyber-card">
-            <div class="cat-header">
-              <svg class="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-              <div class="cat-title">SECURITY & NETWORKING</div>
-            </div>
-            <div class="skill-tags-group">
-              <span class="skill-pill highlight">Wireshark</span>
-              <span class="skill-pill highlight">SHA-256 Hashing</span>
-              <span class="skill-pill highlight">VirusTotal API</span>
-              <span class="skill-pill highlight">eBPF Kernel Probes</span>
-              <span class="skill-pill">Packet Inspection</span>
-              <span class="skill-pill">4G/5G Architectures</span>
-            </div>
-          </div>
-
-          <!-- 4. Machine Learning -->
-          <div class="skill-cat-card cyber-card">
-            <div class="cat-header">
-              <svg class="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-              <div class="cat-title">MACHINE LEARNING</div>
-            </div>
-            <div class="skill-tags-group">
-              <span class="skill-pill highlight">PyTorch</span>
-              <span class="skill-pill highlight">Federated Learning</span>
-              <span class="skill-pill highlight">Flower (flwr)</span>
-              <span class="skill-pill">FedAvg Aggregation</span>
-              <span class="skill-pill">CICIDS2017 Dataset</span>
-              <span class="skill-pill">Neural Classifiers</span>
-            </div>
-          </div>
-
-          <!-- 5. Development -->
-          <div class="skill-cat-card cyber-card">
-            <div class="cat-header">
-              <svg class="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-              <div class="cat-title">DEVELOPMENT</div>
-            </div>
-            <div class="skill-tags-group">
-              <span class="skill-pill highlight">Flask</span>
-              <span class="skill-pill highlight">SQLite</span>
-              <span class="skill-pill highlight">HTML5 / CSS3</span>
-              <span class="skill-pill highlight">JavaScript (ES6+)</span>
-              <span class="skill-pill highlight">Electron</span>
-              <span class="skill-pill">Responsive Design</span>
-            </div>
-          </div>
-
-          <!-- 6. Tools & Platforms -->
-          <div class="skill-cat-card cyber-card">
-            <div class="cat-header">
-              <svg class="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-              <div class="cat-title">TOOLS & PLATFORMS</div>
-            </div>
-            <div class="skill-tags-group">
-              <span class="skill-pill highlight">Git</span>
-              <span class="skill-pill highlight">GitHub</span>
-              <span class="skill-pill highlight">Linux Environments</span>
-              <span class="skill-pill highlight">REST APIs</span>
-              <span class="skill-pill highlight">JSON Processing</span>
-              <span class="skill-pill">Windows SDK</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         SECTION: MISSION LOGS (EXPERIENCE)
-         ========================================================================= -->
-    <section class="section-wrapper" id="experience">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-pretitle">MISSION LOGS</div>
-          <h2 class="section-title">PROFESSIONAL EXPERIENCE & TRAINING</h2>
-          <p class="section-subtitle">
-            Hands-on technical internships applied to real-world geospatial datasets, satellite imagery, and institutional research.
-          </p>
-          <div class="section-header-line"></div>
-        </div>
-
-        <div class="experience-card cyber-card">
-          <div class="corner-decor-tr">[ISRO_MISSION_LOG]</div>
-
-          <div class="exp-badge-strip">
-            <span class="exp-org-badge">INDIA SPACE ACADEMY (ISRO)</span>
-            <span class="exp-score-badge">PROJECT EVALUATION: 98 / 100</span>
-            <span class="font-mono text-cyan" style="font-size:0.75rem;">JANUARY 2026</span>
-          </div>
-
-          <h3 class="exp-role-title">Remote Sensing & GIS Intern</h3>
-          <div class="exp-programme-sub">
-            Winter Training Programme: Remote Sensing & GIS – Basics to AI-Powered Geospatial Analysis
-          </div>
-
-          <ul class="exp-bullet-list">
-            <li class="exp-bullet-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <div>
-                <strong>Curriculum & Technical Breadth:</strong> Completed an intensive 4-week training programme focused on remote sensing, GIS, satellite imagery, and AI-powered geospatial analysis.
-              </div>
-            </li>
-            <li class="exp-bullet-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <div>
-                <strong>AI Surface Water Mapping:</strong> Developed an AI-assisted surface water mapping project utilizing the Normalized Difference Water Index (NDWI) to detect, delineate, and classify surface water bodies from multispectral satellite imagery.
-              </div>
-            </li>
-            <li class="exp-bullet-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <div>
-                <strong>High Distinction Performance:</strong> Scored <strong>98/100</strong> in the final rigorous project evaluation, recognized for algorithmic accuracy and methodical spatial data processing.
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         SECTION: INTERACTIVE CYBERHUB TERMINAL
-         ========================================================================= -->
-    <section class="section-wrapper" id="terminal">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-pretitle">COMMAND CONSOLE</div>
-          <h2 class="section-title">INTERACTIVE SOC SHELL (TERMINAL.EXE)</h2>
-          <p class="section-subtitle">
-            Direct CLI access to candidate dossiers, system probes, and classified assets. Type directives or select quick commands below.
-          </p>
-          <div class="section-header-line"></div>
-        </div>
-
-        <div class="terminal-container">
+        <div class="terminal-window">
           <!-- Terminal Window Header -->
-          <div class="terminal-window-header">
-            <div class="terminal-controls">
-              <span class="term-btn red"></span>
-              <span class="term-btn yellow"></span>
-              <span class="term-btn green"></span>
+          <div class="term-header">
+            <div class="term-controls">
+              <span class="term-dot red"></span>
+              <span class="term-dot yellow"></span>
+              <span class="term-dot green"></span>
             </div>
-            <div class="terminal-title">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-              root@dakshita-soc: /opt/cyberhub
+            <div class="term-title-text font-mono">
+              operator@dakshita-soc: ~ (zsh)
             </div>
-            <div class="terminal-quick-actions">
-              <button class="term-quick-btn" data-action="whoami">whoami</button>
-              <button class="term-quick-btn" data-action="projects">projects</button>
-              <button class="term-quick-btn" data-action="research">research</button>
-              <button class="term-quick-btn" data-action="matrix">matrix</button>
+            <div class="term-header-actions">
+              <button class="term-badge-btn" onclick="window.runTermCmd('/about')">/about</button>
+              <button class="term-badge-btn" onclick="window.runTermCmd('/projects')">/projects</button>
+              <button class="term-badge-btn" onclick="window.runTermCmd('/clear')">/clear</button>
             </div>
           </div>
 
-          <!-- Terminal Output Area -->
-          <div class="terminal-body" id="terminal-body">
-            <div class="terminal-output" id="terminal-output">
-              <div class="term-banner">
-====================================================================
-  DAKSHITA MATHUR :: CYBERSECURITY COMMAND SYSTEM [v2.6.0]
-  Connected to SOC Central Hub. Type 'help' for directives.
-====================================================================
+          <!-- Terminal Output Screen -->
+          <div class="term-screen" id="terminal-screen">
+            <!-- ASCII Art Banner & Welcome Block -->
+            <pre class="ascii-banner">
+  &lt; D A K S H I T A   M A T H U R /&gt;
+  ==================================
+            </pre>
+
+            <div class="term-welcome-box">
+              <div class="term-operator-role">
+                Cybersecurity Researcher &bull; Systems Developer &bull; ML Practitioner
               </div>
-              <div class="term-line">
-                <div class="term-prompt-line">
-                  <span class="term-prompt-user">operator@cyberhub</span><span class="term-prompt-symbol">:</span><span class="term-prompt-path">~</span><span class="term-prompt-symbol">$</span>
-                  <span class="term-command-text">whoami</span>
-                </div>
-                <div class="term-response success">
-                  <div><strong>DAKSHITA MATHUR</strong> — Cybersecurity Researcher & ML Developer (VIT-AP CSE, CGPA: 8.54/10)</div>
-                  <div style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">Author of ASIT-2026 paper: Low-Latency In-Kernel Ransomware Containment with eBPF.</div>
-                </div>
+              <div class="term-greeting-sub">
+                Good evening. Type <span class="text-green font-mono" style="font-weight:700;">'/help'</span> or click the directive pills below to begin exploring.
+              </div>
+              <div class="term-hint">
+                Tab to autocomplete &bull; &uarr;&darr; to browse history &bull; Ctrl+L to clear
+              </div>
+
+              <!-- Clickable Directive Pills (Image 4 style) -->
+              <div class="term-pills-row">
+                <span class="term-cmd-pill" data-cmd="/help">[ /help ]</span>
+                <span class="term-cmd-pill" data-cmd="/about">[ /about ]</span>
+                <span class="term-cmd-pill" data-cmd="/projects">[ /projects ]</span>
+                <span class="term-cmd-pill" data-cmd="/research">[ /research ]</span>
+                <span class="term-cmd-pill" data-cmd="/skills">[ /skills ]</span>
+                <span class="term-cmd-pill" data-cmd="/experience">[ /experience ]</span>
+                <span class="term-cmd-pill" data-cmd="/lab">[ /lab ]</span>
+                <span class="term-cmd-pill" data-cmd="/contact">[ /contact ]</span>
+                <span class="term-cmd-pill" data-cmd="/cv">[ /cv ]</span>
+                <span class="term-cmd-pill" data-cmd="/theme">[ /theme ]</span>
+                <span class="term-cmd-pill" data-cmd="/matrix">[ /matrix ]</span>
+                <span class="term-cmd-pill" data-cmd="/clear">[ /clear ]</span>
               </div>
             </div>
 
-            <!-- Terminal Interactive Prompt -->
-            <div class="terminal-input-row">
-              <span class="term-prompt-user">operator@cyberhub</span><span class="term-prompt-symbol">:</span><span class="term-prompt-path">~</span><span class="term-prompt-symbol">$</span>
-              <input type="text" id="terminal-input" class="terminal-input-field" autocomplete="off" spellcheck="false" placeholder="type 'help', 'projects', 'research', 'skills'..." />
+            <!-- Initial /help Output (Pre-rendered for immediate engagement like Image 1) -->
+            <div class="term-entry">
+              <div class="term-prompt-line">
+                <span class="term-symbol">$</span>
+                <span class="term-cmd-executed">/help</span>
+              </div>
+              <div class="term-output-block">
+                <div style="color:var(--neon-green); font-weight:700; margin-bottom:6px;">Available commands:</div>
+                <table class="term-table">
+                  <tr><td><span style="color:var(--neon-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/about')">/about</span></td><td style="color:var(--text-muted);">who is Dakshita Mathur (VIT-AP, CGPA, research background)</td></tr>
+                  <tr><td><span style="color:var(--neon-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/projects')">/projects</span></td><td style="color:var(--text-muted);">classified operations (ThreatLens, Federated-NIDS, HoverNotes)</td></tr>
+                  <tr><td><span style="color:var(--neon-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/research')">/research</span></td><td style="color:var(--text-muted);">ASIT-2026 paper: In-Kernel Defense via eBPF</td></tr>
+                  <tr><td><span style="color:var(--neon-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/skills')">/skills</span></td><td style="color:var(--text-muted);">defensive & offensive technical arsenal</td></tr>
+                  <tr><td><span style="color:var(--neon-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/experience')">/experience</span></td><td style="color:var(--text-muted);">ISRO space academy mission logs (score: 98/100)</td></tr>
+                  <tr><td><span style="color:var(--neon-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/lab')">/lab</span></td><td style="color:var(--text-muted);">run interactive client-side SHA-256 threat scan</td></tr>
+                  <tr><td><span style="color:var(--neon-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/contact')">/contact</span></td><td style="color:var(--text-muted);">initiate communication uplink / dispatch message</td></tr>
+                  <tr><td><span style="color:var(--neon-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/cv')">/cv</span></td><td style="color:var(--text-muted);">view & print complete resume dossier</td></tr>
+                  <tr><td><span style="color:var(--neon-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/theme')">/theme</span></td><td style="color:var(--text-muted);">toggle color palette (Emerald / Cyan / Violet)</td></tr>
+                  <tr><td><span style="color:var(--neon-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/clear')">/clear</span></td><td style="color:var(--text-muted);">clear terminal screen buffer (Ctrl+L)</td></tr>
+                </table>
+              </div>
             </div>
+
+            <!-- Dynamic History Output Container -->
+            <div class="term-history-log" id="terminal-history-log"></div>
           </div>
 
-          <!-- Quick Suggestions Bar -->
-          <div class="terminal-suggestions">
-            <span class="sugg-label">QUICK DIRECTIVES:</span>
-            <span class="sugg-chip" data-cmd="help">help</span>
-            <span class="sugg-chip" data-cmd="whoami">whoami</span>
-            <span class="sugg-chip" data-cmd="projects">projects</span>
-            <span class="sugg-chip" data-cmd="threatlens">threatlens</span>
-            <span class="sugg-chip" data-cmd="research">research</span>
-            <span class="sugg-chip" data-cmd="skills">skills</span>
-            <span class="sugg-chip" data-cmd="education">education</span>
-            <span class="sugg-chip" data-cmd="experience">experience</span>
-            <span class="sugg-chip" data-cmd="matrix">matrix</span>
-            <span class="sugg-chip" data-cmd="clear">clear</span>
+          <!-- Bottom Terminal Input Bar (designby.cc style) -->
+          <div class="term-input-container">
+            <span class="term-input-symbol">$</span>
+            <input 
+              type="text" 
+              id="terminal-input" 
+              class="term-real-input" 
+              placeholder="type '/about', '/projects', '/research'..." 
+              autocomplete="off" 
+              spellcheck="false" 
+            />
+            <span class="term-try-hint font-mono">try /projects</span>
+          </div>
+
+          <!-- Terminal Bottom Status Bar (designby.cc style) -->
+          <div class="term-status-bar">
+            <div class="term-status-left">
+              <span>~</span>
+              <span>uptime: <span class="status-highlight" id="term-uptime">0s</span></span>
+              <span>&bull;</span>
+              <span>cmds: <span class="status-highlight" id="term-cmd-count">1</span></span>
+              <span>&bull;</span>
+              <span>signal: <span class="status-highlight">99.9% stable</span></span>
+            </div>
+            <div class="term-status-right">
+              <span>dakshita-soc v2.6</span>
+              <span>visitor@soc-terminal</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- =========================================================================
-         SECTION: DIRECT UPLINK & CONTACT
+         2. HIGH-DENSITY SOC DASHBOARD SECTION (TRINITY / BLOCKTRADE INSPIRED)
          ========================================================================= -->
-    <section class="section-wrapper" id="contact">
+    <section class="soc-dashboard-wrapper" id="section-dashboard">
       <div class="container">
-        <div class="section-header">
-          <div class="section-pretitle">COMMUNICATION UPLINK</div>
-          <h2 class="section-title">INITIATE SECURE TRANSMISSION</h2>
-          <p class="section-subtitle">
-            Ready to collaborate on cybersecurity research, security engineering, machine learning pipelines, or software development.
-          </p>
-          <div class="section-header-line"></div>
-        </div>
-
-        <div class="contact-grid">
-          <!-- Left: Direct Channels -->
-          <div class="contact-info-panel cyber-card">
-            <div class="corner-decor-tr">[UPLINK_CHANNELS]</div>
-            <h3 style="font-size:1.3rem; color:#fff; font-weight:700; margin-bottom:12px;">
-              VERIFIED CONTACT DATA
-            </h3>
-            <p style="color:var(--text-muted); font-size:0.92rem; line-height:1.6;">
-              Reach out directly for internships, research collaborations, engineering roles, or project inquiries.
-            </p>
-
-            <div class="contact-channels">
-              <!-- Email -->
-              <a href="mailto:dakshita.mathur03@gmail.com" class="contact-channel-card">
-                <div class="channel-left">
-                  <div class="channel-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                  </div>
-                  <div>
-                    <div class="channel-title">PRIMARY EMAIL</div>
-                    <div class="channel-data">dakshita.mathur03@gmail.com</div>
-                  </div>
+        <!-- Dual Column Grid: Left Chart & Operations, Right Inspector -->
+        <div class="soc-grid-main">
+          <!-- Left Column (Chart + Operations Table) -->
+          <div>
+            <!-- Real-Time Telemetry Activity Chart (Trinity Style) -->
+            <div class="chart-panel-card cyber-card" style="margin-bottom: 20px;">
+              <div class="chart-header-row">
+                <div class="chart-metrics-strip">
+                  <div class="chart-title-tag">IN-KERNEL DEFENSE TELEMETRY // sys_enter_write & packet rate</div>
+                  <div class="chart-live-val" id="chart-live-val">1,648.35 OPS/s</div>
+                  <div class="metric-badge text-green" id="chart-live-change">+11.60 (+0.44%)</div>
                 </div>
-                <span class="font-mono text-cyan" style="font-size:0.75rem;">[TRANSMIT]</span>
-              </a>
 
-              <!-- Phone -->
-              <a href="tel:+919696233384" class="contact-channel-card">
-                <div class="channel-left">
-                  <div class="channel-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                  </div>
-                  <div>
-                    <div class="channel-title">TELEPHONE / WHATSAPP</div>
-                    <div class="channel-data">+91 9696233384</div>
-                  </div>
+                <div class="chart-timeframe-selector">
+                  <button class="chart-time-btn active">LIVE</button>
+                  <button class="chart-time-btn">1M</button>
+                  <button class="chart-time-btn">5M</button>
+                  <button class="chart-time-btn">15M</button>
+                  <button class="chart-time-btn">1H</button>
                 </div>
-                <span class="font-mono text-green" style="font-size:0.75rem;">[CALL]</span>
-              </a>
+              </div>
 
-              <!-- GitHub -->
-              <a href="https://github.com/dakshita1010" target="_blank" rel="noopener noreferrer" class="contact-channel-card">
-                <div class="channel-left">
-                  <div class="channel-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  </div>
-                  <div>
-                    <div class="channel-title">GITHUB REPOSITORIES</div>
-                    <div class="channel-data">github.com/dakshita1010</div>
-                  </div>
-                </div>
-                <span class="font-mono text-cyan" style="font-size:0.75rem;">[VISIT]</span>
-              </a>
+              <!-- Live Canvas Chart -->
+              <div class="canvas-chart-holder">
+                <canvas id="soc-telemetry-chart"></canvas>
+              </div>
+            </div>
 
-              <!-- LinkedIn -->
-              <a href="https://linkedin.com/in/dakshita-mathur10" target="_blank" rel="noopener noreferrer" class="contact-channel-card">
-                <div class="channel-left">
-                  <div class="channel-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                  </div>
-                  <div>
-                    <div class="channel-title">LINKEDIN PROFILE</div>
-                    <div class="channel-data">linkedin.com/in/dakshita-mathur10</div>
-                  </div>
+            <!-- Classified Operations Table (Trinity / BlockTrade Positions Style) -->
+            <div class="operations-table-card cyber-card" id="operations-table">
+              <div class="table-header-strip">
+                <div class="table-title">CLASSIFIED OPERATIONS & REPOSITORIES</div>
+                <div class="table-filters-group">
+                  <button class="table-filter-btn active" data-cat="all">All (3)</button>
+                  <button class="table-filter-btn" data-cat="threat">Threat Intelligence</button>
+                  <button class="table-filter-btn" data-cat="fl">Privacy ML</button>
+                  <button class="table-filter-btn" data-cat="utility">Desktop Utility</button>
                 </div>
-                <span class="font-mono text-purple" style="font-size:0.75rem;">[CONNECT]</span>
-              </a>
+              </div>
+
+              <table class="operations-data-table">
+                <thead>
+                  <tr>
+                    <th>OPERATION</th>
+                    <th>ARCHITECTURE</th>
+                    <th>STATUS</th>
+                    <th>TELEMETRY / METRIC</th>
+                    <th>REPOSITORY</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- 1. ThreatLens -->
+                  <tr class="op-table-row" data-cat="threat">
+                    <td>
+                      <div class="op-name-cell">
+                        <div class="op-avatar threat">TL</div>
+                        <div>
+                          <div class="op-title-text">ThreatLens</div>
+                          <div class="text-dim" style="font-size:0.7rem;">URL & Hash Intelligence</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="text-muted font-mono" style="font-size:0.75rem;">Flask &bull; VirusTotal &bull; SHA-256</span>
+                    </td>
+                    <td>
+                      <span class="status-badge complete">ONLINE</span>
+                    </td>
+                    <td>
+                      <span class="font-mono text-green" style="font-size:0.75rem;">5/5 Test Cases Passed</span>
+                    </td>
+                    <td>
+                      <a href="https://github.com/dakshita1010/ThreatLens" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-outline cyber-btn-sm">
+                        GITHUB
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- 2. Federated-NIDS -->
+                  <tr class="op-table-row" data-cat="fl">
+                    <td>
+                      <div class="op-name-cell">
+                        <div class="op-avatar fl">FL</div>
+                        <div>
+                          <div class="op-title-text">Federated-NIDS</div>
+                          <div class="text-dim" style="font-size:0.7rem;">4G/5G Intrusion Detection</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="text-muted font-mono" style="font-size:0.75rem;">PyTorch &bull; Flower &bull; CICIDS2017</span>
+                    </td>
+                    <td>
+                      <span class="status-badge open">ACC: 86%</span>
+                    </td>
+                    <td>
+                      <span class="font-mono text-cyan" style="font-size:0.75rem;">5 Base Station Nodes</span>
+                    </td>
+                    <td>
+                      <a href="https://github.com/maplelattte/federated-nids" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-outline cyber-btn-sm">
+                        GITHUB
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- 3. HoverNotes -->
+                  <tr class="op-table-row" data-cat="utility">
+                    <td>
+                      <div class="op-name-cell">
+                        <div class="op-avatar hover">HN</div>
+                        <div>
+                          <div class="op-title-text">HoverNotes</div>
+                          <div class="text-dim" style="font-size:0.7rem;">Floating Workspace</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="text-muted font-mono" style="font-size:0.75rem;">Electron &bull; Local Storage &bull; Win32</span>
+                    </td>
+                    <td>
+                      <span class="status-badge desktop">UTILITY</span>
+                    </td>
+                    <td>
+                      <span class="font-mono text-amber" style="font-size:0.75rem;">Alt+Shift+G Ghost Mode</span>
+                    </td>
+                    <td>
+                      <a href="https://github.com/dakshita1010/hover-notes" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-outline cyber-btn-sm">
+                        GITHUB
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
-          <!-- Right: Interactive Encrypted Message Dispatch -->
-          <div class="contact-form-card cyber-card">
-            <div class="corner-decor-tr">[DISPATCH_FORM]</div>
-            <h3 style="font-size:1.3rem; color:#fff; font-weight:700; margin-bottom:12px;">
-              DISPATCH SECURE TRANSMISSION
-            </h3>
-            <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:20px;">
-              Send an instant message directly to operator Dakshita Mathur.
+          <!-- Right Column: Threat Inspector & Hash Calculator (BlockTrade Style) -->
+          <div>
+            <div class="inspector-panel-card cyber-card">
+              <div>
+                <div class="inspector-header">
+                  <div class="inspector-title">THREAT INTELLIGENCE INSPECTOR</div>
+                  <span class="status-dot green pulse"></span>
+                </div>
+
+                <!-- Mode Tabs -->
+                <div class="inspector-mode-tabs">
+                  <button class="mode-tab-btn active" data-mode="url">URL SCAN</button>
+                  <button class="mode-tab-btn" data-mode="hash">HASH CALCULATOR</button>
+                </div>
+
+                <!-- Target Input Box -->
+                <input 
+                  type="text" 
+                  id="inspector-input" 
+                  class="inspector-input-box" 
+                  placeholder="e.g. https://malicious-ransomware-distrib.com/crypt.exe" 
+                  value="https://malicious-ransomware-distrib.com/crypt.exe" 
+                />
+
+                <!-- Quick Presets -->
+                <div class="quick-presets-strip">
+                  <span class="font-mono text-dim" style="font-size:0.65rem;">PRESETS:</span>
+                  <span class="preset-chip inspector-preset-chip" data-val="https://malicious-ransomware-distrib.com/crypt.exe">MALICIOUS</span>
+                  <span class="preset-chip inspector-preset-chip" data-val="https://unknown-shortener.xyz/temp-script.ps1">SUSPICIOUS</span>
+                  <span class="preset-chip inspector-preset-chip" data-val="https://github.com/dakshita1010/ThreatLens">CLEAN DOMAIN</span>
+                </div>
+
+                <!-- Real Cryptographic SHA-256 Box (Web Crypto API) -->
+                <div class="hash-preview-card">
+                  <div class="hash-label-row">
+                    <span>LOCAL CLIENT-SIDE SHA-256:</span>
+                    <button id="inspector-copy-hash" class="preset-chip" style="font-size:0.62rem; padding:1px 5px;">COPY</button>
+                  </div>
+                  <div class="hash-value-text" id="inspector-hash-val">Standby...</div>
+                </div>
+
+                <!-- Risk Bar & Vendor Consensus -->
+                <div class="risk-consensus-block">
+                  <div class="risk-label-row">
+                    <span>VENDOR CONSENSUS:</span>
+                    <span id="inspector-vendor-count" style="color:#fff; font-weight:700;">Awaiting Scan...</span>
+                  </div>
+                  <div class="risk-progress-track">
+                    <div class="risk-progress-bar" id="inspector-risk-bar"></div>
+                  </div>
+                  <div id="inspector-verdict-tag" class="risk-verdict-tag" style="background:var(--neon-green-dim); color:var(--neon-green);">
+                    [ STANDBY ]
+                  </div>
+                </div>
+              </div>
+
+              <!-- Execution Button -->
+              <button class="inspector-submit-btn" id="inspector-analyze-btn">
+                EXECUTE THREAT SCAN
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary Grid: Research Deep Dive & ISRO Experience -->
+        <div class="soc-sub-grid">
+          <!-- Research Deep Dive (ASIT-2026) -->
+          <div class="research-card-panel cyber-card" id="research-panel">
+            <div class="panel-header-badge">
+              <span class="font-mono text-green" style="font-size:0.72rem;">ASIT-2026 INTERNATIONAL CONFERENCE</span>
+              <span class="font-mono text-dim" style="font-size:0.72rem;">SEPTEMBER 2026</span>
+            </div>
+            <h3 class="card-title-lg">In-Kernel Defense: Low-Latency Ransomware Containment with eBPF</h3>
+            <p class="card-desc-muted">
+              Peer-reviewed research presented at the Hinweis Fifth International Conference on Advances in Software Engineering and Information Technology.
             </p>
 
-            <form id="cyber-contact-form">
-              <div class="form-group">
-                <label for="form-name" class="form-label">&gt; YOUR IDENTITY / CALLSIGN:</label>
-                <input type="text" id="form-name" class="form-input" placeholder="e.g., Alex Mercer / Hiring Lead" required />
-              </div>
-              <div class="form-group">
-                <label for="form-email" class="form-label">&gt; RETURN RETURN-PATH / EMAIL:</label>
-                <input type="email" id="form-email" class="form-input" placeholder="e.g., alex@enterprise-soc.com" required />
-              </div>
-              <div class="form-group">
-                <label for="form-msg" class="form-label">&gt; PAYLOAD MESSAGE:</label>
-                <textarea id="form-msg" class="form-textarea" placeholder="Hello Dakshita, I reviewed your eBPF research and ThreatLens project and would like to connect regarding..." required></textarea>
-              </div>
+            <ul class="bullet-spec-list">
+              <li class="bullet-spec-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Kernel-Level Syscall Telemetry:</strong> Sub-millisecond write syscall anomaly detection via eBPF kprobes.</span>
+              </li>
+              <li class="bullet-spec-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Shannon Entropy Detection:</strong> Intercepts high data randomness before ransomware encrypts user files.</span>
+              </li>
+              <li class="bullet-spec-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Automated SIGSTOP Suspension:</strong> Kernel-level suspension mechanism slashing containment latency.</span>
+              </li>
+            </ul>
+          </div>
 
-              <button type="submit" class="cyber-btn cyber-btn-green" style="width:100%;">
-                [ TRANSMIT MESSAGE ]
+          <!-- ISRO Experience Mission Log -->
+          <div class="mission-card-panel cyber-card">
+            <div class="panel-header-badge">
+              <span class="font-mono text-cyan" style="font-size:0.72rem;">INDIA SPACE ACADEMY (ISRO)</span>
+              <span class="status-badge complete">SCORE: 98 / 100</span>
+            </div>
+            <h3 class="card-title-lg">Remote Sensing & GIS Intern</h3>
+            <p class="card-desc-muted">
+              Winter Training Programme: Remote Sensing & GIS – Basics to AI-Powered Geospatial Analysis (January 2026).
+            </p>
+
+            <ul class="bullet-spec-list">
+              <li class="bullet-spec-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Completed intensive 4-week program in remote sensing, satellite telemetry, and AI spatial analytics.</span>
+              </li>
+              <li class="bullet-spec-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Engineered AI-assisted surface water classification utilizing NDWI to classify satellite imagery.</span>
+              </li>
+              <li class="bullet-spec-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Achieved distinction score of <strong>98/100</strong> in final comprehensive technical evaluation.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Technical Arsenal / Skills -->
+        <div class="skills-matrix-card cyber-card">
+          <div class="table-title">DEFENSIVE & OFFENSIVE ARSENAL</div>
+          <div class="skills-badge-flow">
+            <span class="skill-tag-pill font-mono" style="color:var(--neon-green);">Java</span>
+            <span class="skill-tag-pill font-mono" style="color:var(--neon-green);">Python</span>
+            <span class="skill-tag-pill font-mono" style="color:var(--neon-green);">C/C++</span>
+            <span class="skill-tag-pill font-mono">Network Security</span>
+            <span class="skill-tag-pill font-mono">Threat Intelligence</span>
+            <span class="skill-tag-pill font-mono">Malware Analysis</span>
+            <span class="skill-tag-pill font-mono">Intrusion Detection</span>
+            <span class="skill-tag-pill font-mono">Wireshark</span>
+            <span class="skill-tag-pill font-mono">SHA-256</span>
+            <span class="skill-tag-pill font-mono">VirusTotal API</span>
+            <span class="skill-tag-pill font-mono" style="color:var(--neon-cyan);">eBPF Kernel Probes</span>
+            <span class="skill-tag-pill font-mono" style="color:var(--neon-cyan);">PyTorch</span>
+            <span class="skill-tag-pill font-mono" style="color:var(--neon-cyan);">Federated Learning</span>
+            <span class="skill-tag-pill font-mono">Flower (flwr)</span>
+            <span class="skill-tag-pill font-mono">Flask</span>
+            <span class="skill-tag-pill font-mono">SQLite</span>
+            <span class="skill-tag-pill font-mono">Electron</span>
+            <span class="skill-tag-pill font-mono">Linux Environments</span>
+            <span class="skill-tag-pill font-mono">Git & GitHub</span>
+          </div>
+        </div>
+
+        <!-- Direct Communication Uplink (Contact) -->
+        <div class="soc-sub-grid" id="contact-panel">
+          <div class="mission-card-panel cyber-card">
+            <div class="table-title" style="margin-bottom:12px;">DIRECT COMMUNICATION CHANNELS</div>
+            <div style="font-family:var(--font-mono); font-size:0.82rem; line-height:2;">
+              <div>&bull; EMAIL: <a href="mailto:dakshita.mathur03@gmail.com" style="color:var(--neon-green);">dakshita.mathur03@gmail.com</a></div>
+              <div>&bull; PHONE: <a href="tel:+919696233384" style="color:var(--neon-green);">+91 9696233384</a></div>
+              <div>&bull; GITHUB: <a href="https://github.com/dakshita1010" target="_blank" style="color:var(--neon-green);">github.com/dakshita1010</a></div>
+              <div>&bull; LINKEDIN: <a href="https://linkedin.com/in/dakshita-mathur10" target="_blank" style="color:var(--neon-green);">linkedin.com/in/dakshita-mathur10</a></div>
+            </div>
+          </div>
+
+          <div class="mission-card-panel cyber-card">
+            <div class="table-title" style="margin-bottom:12px;">ENCRYPTED MESSAGE DISPATCH</div>
+            <form id="cyber-contact-form">
+              <input type="text" id="form-name" class="inspector-input-box" placeholder="Your Identity / Call-Sign" required />
+              <input type="email" id="form-email" class="inspector-input-box" placeholder="Return Address / Email" required />
+              <textarea id="form-msg" class="inspector-input-box" style="height:70px; resize:vertical;" placeholder="Payload message..." required></textarea>
+              <button type="submit" class="cyber-btn" style="width:100%;">
+                TRANSMIT MESSAGE
               </button>
               <div id="form-status-msg"></div>
             </form>
@@ -1047,20 +530,22 @@
   </main>
 
   <!-- =========================================================================
-       FOOTER
+       PERSISTENT BOTTOM TELEMETRY STRIP (TRINITY / BLOCKTRADE INSPIRED)
        ========================================================================= -->
-  <footer class="cyber-footer">
-    <div class="container footer-content">
-      <div class="footer-brand">
-        <span style="color:var(--neon-cyan); font-weight:700;">DAKSHITA MATHUR</span> // CYBERHUB SECURITY OPERATIONS &copy; 2026. ALL RIGHTS RESERVED.
-      </div>
-      <ul class="footer-nav">
-        <li><a href="#hero" class="footer-link">[TOP]</a></li>
-        <li><a href="#about" class="footer-link">[DOSSIER]</a></li>
-        <li><a href="#research" class="footer-link">[RESEARCH]</a></li>
-        <li><a href="#projects" class="footer-link">[OPERATIONS]</a></li>
-        <li><a href="#terminal" class="footer-link">[TERMINAL]</a></li>
-      </ul>
+  <footer class="soc-bottom-bar">
+    <div class="bottom-bar-left">
+      <span>Connection: <span style="color:var(--neon-green);">Stable (18ms)</span></span>
+      <span>&bull;</span>
+      <span>DEFCON: <span style="color:var(--neon-green);">5 (Nominal)</span></span>
+      <span>&bull;</span>
+      <span>eBPF Probes: <span style="color:var(--neon-cyan);">12 Active</span></span>
+      <span>&bull;</span>
+      <span>FL Nodes: <span style="color:var(--neon-green);">5/5 Synced</span></span>
+    </div>
+    <div class="bottom-bar-right">
+      <span>&copy; 2026 DAKSHITA MATHUR</span>
+      <span>&bull;</span>
+      <span>visitor@soc-center</span>
     </div>
   </footer>
 
@@ -1084,7 +569,7 @@
             <span>linkedin.com/in/dakshita-mathur10</span>
           </div>
         </div>
-        <button id="print-resume-btn" class="cyber-btn cyber-btn-sm cyber-btn-green">
+        <button id="print-resume-btn" class="cyber-btn cyber-btn-sm">
           PRINT / PDF
         </button>
       </div>
@@ -1145,7 +630,7 @@
         </div>
         <div class="resume-item-sub">Hinweis Fifth International Conference on Advances in Software Engineering and Information Technology (ASIT-2026)</div>
         <ul class="resume-item-bullets">
-          <li>Research paper approved and presented at the Hinweis Fifth International Conference on Advances in Software Engineering and Information Technology (ASIT-2026).</li>
+          <li>Research paper approved and presented at the ASIT-2026 conference.</li>
           <li>Proposed an eBPF-based ransomware containment framework using kernel-level behavioral monitoring, entropy analysis, and multi-signal risk scoring for early threat detection.</li>
           <li>Designed an automated response mechanism to suspend suspicious processes, enabling low-latency ransomware containment with reduced reliance on user-space monitoring.</li>
         </ul>
@@ -1156,7 +641,7 @@
       <div class="resume-item-block">
         <div class="resume-item-top">
           <span>ThreatLens – URL & File Hash Threat Intelligence Platform</span>
-          <span><a href="https://github.com/dakshita1010/ThreatLens" target="_blank" style="color:var(--neon-cyan);">GitHub</a></span>
+          <span><a href="https://github.com/dakshita1010/ThreatLens" target="_blank" style="color:var(--neon-green);">GitHub</a></span>
         </div>
         <ul class="resume-item-bullets">
           <li>Built a Flask-based threat intelligence platform using the VirusTotal API to analyze URLs, file hashes, and local files, with successful end-to-end testing across 5 test cases.</li>
@@ -1167,40 +652,41 @@
       <div class="resume-item-block">
         <div class="resume-item-top">
           <span>Federated-NIDS – Privacy-Preserving Network Intrusion Detection System</span>
-          <span><a href="https://github.com/maplelattte/federated-nids" target="_blank" style="color:var(--neon-cyan);">GitHub</a></span>
+          <span><a href="https://github.com/maplelattte/federated-nids" target="_blank" style="color:var(--neon-green);">GitHub</a></span>
         </div>
         <ul class="resume-item-bullets">
-          <li>Built a privacy-preserving NIDS using Federated Learning, training intrusion-detection models across distributed clients without centralizing raw network traffic, achieving 86% detection accuracy.</li>
-          <li>Trained PyTorch neural-network classifiers on the CICIDS2017 dataset for multi-class detection of DoS, DDoS, and port-scanning attacks across 5 client nodes.</li>
-          <li>Simulated a multi-client federated environment using the Flower (flwr) framework, coordinating 10 training rounds using FedAvg aggregation.</li>
+          <li>Built a privacy-preserving NIDS using Federated Learning, training models across distributed clients without centralizing raw network traffic, achieving 86% detection accuracy.</li>
+          <li>Trained PyTorch neural-network classifiers on the CICIDS2017 dataset for multi-class detection across 5 client nodes.</li>
+          <li>Simulated multi-client federated environment using Flower (flwr), coordinating 10 training rounds using FedAvg aggregation.</li>
         </ul>
       </div>
       <div class="resume-item-block">
         <div class="resume-item-top">
           <span>HoverNotes – Always-on-Top Desktop Notes Application</span>
-          <span><a href="https://github.com/dakshita1010/hover-notes" target="_blank" style="color:var(--neon-cyan);">GitHub</a></span>
+          <span><a href="https://github.com/dakshita1010/hover-notes" target="_blank" style="color:var(--neon-green);">GitHub</a></span>
         </div>
         <ul class="resume-item-bullets">
-          <li>Developed an Electron-based Windows desktop application with global hotkeys, click-through ghost mode, adjustable transparency, and multi-note tab management.</li>
-          <li>Implemented persistent local storage, a collapsible mini-dock, and a quick editor supporting checklists, bullet notes, and timestamps.</li>
+          <li>Developed an Electron-based Windows desktop application with global hotkeys, click-through ghost mode (Alt+Shift+G), adjustable transparency, and multi-note tab management.</li>
+          <li>Implemented persistent local storage, collapsible mini-dock, and a quick editor supporting checklists, bullet notes, and timestamps.</li>
         </ul>
       </div>
 
       <!-- Technical Skills -->
       <div class="resume-section-title">// TECHNICAL SKILLS</div>
       <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted); line-height:1.7;">
-        <div><strong style="color:var(--neon-cyan);">Languages:</strong> Java, Python, C/C++</div>
-        <div><strong style="color:var(--neon-cyan);">Cybersecurity:</strong> Network Security, Threat Intelligence, Malware Analysis, Intrusion Detection</div>
-        <div><strong style="color:var(--neon-cyan);">Security / Networking:</strong> Wireshark, SHA-256, VirusTotal, eBPF</div>
-        <div><strong style="color:var(--neon-cyan);">Machine Learning:</strong> PyTorch, Federated Learning, Flower (flwr)</div>
-        <div><strong style="color:var(--neon-cyan);">Development:</strong> Flask, SQLite, HTML5, CSS3, JavaScript, Electron</div>
-        <div><strong style="color:var(--neon-cyan);">Tools & Platforms:</strong> Git, GitHub, Linux Environments, REST APIs, JSON</div>
+        <div><strong style="color:var(--neon-green);">Languages:</strong> Java, Python, C/C++</div>
+        <div><strong style="color:var(--neon-green);">Cybersecurity:</strong> Network Security, Threat Intelligence, Malware Analysis, Intrusion Detection</div>
+        <div><strong style="color:var(--neon-green);">Security / Networking:</strong> Wireshark, SHA-256, VirusTotal, eBPF</div>
+        <div><strong style="color:var(--neon-green);">Machine Learning:</strong> PyTorch, Federated Learning, Flower (flwr)</div>
+        <div><strong style="color:var(--neon-green);">Development:</strong> Flask, SQLite, HTML5, CSS3, JavaScript, Electron</div>
+        <div><strong style="color:var(--neon-green);">Tools & Platforms:</strong> Git, GitHub, Linux Environments, REST APIs, JSON</div>
       </div>
     </div>
   </div>
 
   <!-- JavaScript Modules -->
   <script src="js/cyber-canvas.js"></script>
+  <script src="js/soc-chart.js"></script>
   <script src="js/threat-lab.js"></script>
   <script src="js/terminal.js"></script>
   <script src="js/main.js"></script>

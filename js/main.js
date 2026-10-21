@@ -1,10 +1,10 @@
 /**
- * Main Controller - HUD Telemetry, Audio Synthesizer, Modal & Interactions
+ * Main Controller - View Switcher, Audio FX, Theme & Telemetry
  * Dakshita Mathur Portfolio
  */
 
 (function () {
-  // 1. Audio Synthesizer via Web Audio API (No external sound files required)
+  // 1. Audio Synthesizer (Web Audio API)
   let audioCtx = null;
   let audioEnabled = false;
   const audioToggleBtn = document.getElementById('audio-toggle-btn');
@@ -12,9 +12,7 @@
   function initAudio() {
     if (!audioCtx) {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (AudioContext) {
-        audioCtx = new AudioContext();
-      }
+      if (AudioContext) audioCtx = new AudioContext();
     }
     if (audioCtx && audioCtx.state === 'suspended') {
       audioCtx.resume();
@@ -31,7 +29,7 @@
       osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(freq * 0.5, audioCtx.currentTime + duration);
 
-      gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
 
       osc.connect(gain);
@@ -40,7 +38,7 @@
       osc.start();
       osc.stop(audioCtx.currentTime + duration);
     } catch (e) {
-      console.warn('Audio synthesis issue:', e);
+      console.warn(e);
     }
   };
 
@@ -48,95 +46,77 @@
     audioToggleBtn.addEventListener('click', () => {
       initAudio();
       audioEnabled = !audioEnabled;
-      if (audioEnabled) {
-        audioToggleBtn.classList.add('active');
-        audioToggleBtn.title = 'Audio Synthesizer: ACTIVE';
-        playCyberClick(1200, 0.08);
-      } else {
-        audioToggleBtn.classList.remove('active');
-        audioToggleBtn.title = 'Audio Synthesizer: MUTED';
-      }
+      audioToggleBtn.classList.toggle('active', audioEnabled);
+      audioToggleBtn.title = audioEnabled ? 'Audio FX: ACTIVE' : 'Audio FX: MUTED';
+      if (audioEnabled) playCyberClick(1200, 0.08);
     });
   }
 
-  // 2. Scanline CRT Overlay Toggle
-  const scanlinesEl = document.getElementById('scanlines-overlay');
-  const scanlineToggleBtn = document.getElementById('scanline-toggle-btn');
+  // 2. Theme Switcher (Emerald, Cyan, Violet)
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  const themes = ['emerald', 'cyan', 'violet'];
 
-  if (scanlineToggleBtn && scanlinesEl) {
-    scanlineToggleBtn.addEventListener('click', () => {
+  function cycleTheme() {
+    const current = document.body.getAttribute('data-theme') || 'emerald';
+    const next = themes[(themes.indexOf(current) + 1) % themes.length];
+    document.body.setAttribute('data-theme', next);
+    playCyberClick(900, 0.05);
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', cycleTheme);
+  }
+
+  // 3. Scanline Filter Toggle
+  const scanlinesEl = document.getElementById('scanlines-overlay');
+  const scanlineBtn = document.getElementById('scanline-toggle-btn');
+
+  if (scanlineBtn && scanlinesEl) {
+    scanlineBtn.addEventListener('click', () => {
       scanlinesEl.classList.toggle('disabled');
       const isDisabled = scanlinesEl.classList.contains('disabled');
-      scanlineToggleBtn.classList.toggle('active', !isDisabled);
-      scanlineToggleBtn.title = isDisabled ? 'CRT Scanlines: DISABLED' : 'CRT Scanlines: ACTIVE';
-      playCyberClick(900, 0.04);
+      scanlineBtn.classList.toggle('active', !isDisabled);
+      playCyberClick(800, 0.04);
     });
   }
 
-  // 3. Live Telemetry Clock (IST & UTC)
-  const utcClockEl = document.getElementById('telemetry-clock-utc');
-  const istClockEl = document.getElementById('telemetry-clock-ist');
+  // 4. View Switcher (Terminal View vs SOC Dashboard View)
+  const navTabs = document.querySelectorAll('.nav-tab-item');
+  const terminalSection = document.getElementById('section-terminal');
+  const dashboardSection = document.getElementById('section-dashboard');
 
-  function updateClocks() {
-    const now = new Date();
-    if (utcClockEl) {
-      utcClockEl.textContent = now.toUTCString().split(' ')[4] + ' UTC';
-    }
-    if (istClockEl) {
-      const istTime = now.toLocaleTimeString('en-US', {
-        timeZone: 'Asia/Kolkata',
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      });
-      istClockEl.textContent = istTime + ' IST';
-    }
-  }
-  updateClocks();
-  setInterval(updateClocks, 1000);
-
-  // 4. Mobile Navigation Menu Toggle
-  const mobileToggleBtn = document.getElementById('mobile-toggle');
-  const navMenu = document.getElementById('nav-menu');
-
-  if (mobileToggleBtn && navMenu) {
-    mobileToggleBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
-      playCyberClick(700, 0.03);
-    });
-
-    // Close menu when link clicked
-    navMenu.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-      });
-    });
-  }
-
-  // 5. Active Nav Indicator on Scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  function highlightNavOnScroll() {
-    const scrollY = window.pageYOffset;
-    sections.forEach(current => {
-      const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 120;
-      const sectionId = current.getAttribute('id');
-
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        navLinks.forEach(link => {
-          if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
-        });
+  navTabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      const target = tab.getAttribute('data-target');
+      if (target === 'terminal') {
+        e.preventDefault();
+        navTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        if (terminalSection) {
+          terminalSection.scrollIntoView({ behavior: 'smooth' });
+          const inp = document.getElementById('terminal-input');
+          if (inp) setTimeout(() => inp.focus(), 300);
+        }
+      } else if (target === 'dashboard') {
+        e.preventDefault();
+        navTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        if (dashboardSection) {
+          dashboardSection.scrollIntoView({ behavior: 'smooth' });
+        }
       }
+      playCyberClick(1000, 0.04);
     });
+  });
+
+  // 5. Latency Ticker (Simulated WebSockets)
+  const latencyEl = document.getElementById('nav-latency');
+  if (latencyEl) {
+    setInterval(() => {
+      const ms = Math.floor(Math.random() * 8) + 16; // 16 - 24ms
+      latencyEl.textContent = `Stable (${ms}ms)`;
+    }, 3500);
   }
-  window.addEventListener('scroll', highlightNavOnScroll);
 
   // 6. Resume Modal Controller
   const openResumeBtns = document.querySelectorAll('.trigger-resume-modal');
@@ -148,7 +128,7 @@
     if (resumeModal) {
       resumeModal.classList.add('active');
       document.body.style.overflow = 'hidden';
-      playCyberClick(1050, 0.06);
+      playCyberClick(1100, 0.06);
     }
   }
 
@@ -160,7 +140,7 @@
     }
   }
 
-  openResumeBtns.forEach(btn => btn.addEventListener('click', (e) => {
+  openResumeBtns.forEach(b => b.addEventListener('click', (e) => {
     e.preventDefault();
     openResume();
   }));
@@ -180,22 +160,31 @@
   });
 
   if (printResumeBtn) {
-    printResumeBtn.addEventListener('click', () => {
-      window.print();
-    });
+    printResumeBtn.addEventListener('click', () => window.print());
   }
 
-  // 7. Interactive Sound Clicks for Cyber Buttons
-  document.querySelectorAll('.cyber-btn, .nav-link, .skill-pill, .control-btn').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      playCyberClick(1400, 0.02);
-    });
-    el.addEventListener('click', () => {
-      playCyberClick(800, 0.04);
+  // 7. Operations Table Filter
+  const tableFilters = document.querySelectorAll('.table-filter-btn');
+  const tableRows = document.querySelectorAll('.op-table-row');
+
+  tableFilters.forEach(filter => {
+    filter.addEventListener('click', () => {
+      tableFilters.forEach(f => f.classList.remove('active'));
+      filter.classList.add('active');
+      const cat = filter.getAttribute('data-cat');
+
+      tableRows.forEach(row => {
+        if (cat === 'all' || row.getAttribute('data-cat') === cat) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+      playCyberClick(800, 0.03);
     });
   });
 
-  // 8. Contact Form Simulation Dispatch
+  // 8. Contact Form Dispatch
   const contactForm = document.getElementById('cyber-contact-form');
   const formStatus = document.getElementById('form-status-msg');
 
@@ -203,23 +192,23 @@
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const sendBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = sendBtn.textContent;
+      const origText = sendBtn.textContent;
 
       sendBtn.disabled = true;
       sendBtn.textContent = 'TRANSMITTING VIA ENCRYPTED UPLINK...';
-      playCyberClick(1200, 0.09);
+      playCyberClick(1200, 0.08);
 
       setTimeout(() => {
         sendBtn.disabled = false;
-        sendBtn.textContent = originalText;
+        sendBtn.textContent = origText;
         formStatus.innerHTML = `
-          <div style="color: var(--neon-green); font-family: var(--font-mono); font-size: 0.8rem; margin-top: 12px; border: 1px solid var(--border-green); padding: 8px 12px; background: rgba(0,255,136,0.08); border-radius: 3px;">
-            [✓] TRANSMISSION ACKNOWLEDGED: Direct message logged. Operator Dakshita Mathur will reply promptly!
+          <div style="color:var(--neon-green); font-family:var(--font-mono); font-size:0.78rem; margin-top:10px; border:1px solid var(--border-cyber); padding:8px 12px; background:var(--neon-green-dim); border-radius:4px;">
+            [✓] TRANSMISSION ACKNOWLEDGED: Direct payload dispatched. Operator Dakshita Mathur will reply promptly!
           </div>
         `;
         contactForm.reset();
-        playCyberClick(1600, 0.12);
-      }, 1200);
+        playCyberClick(1500, 0.1);
+      }, 1000);
     });
   }
 })();

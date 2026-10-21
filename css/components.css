@@ -1,1371 +1,693 @@
 /* ==========================================================================
-   CYBERHUB COMPONENTS - NAVIGATION, CARDS, LAB, TELEMETRY & MODAL
+   SOC DASHBOARD COMPONENTS (TRINITY & BLOCKTRADE INSPIRED)
+   Target: Dakshita Mathur - Cybersecurity Portfolio
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. NAVIGATION & TOP TELEMETRY
+   1. TOP NAVIGATION BAR (TRINITY STYLE)
    -------------------------------------------------------------------------- */
-.cyber-header {
+.soc-navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
   background: var(--bg-hud);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border-cyber);
-  transition: all var(--transition-normal);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-card);
+  height: 58px;
+  display: flex;
+  align-items: center;
 }
 
-/* Telemetry Strip */
-.telemetry-strip {
-  background: rgba(4, 7, 12, 0.95);
-  border-bottom: 1px solid rgba(0, 243, 255, 0.12);
-  padding: 6px 0;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 1px;
-}
-
-.telemetry-grid {
+.soc-nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.telemetry-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.telemetry-label {
-  color: var(--text-dim);
-}
-
-.telemetry-val {
-  font-weight: 600;
-}
-
-.telemetry-val.green { color: var(--neon-green); }
-.telemetry-val.cyan { color: var(--neon-cyan); }
-.telemetry-val.purple { color: #c084fc; }
-
-/* Main Navigation Bar */
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-}
-
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: #fff;
-}
-
-.nav-logo-icon {
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--neon-cyan);
-  background: rgba(0, 243, 255, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--neon-cyan);
-  box-shadow: var(--glow-cyan-sm);
-  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-}
-
-.nav-brand-text {
-  font-family: var(--font-mono);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: #fff;
-}
-
-.nav-brand-text .highlight {
-  color: var(--neon-cyan);
-}
-
-.nav-brand-text .version-tag {
-  font-size: 0.65rem;
-  color: var(--neon-green);
-  border: 1px solid var(--border-green);
-  padding: 1px 5px;
-  margin-left: 6px;
-  border-radius: 2px;
-}
-
-.nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-}
-
-.nav-link {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  letter-spacing: 1px;
-  transition: all var(--transition-fast);
-  padding: 6px 4px;
-  position: relative;
-}
-
-.nav-link:hover,
-.nav-link.active {
-  color: var(--neon-cyan);
-  text-shadow: 0 0 8px var(--neon-cyan);
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: var(--neon-cyan);
-  box-shadow: var(--glow-cyan-sm);
-  transition: width var(--transition-normal);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
   width: 100%;
 }
 
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.control-btn {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-muted);
-  color: var(--text-muted);
-  padding: 6px 10px;
-  cursor: pointer;
-  border-radius: 3px;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all var(--transition-fast);
-}
-
-.control-btn:hover {
-  border-color: var(--neon-cyan);
-  color: var(--neon-cyan);
-}
-
-.control-btn.active {
-  border-color: var(--neon-green);
-  color: var(--neon-green);
-  background: rgba(0, 255, 136, 0.08);
-}
-
-.mobile-toggle {
-  display: none;
-  background: transparent;
-  border: 1px solid var(--border-cyber);
-  color: var(--neon-cyan);
-  padding: 6px 10px;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
-
-/* --------------------------------------------------------------------------
-   2. HERO TACTICAL SECTION
-   -------------------------------------------------------------------------- */
-.hero-section {
-  padding-top: 150px;
-  padding-bottom: 80px;
-  position: relative;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.hero-badge-strip {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.hero-status-pill {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 1.5px;
-  padding: 5px 12px;
-  border: 1px solid var(--neon-green);
-  background: rgba(0, 255, 136, 0.07);
-  color: var(--neon-green);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border-radius: 20px;
-}
-
-.hero-id-tag {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-dim);
-  letter-spacing: 1px;
-}
-
-.hero-name {
-  font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  color: #fff;
-  margin-bottom: 16px;
-}
-
-.hero-title-role {
-  font-family: var(--font-mono);
-  font-size: 1.15rem;
-  color: var(--neon-cyan);
-  margin-bottom: 24px;
+.soc-brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
+  text-decoration: none;
+  color: #fff;
 }
 
-.hero-title-role .role-separator {
+.brand-icon {
+  width: 30px;
+  height: 30px;
+  background: var(--neon-green-dim);
+  border: 1px solid var(--border-cyber);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neon-green);
+}
+
+.brand-name {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.98rem;
+  letter-spacing: 1px;
+}
+
+.brand-badge {
+  font-size: 0.65rem;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
   color: var(--text-dim);
 }
 
-.hero-briefing {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 640px;
-  margin-bottom: 32px;
-}
-
-.hero-cta-group {
+/* Nav View Switcher Tabs (Trinity Style) */
+.soc-nav-tabs {
   display: flex;
   align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
 }
 
-/* Hero HUD Tactical Panel (Right Column) */
-.hero-hud-panel {
-  padding: 24px;
-  background: var(--bg-card);
+.nav-tab-item {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-tab-item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.nav-tab-item.active {
+  color: var(--neon-green);
+  background: var(--neon-green-dim);
   border: 1px solid var(--border-cyber);
+  font-weight: 600;
+}
+
+/* Right Controls */
+.soc-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.latency-pill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+}
+
+.profile-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.profile-chip:hover {
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+}
+
+/* Mobile Toggle */
+.mobile-nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   2. MAIN SOC DASHBOARD LAYOUT (TRINITY / BLOCKTRADE DUAL-COLUMN)
+   -------------------------------------------------------------------------- */
+.soc-dashboard-wrapper {
+  padding-top: 76px;
+  padding-bottom: 70px;
+}
+
+.soc-grid-main {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+/* Telemetry Chart Card (Trinity Style) */
+.chart-panel-card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chart-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.chart-metrics-strip {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.chart-title-tag {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.chart-live-val {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green-glow);
+}
+
+.metric-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.metric-badge.text-green {
+  background: var(--neon-green-dim);
+  color: var(--neon-green);
+}
+.metric-badge.text-red {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--neon-red);
+}
+
+.chart-timeframe-selector {
+  display: flex;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 3px;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+}
+
+.chart-time-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.chart-time-btn:hover {
+  color: #fff;
+}
+
+.chart-time-btn.active {
+  background: var(--neon-green);
+  color: #000;
+  font-weight: 700;
+}
+
+.canvas-chart-holder {
+  width: 100%;
+  height: 240px;
   position: relative;
 }
 
-.hud-panel-header {
+/* --------------------------------------------------------------------------
+   3. RIGHT-SIDE THREAT INSPECTOR & CALCULATOR (BLOCKTRADE STYLE)
+   -------------------------------------------------------------------------- */
+.inspector-panel-card {
+  padding: 22px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
-  border-bottom: 1px solid var(--border-muted);
+}
+
+.inspector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
   padding-bottom: 12px;
   margin-bottom: 16px;
 }
 
-.hud-panel-title {
+.inspector-title {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--neon-cyan);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-.hud-metric-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-bottom: 16px;
-}
-
-.hud-metric-box {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(0, 243, 255, 0.15);
-  padding: 14px;
-  border-radius: 4px;
-}
-
-.hud-metric-box .metric-value {
-  font-family: var(--font-mono);
-  font-size: 1.6rem;
-  font-weight: 800;
+  font-size: 0.85rem;
+  font-weight: 700;
   color: #fff;
-  line-height: 1;
-}
-
-.hud-metric-box .metric-value.cyan { color: var(--neon-cyan); }
-.hud-metric-box .metric-value.green { color: var(--neon-green); }
-.hud-metric-box .metric-value.purple { color: #c084fc; }
-
-.hud-metric-box .metric-label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
   letter-spacing: 1px;
-  margin-top: 6px;
 }
 
-.hud-live-feed {
-  background: rgba(4, 7, 12, 0.9);
-  border: 1px solid var(--border-muted);
-  padding: 12px;
-  border-radius: 4px;
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-}
-
-.feed-header {
-  color: var(--neon-cyan);
-  margin-bottom: 8px;
-  font-size: 0.68rem;
-  letter-spacing: 1px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.feed-log-item {
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 4px;
+.inspector-mode-tabs {
   display: flex;
   gap: 6px;
+  margin-bottom: 16px;
 }
 
-.feed-log-item .log-time {
-  color: var(--text-dim);
-}
-
-.feed-log-item .log-tag {
-  color: var(--neon-green);
-}
-
-/* --------------------------------------------------------------------------
-   3. TACTICAL DOSSIER & EDUCATION (ABOUT)
-   -------------------------------------------------------------------------- */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 36px;
-}
-
-.dossier-card {
-  padding: 32px;
-}
-
-.dossier-text {
-  color: var(--text-muted);
-  font-size: 1rem;
-  line-height: 1.8;
-  margin-bottom: 24px;
-}
-
-.dossier-meta-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-}
-
-.dossier-meta-item {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 10px 14px;
-  border: 1px solid var(--border-muted);
-  border-radius: 3px;
-}
-
-.meta-field {
-  color: var(--text-dim);
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-.meta-value {
-  color: #fff;
-  font-weight: 600;
-}
-
-/* Education Timeline in Dossier */
-.edu-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.edu-card {
-  padding: 22px;
-  border: 1px solid var(--border-muted);
-  background: rgba(13, 19, 30, 0.6);
-  border-radius: 4px;
-  position: relative;
-  transition: all var(--transition-normal);
-}
-
-.edu-card:hover {
-  border-color: var(--neon-cyan);
-  background: rgba(18, 26, 42, 0.8);
-}
-
-.edu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.edu-institution {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #fff;
-}
-
-.edu-period {
+.mode-tab-btn {
+  flex: 1;
+  padding: 6px;
   font-family: var(--font-mono);
   font-size: 0.74rem;
-  color: var(--neon-cyan);
-  background: rgba(0, 243, 255, 0.08);
-  padding: 3px 8px;
-  border-radius: 2px;
-}
-
-.edu-degree {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-}
-
-.edu-grade-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--neon-green);
-  border: 1px solid var(--border-green);
-  background: rgba(0, 255, 136, 0.08);
-  padding: 4px 10px;
-  border-radius: 3px;
-}
-
-/* --------------------------------------------------------------------------
-   4. RESEARCH & PUBLICATIONS SECTION
-   -------------------------------------------------------------------------- */
-.research-featured-box {
-  padding: 36px;
-  border: 1px solid var(--neon-purple);
-  box-shadow: 0 0 30px rgba(157, 78, 221, 0.15);
-  background: linear-gradient(135deg, rgba(13, 19, 30, 0.9), rgba(25, 15, 36, 0.7));
-}
-
-.research-meta-tags {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-
-.pub-tag {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 1px;
-  padding: 4px 10px;
-  border-radius: 3px;
-  text-transform: uppercase;
-}
-
-.pub-tag.conf {
-  border: 1px solid var(--neon-purple);
-  color: #d8b4fe;
-  background: rgba(157, 78, 221, 0.12);
-}
-
-.pub-tag.date {
-  border: 1px solid var(--neon-cyan);
-  color: var(--neon-cyan);
-  background: rgba(0, 243, 255, 0.08);
-}
-
-.pub-tag.status {
-  border: 1px solid var(--neon-green);
-  color: var(--neon-green);
-  background: rgba(0, 255, 136, 0.08);
-}
-
-.research-title {
-  font-size: 1.85rem;
-  font-weight: 800;
-  color: #fff;
-  line-height: 1.3;
-  margin-bottom: 12px;
-}
-
-.research-venue {
-  font-family: var(--font-mono);
-  font-size: 0.88rem;
-  color: #c084fc;
-  margin-bottom: 24px;
-}
-
-.research-grid-spec {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 30px;
-  margin-top: 24px;
-}
-
-.research-points {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.research-point-item {
-  display: flex;
-  gap: 12px;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.research-point-item .point-bullet {
-  color: var(--neon-purple);
-  font-family: var(--font-mono);
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-/* Architecture Diagram Visual */
-.arch-diagram-card {
-  background: rgba(4, 7, 12, 0.85);
-  border: 1px solid var(--border-muted);
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-dim);
   border-radius: 4px;
-}
-
-.arch-header {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--neon-cyan);
-  letter-spacing: 1px;
-  border-bottom: 1px solid var(--border-muted);
-  padding-bottom: 8px;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: space-between;
-}
-
-.arch-nodes-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.arch-node {
-  border: 1px solid var(--border-muted);
-  padding: 10px 14px;
-  border-radius: 3px;
-  background: rgba(13, 19, 30, 0.7);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.arch-node.kernel {
-  border-color: rgba(157, 78, 221, 0.4);
-  background: rgba(30, 16, 45, 0.5);
-  color: #e9d5ff;
-}
-
-.arch-node.detector {
-  border-color: rgba(0, 243, 255, 0.4);
-  background: rgba(6, 26, 40, 0.5);
-  color: #bae6fd;
-}
-
-.arch-node.responder {
-  border-color: rgba(0, 255, 136, 0.4);
-  background: rgba(6, 35, 20, 0.5);
-  color: #bbf7d0;
-}
-
-.arch-connector {
+  cursor: pointer;
   text-align: center;
-  color: var(--text-dim);
-  font-size: 0.8rem;
-  line-height: 1;
+  transition: all 0.15s ease;
 }
 
-/* --------------------------------------------------------------------------
-   5. OPERATIONS & PROJECTS SECTION
-   -------------------------------------------------------------------------- */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 28px;
-}
-
-.project-card {
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-.project-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 14px;
-}
-
-.project-badge {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-  padding: 3px 8px;
-  border-radius: 2px;
-  text-transform: uppercase;
-}
-
-.project-badge.threat {
-  border: 1px solid var(--neon-red);
-  color: var(--neon-red);
-  background: rgba(255, 51, 102, 0.08);
-}
-
-.project-badge.network {
-  border: 1px solid var(--neon-cyan);
-  color: var(--neon-cyan);
-  background: rgba(0, 243, 255, 0.08);
-}
-
-.project-badge.desktop {
-  border: 1px solid var(--neon-amber);
-  color: var(--neon-amber);
-  background: rgba(255, 170, 0, 0.08);
-}
-
-.project-title {
-  font-size: 1.45rem;
+.mode-tab-btn.active {
+  background: var(--neon-green-dim);
+  border-color: var(--border-cyber);
+  color: var(--neon-green);
   font-weight: 700;
+}
+
+.inspector-input-box {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  padding: 10px 12px;
+  border-radius: 4px;
   color: #fff;
-  margin-bottom: 10px;
-  line-height: 1.3;
-}
-
-.project-desc {
-  color: var(--text-muted);
-  font-size: 0.92rem;
-  line-height: 1.6;
-  margin-bottom: 18px;
-}
-
-.project-features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 22px;
-}
-
-.project-feature-item {
-  font-size: 0.85rem;
-  color: var(--text-main);
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-}
-
-.project-feature-item svg {
-  flex-shrink: 0;
-  margin-top: 3px;
-  color: var(--neon-cyan);
-}
-
-.project-tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 24px;
-}
-
-.tech-tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  padding: 3px 8px;
-  border: 1px solid var(--border-muted);
-  background: rgba(0, 0, 0, 0.35);
-  color: var(--text-dim);
-  border-radius: 2px;
-  transition: all var(--transition-fast);
-}
-
-.tech-tag:hover {
-  border-color: var(--neon-cyan);
-  color: var(--neon-cyan);
-}
-
-.project-card-footer {
-  border-top: 1px solid var(--border-muted);
-  padding-top: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* --------------------------------------------------------------------------
-   6. INTERACTIVE THREAT INTELLIGENCE LAB
-   -------------------------------------------------------------------------- */
-.threat-lab-card {
-  padding: 36px;
-  border: 1px solid var(--border-cyber);
-  background: rgba(10, 16, 28, 0.85);
-}
-
-.lab-control-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 30px;
-}
-
-.lab-input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.lab-label {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--neon-cyan);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-.lab-text-input {
-  width: 100%;
-  background: rgba(4, 7, 12, 0.9);
-  border: 1px solid var(--border-muted);
-  color: #fff;
-  padding: 12px 16px;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  border-radius: 3px;
   outline: none;
-  transition: border-color var(--transition-fast);
+  margin-bottom: 12px;
+  transition: border-color 0.15s ease;
 }
 
-.lab-text-input:focus {
-  border-color: var(--neon-cyan);
-  box-shadow: var(--glow-cyan-sm);
+.inspector-input-box:focus {
+  border-color: var(--neon-green);
 }
 
-.lab-quick-presets {
+.quick-presets-strip {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
 .preset-chip {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-muted);
-  color: var(--text-dim);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  padding: 4px 10px;
-  border-radius: 2px;
+  font-size: 0.68rem;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-dim);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all 0.15s ease;
 }
 
 .preset-chip:hover {
-  border-color: var(--neon-cyan);
-  color: var(--neon-cyan);
+  border-color: var(--neon-green);
+  color: var(--neon-green);
 }
 
-/* Lab Results Monitor */
-.lab-monitor-panel {
-  background: rgba(4, 7, 12, 0.95);
-  border: 1px solid var(--border-muted);
-  padding: 20px;
+.hash-preview-card {
+  background: #06090e;
+  border: 1px solid var(--border-subtle);
+  padding: 10px;
   border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  margin-bottom: 14px;
 }
 
-.monitor-status-header {
+.hash-label-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 8px;
-}
-
-.monitor-title {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--neon-green);
-  letter-spacing: 1px;
-}
-
-.hash-display-box {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(0, 243, 255, 0.2);
-  padding: 10px;
-  border-radius: 3px;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  word-break: break-all;
-  color: var(--neon-cyan);
-  position: relative;
-}
-
-.hash-display-label {
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   color: var(--text-dim);
   margin-bottom: 4px;
 }
 
-.risk-meter-container {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.risk-meter-label-row {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-}
-
-.risk-bar-track {
-  height: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
-}
-
-.risk-bar-fill {
-  height: 100%;
-  width: 0%;
-  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
-}
-
-.risk-verdict-badge {
-  align-self: flex-start;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 3px;
-}
-
-/* --------------------------------------------------------------------------
-   7. MISSION LOGS (EXPERIENCE SECTION)
-   -------------------------------------------------------------------------- */
-.experience-card {
-  padding: 32px;
-  border: 1px solid var(--border-cyber);
-  background: var(--bg-card);
-}
-
-.exp-badge-strip {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
-  flex-wrap: wrap;
-}
-
-.exp-org-badge {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 4px 10px;
-  border: 1px solid var(--neon-cyan);
-  background: rgba(0, 243, 255, 0.08);
-  color: var(--neon-cyan);
-  border-radius: 3px;
-  letter-spacing: 1px;
-}
-
-.exp-score-badge {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border: 1px solid var(--neon-green);
-  background: rgba(0, 255, 136, 0.1);
-  color: var(--neon-green);
-  border-radius: 3px;
-}
-
-.exp-role-title {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 6px;
-}
-
-.exp-programme-sub {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--text-cyan);
-  margin-bottom: 20px;
-}
-
-.exp-bullet-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.exp-bullet-item {
-  display: flex;
-  gap: 12px;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.exp-bullet-item svg {
-  color: var(--neon-green);
-  flex-shrink: 0;
-  margin-top: 4px;
-}
-
-/* --------------------------------------------------------------------------
-   8. CYBER ARSENAL (TECHNICAL SKILLS)
-   -------------------------------------------------------------------------- */
-.skills-category-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 24px;
-}
-
-.skill-cat-card {
-  padding: 24px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-muted);
-  border-radius: 4px;
-  transition: all var(--transition-normal);
-}
-
-.skill-cat-card:hover {
-  border-color: var(--neon-cyan);
-  transform: translateY(-2px);
-}
-
-.cat-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding-bottom: 10px;
-}
-
-.cat-icon {
-  color: var(--neon-cyan);
-}
-
-.cat-title {
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 1px;
-}
-
-.skill-tags-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.skill-pill {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  padding: 6px 12px;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid var(--border-cyber);
-  color: var(--text-main);
-  border-radius: 3px;
-  transition: all var(--transition-fast);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.skill-pill:hover {
-  border-color: var(--neon-cyan);
-  background: rgba(0, 243, 255, 0.08);
-  color: var(--neon-cyan);
-  box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
-}
-
-.skill-pill.highlight {
-  border-color: var(--border-green);
-  color: var(--neon-green);
-}
-
-/* --------------------------------------------------------------------------
-   9. DIRECT UPLINK & CONTACT
-   -------------------------------------------------------------------------- */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
-}
-
-.contact-info-panel {
-  padding: 32px;
-}
-
-.contact-channels {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.contact-channel-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 18px;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid var(--border-muted);
-  border-radius: 3px;
-  text-decoration: none;
-  color: var(--text-main);
-  transition: all var(--transition-fast);
-}
-
-.contact-channel-card:hover {
-  border-color: var(--neon-cyan);
-  background: rgba(0, 243, 255, 0.05);
-}
-
-.channel-left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.channel-icon {
-  color: var(--neon-cyan);
-}
-
-.channel-title {
+.hash-value-text {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color: var(--neon-green);
+  word-break: break-all;
+  line-height: 1.4;
 }
 
-.channel-data {
-  font-family: var(--font-mono);
-  font-size: 0.88rem;
-  color: #fff;
-  font-weight: 600;
-}
-
-.contact-form-card {
-  padding: 32px;
-}
-
-.form-group {
+.risk-consensus-block {
   margin-bottom: 18px;
 }
 
-.form-label {
-  display: block;
+.risk-label-row {
+  display: flex;
+  justify-content: space-between;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--neon-cyan);
-  letter-spacing: 1px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
   margin-bottom: 6px;
-  text-transform: uppercase;
 }
 
-.form-input,
-.form-textarea {
-  width: 100%;
-  padding: 12px 14px;
-  background: rgba(4, 7, 12, 0.85);
-  border: 1px solid var(--border-muted);
-  color: #fff;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
+.risk-progress-track {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 3px;
-  outline: none;
-  transition: border-color var(--transition-fast);
+  overflow: hidden;
+  margin-bottom: 8px;
 }
 
-.form-input:focus,
-.form-textarea:focus {
-  border-color: var(--neon-cyan);
-  box-shadow: var(--glow-cyan-sm);
+.risk-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--neon-green);
+  transition: width 0.5s ease, background-color 0.3s ease;
 }
 
-.form-textarea {
-  resize: vertical;
-  min-height: 120px;
+.risk-verdict-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.inspector-submit-btn {
+  width: 100%;
+  background: var(--neon-green);
+  color: #000;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--glow-sm);
+}
+
+.inspector-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glow-lg);
 }
 
 /* --------------------------------------------------------------------------
-   10. FOOTER
+   4. CLASSIFIED OPERATIONS TABLE (TRINITY / BLOCKTRADE POSITIONS STYLE)
    -------------------------------------------------------------------------- */
-.cyber-footer {
-  border-top: 1px solid var(--border-cyber);
-  background: var(--bg-hud);
-  padding: 40px 0 30px;
-  position: relative;
-  z-index: 10;
+.operations-table-card {
+  padding: 20px;
+  margin-bottom: 24px;
 }
 
-.footer-content {
+.table-header-strip {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 16px;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
 }
 
-.footer-brand {
+.table-title {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
 }
 
-.footer-nav {
+.table-filters-group {
   display: flex;
-  gap: 16px;
-  list-style: none;
+  gap: 6px;
 }
 
-.footer-link {
+.table-filter-btn {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: var(--text-dim);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-.footer-link:hover {
-  color: var(--neon-cyan);
-}
-
-/* --------------------------------------------------------------------------
-   11. PRINTABLE RESUME DOSSIER MODAL
-   -------------------------------------------------------------------------- */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(3, 5, 8, 0.88);
-  backdrop-filter: blur(10px);
-  z-index: 2000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.modal-overlay.active {
-  display: flex;
-}
-
-.modal-box {
-  background: #0d121d;
-  border: 1px solid var(--neon-cyan);
-  box-shadow: var(--glow-cyan-lg);
-  width: 100%;
-  max-width: 860px;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: 4px;
-  position: relative;
-  padding: 36px;
-}
-
-.modal-close-btn {
-  position: absolute;
-  top: 16px;
-  right: 18px;
-  background: transparent;
-  border: 1px solid var(--border-cyber);
-  color: var(--neon-cyan);
-  font-family: var(--font-mono);
-  font-size: 1.2rem;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  padding: 3px 10px;
+  border-radius: 3px;
   cursor: pointer;
 }
 
-.modal-close-btn:hover {
-  background: var(--neon-cyan);
-  color: #000;
+.table-filter-btn.active {
+  color: var(--neon-green);
+  border-color: var(--border-cyber);
+  background: var(--neon-green-dim);
 }
 
-.resume-modal-header {
-  border-bottom: 2px solid var(--neon-cyan);
-  padding-bottom: 16px;
-  margin-bottom: 24px;
+.operations-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.operations-data-table th {
+  text-align: left;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 8px 12px;
+}
+
+.operations-data-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: middle;
+}
+
+.operations-data-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.op-name-cell {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 16px;
+  align-items: center;
+  gap: 10px;
 }
 
-.resume-applicant-name {
-  font-size: 2rem;
+.op-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
   font-weight: 800;
+}
+.op-avatar.threat { background: rgba(239, 68, 68, 0.15); color: var(--neon-red); }
+.op-avatar.fl { background: rgba(0, 243, 255, 0.15); color: var(--neon-cyan); }
+.op-avatar.hover { background: rgba(245, 158, 11, 0.15); color: var(--neon-amber); }
+
+.op-title-text {
+  font-weight: 700;
   color: #fff;
 }
 
-.resume-contact-inline {
+.status-badge {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 6px;
-}
-
-.resume-section-title {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--neon-cyan);
-  border-bottom: 1px solid var(--border-muted);
-  padding-bottom: 4px;
-  margin: 22px 0 12px;
-  letter-spacing: 1px;
-}
-
-.resume-item-block {
-  margin-bottom: 16px;
-}
-
-.resume-item-top {
-  display: flex;
-  justify-content: space-between;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 3px;
   font-weight: 600;
-  color: #fff;
-  font-size: 0.95rem;
+  display: inline-block;
 }
-
-.resume-item-sub {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-cyan);
-  margin-bottom: 6px;
+.status-badge.complete {
+  background: var(--neon-green-dim);
+  color: var(--neon-green);
+  border: 1px solid var(--border-cyber);
 }
-
-.resume-item-bullets {
-  padding-left: 18px;
-  color: var(--text-muted);
-  font-size: 0.88rem;
-  line-height: 1.5;
+.status-badge.open {
+  background: rgba(0, 243, 255, 0.12);
+  color: var(--neon-cyan);
+  border: 1px solid var(--border-cyan);
+}
+.status-badge.desktop {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--neon-amber);
 }
 
 /* --------------------------------------------------------------------------
-   12. RESPONSIVE BREAKPOINTS
+   5. RESEARCH & MISSION LOGS PANELS
    -------------------------------------------------------------------------- */
-@media (max-width: 992px) {
-  .hero-grid,
-  .about-grid,
-  .research-grid-spec,
-  .lab-control-grid,
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .nav-menu {
-    display: none;
-    position: absolute;
-    top: 64px;
-    left: 0;
-    width: 100%;
-    background: var(--bg-hud);
-    flex-direction: column;
-    padding: 20px;
-    border-bottom: 1px solid var(--border-cyber);
-  }
-
-  .nav-menu.open {
-    display: flex;
-  }
-
-  .mobile-toggle {
-    display: block;
-  }
-
-  .hero-name {
-    font-size: 2.7rem;
-  }
+.soc-sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
 }
 
-@media (max-width: 600px) {
-  .hero-name {
-    font-size: 2.2rem;
-  }
-  .section-title {
-    font-size: 1.8rem;
-  }
-  .hud-metric-row {
+.research-card-panel,
+.mission-card-panel {
+  padding: 22px;
+}
+
+.panel-header-badge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-title-lg {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.card-desc-muted {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.bullet-spec-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.bullet-spec-item {
+  display: flex;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+.bullet-spec-item svg {
+  color: var(--neon-green);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   6. TECHNICAL ARSENAL / SKILLS ACCORDION
+   -------------------------------------------------------------------------- */
+.skills-matrix-card {
+  padding: 22px;
+  margin-bottom: 24px;
+}
+
+.skills-badge-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.skill-tag-pill {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  padding: 5px 12px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  transition: all 0.15s ease;
+}
+
+.skill-tag-pill:hover {
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+  background: var(--neon-green-dim);
+}
+
+/* --------------------------------------------------------------------------
+   7. PERSISTENT BOTTOM TELEMETRY STRIP (TRINITY / BLOCKTRADE)
+   -------------------------------------------------------------------------- */
+.soc-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28px;
+  background: #05070a;
+  border-top: 1px solid var(--border-subtle);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  justify-content: space-between;
+}
+
+.bottom-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.bottom-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   8. RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .soc-grid-main,
+  .soc-sub-grid {
     grid-template-columns: 1fr;
   }
-  .dossier-meta-list {
-    grid-template-columns: 1fr;
+
+  .soc-nav-tabs {
+    display: none;
   }
-  .projects-grid {
-    grid-template-columns: 1fr;
+
+  .mobile-nav-toggle {
+    display: block;
   }
 }
