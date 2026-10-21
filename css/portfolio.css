@@ -3,16 +3,59 @@
    Dakshita Mathur Portfolio
    ========================================================================== */
 
-/* Page layout override for visual page */
-body.portfolio-body {
-  height: auto !important;
-  min-height: 100vh !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-  display: block !important;
+/* Page layout override */
+body {
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: block;
   background-color: var(--bg-primary);
   background: radial-gradient(circle at 50% 0%, #1a252c 0%, var(--bg-primary) 85%);
   padding-bottom: 60px;
+}
+
+/* Hero header above the terminal workstation */
+.terminal-hero-header {
+  text-align: center;
+  margin: 28px 0 24px;
+}
+
+.terminal-hero-header h1 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.terminal-hero-header .hero-sub {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--accent-red);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.terminal-hero-header .hero-intro-text {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  max-width: 780px;
+  margin: 0 auto 16px;
+  line-height: 1.6;
+}
+
+.section-scroll-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 44px;
+}
+
+.section-scroll-divider a {
+  font-size: 0.82rem;
+  padding: 8px 18px;
+  border-radius: 20px;
 }
 
 /* --------------------------------------------------------------------------

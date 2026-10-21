@@ -379,12 +379,17 @@
       openResumeModal();
       logOutput(`<div class="term-output-card">Resume dossier modal launched. Press Esc or close button to exit.</div>`);
     }
-    // Visual Portfolio Navigation
-    else if (cmd === 'gui' || cmd === 'portfolio' || cmd === 'web') {
-      logOutput(`<div class="term-output-card" style="border-left-color:var(--accent-cyan);"><span style="color:var(--accent-cyan);">[⮞]</span> Launching Visual Portfolio page (<a href="portfolio.html" style="color:var(--accent-red); text-decoration:underline;">portfolio.html</a>)...</div>`);
-      setTimeout(() => {
-        window.location.href = 'portfolio.html';
-      }, 400);
+    // Visual Portfolio Scroll Navigation
+    else if (cmd === 'gui' || cmd === 'portfolio' || cmd === 'web' || cmd === 'scroll' || cmd === 'down') {
+      const target = document.getElementById('projects');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+        logOutput(`<div class="term-output-card" style="border-left-color:var(--accent-cyan);"><span style="color:var(--accent-cyan);">[↓]</span> Scrolling to Visual Portfolio section...</div>`);
+      }
+    }
+    else if (cmd === 'top' || cmd === 'term' || cmd === 'terminal') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logOutput(`<div class="term-output-card"><span style="color:var(--accent-red);">[↑]</span> Scrolled back to top Terminal Workstation.</div>`);
     }
     // 3. Live Interactive Threat Scanner
     else if (cmd === 'scan' || cmd === 'threatlens') {
@@ -475,7 +480,8 @@
     <tr><td><span class="cmd-name" onclick="window.runTermCmd('scan')">scan</span> <span class="term-arrow">=&gt;</span></td><td class="cmd-desc">live client-side SHA-256 hash & threat analyzer</td></tr>
     <tr><td><span class="cmd-name" onclick="window.runTermCmd('tictactoe')">tictactoe</span> <span class="term-arrow">=&gt;</span></td><td class="cmd-desc">play interactive mini-game in terminal</td></tr>
     <tr><td><span class="cmd-name" onclick="window.runTermCmd('matrix')">matrix</span> <span class="term-arrow">=&gt;</span></td><td class="cmd-desc">toggle background Matrix digital rain</td></tr>
-    <tr><td><span class="cmd-name" onclick="window.runTermCmd('gui')">gui</span> <span class="term-arrow">=&gt;</span></td><td class="cmd-desc">open the dedicated Visual Portfolio page</td></tr>
+    <tr><td><span class="cmd-name" onclick="window.runTermCmd('gui')">gui</span> <span class="term-arrow">=&gt;</span></td><td class="cmd-desc">scroll down to visual projects & dossier</td></tr>
+    <tr><td><span class="cmd-name" onclick="window.runTermCmd('top')">top</span> <span class="term-arrow">=&gt;</span></td><td class="cmd-desc">scroll back up to terminal workstation</td></tr>
     <tr><td><span class="cmd-name" onclick="window.runTermCmd('cv')">cv</span> <span class="term-arrow">=&gt;</span></td><td class="cmd-desc">open printable resume dossier modal</td></tr>
     <tr><td><span class="cmd-name" onclick="window.runTermCmd('ls')">ls</span> <span class="term-arrow">=&gt;</span></td><td class="cmd-desc">list files in virtual filesystem (or 'cd &lt;dir&gt;')</td></tr>
   </table>
@@ -497,7 +503,7 @@
       const current = terminalInput.value.trim().toLowerCase();
       if (!current) return;
 
-      const cmds = ['help', 'clear', 'about', 'social', 'projects', 'research', 'skills', 'experience', 'contact', 'cv', 'scan', 'gui', 'portfolio', 'tictactoe', 'matrix', 'ls', 'cd', 'cat', 'pwd'];
+      const cmds = ['help', 'clear', 'about', 'social', 'projects', 'research', 'skills', 'experience', 'contact', 'cv', 'scan', 'gui', 'portfolio', 'top', 'tictactoe', 'matrix', 'ls', 'cd', 'cat', 'pwd'];
       const match = cmds.find(c => c.startsWith(current));
       if (match) {
         terminalInput.value = match + ' ';

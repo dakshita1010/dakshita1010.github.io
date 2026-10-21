@@ -87,16 +87,28 @@
   const greenDot = document.querySelector('.dot.green');
   const workstation = document.querySelector('.terminal-workstation');
 
+  if (redDot) {
+    redDot.addEventListener('click', () => {
+      if (typeof window.runTermCmd === 'function') window.runTermCmd('clear');
+    });
+  }
+
+  if (yellowDot && workstation) {
+    yellowDot.addEventListener('click', () => {
+      if (workstation.style.height === '44px') {
+        workstation.style.height = '';
+      } else {
+        workstation.style.height = '44px';
+      }
+    });
+  }
+
   if (greenDot && workstation) {
     greenDot.addEventListener('click', () => {
-      if (workstation.style.width === '100vw' && workstation.style.height === '100vh') {
-        workstation.style.width = '94vw';
-        workstation.style.height = '90vh';
-        workstation.style.borderRadius = '10px';
+      if (workstation.style.height === '720px') {
+        workstation.style.height = '';
       } else {
-        workstation.style.width = '100vw';
-        workstation.style.height = '100vh';
-        workstation.style.borderRadius = '0';
+        workstation.style.height = '720px';
       }
     });
   }
