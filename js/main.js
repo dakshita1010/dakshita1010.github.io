@@ -1,6 +1,6 @@
 /**
- * Minimal Controller - Modal, Matrix & Window Actions
- * Dakshita Mathur Portfolio
+ * Minimal Controller - Resume Modal & Print Actions
+ * Dakshita Mathur Portfolio [Rosé Pine]
  */
 
 (function () {
@@ -45,71 +45,5 @@
 
   if (printResumeBtn) {
     printResumeBtn.addEventListener('click', () => window.print());
-  }
-
-  // Background Matrix Rain Canvas
-  const canvas = document.getElementById('matrix-canvas');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-    const chars = '01ABCDEF9876543210!<>[]{}_=+~#@%$&*';
-    const fontSize = 14;
-    const cols = Math.floor(width / fontSize);
-    const drops = Array(cols).fill(1);
-
-    window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
-
-    function drawMatrix() {
-      ctx.fillStyle = 'rgba(17, 23, 27, 0.08)';
-      ctx.fillRect(0, 0, width, height);
-      ctx.fillStyle = '#f43f5e';
-      ctx.font = `${fontSize}px monospace`;
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = chars[Math.floor(Math.random() * chars.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-    setInterval(drawMatrix, 40);
-  }
-
-  // Window Dots Interactive Behavior
-  const redDot = document.querySelector('.dot.red');
-  const yellowDot = document.querySelector('.dot.yellow');
-  const greenDot = document.querySelector('.dot.green');
-  const workstation = document.querySelector('.terminal-workstation');
-
-  if (redDot) {
-    redDot.addEventListener('click', () => {
-      if (typeof window.runTermCmd === 'function') window.runTermCmd('clear');
-    });
-  }
-
-  if (yellowDot && workstation) {
-    yellowDot.addEventListener('click', () => {
-      if (workstation.style.height === '44px') {
-        workstation.style.height = '';
-      } else {
-        workstation.style.height = '44px';
-      }
-    });
-  }
-
-  if (greenDot && workstation) {
-    greenDot.addEventListener('click', () => {
-      if (workstation.style.height === '720px') {
-        workstation.style.height = '';
-      } else {
-        workstation.style.height = '720px';
-      }
-    });
   }
 })();

@@ -14,7 +14,6 @@
 
   <!-- Stylesheets (Rosé Pine Design System) -->
   <link rel="stylesheet" href="css/cyber-theme.css" />
-  <link rel="stylesheet" href="css/terminal.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/portfolio.css" />
 </head>
@@ -28,14 +27,13 @@
   <nav class="port-navbar">
     <div class="port-nav-container">
       <div class="port-logo-group">
-        <a href="#terminal" class="port-brand-title">
+        <a href="#top" class="port-brand-title">
           <span>&lt;DAKSHITA MATHUR /&gt;</span>
           <span class="tag">SEC-OPS &#57509; main</span>
         </a>
       </div>
 
       <ul class="port-nav-links">
-        <li><a href="#terminal">[ &#62089; Terminal ]</a></li>
         <li><a href="#projects">[ &#9876; Projects ]</a></li>
         <li><a href="#research">[ &#128196; Research ]</a></li>
         <li><a href="#experience">[ &#128640; Experience ]</a></li>
@@ -57,7 +55,7 @@
   <main class="port-main">
 
     <!-- HERO HEADER: Developer Profile & Key Credentials -->
-    <header class="terminal-hero-header">
+    <header class="terminal-hero-header" id="top" style="scroll-margin-top: 100px;">
       <div class="hero-status-pill" style="margin-bottom:12px;">
         <span class="pulse-dot"></span>
         <span>STATUS: ACTIVE &bull; ASIT-2026 eBPF PAPER AUTHOR &bull; ISRO INTERN (98/100)</span>
@@ -87,197 +85,23 @@
           <strong>ASIT-2026 eBPF Author</strong>
         </div>
       </div>
-    </header>
 
-    <!-- =========================================================================
-         SECTION: REAL TERMINAL WORKSTATION (ROSÉ PINE & NERD FONT PROMPT)
-         ========================================================================= -->
-    <section id="terminal" class="terminal-section-wrap" style="scroll-margin-top: 80px;">
-      <div class="terminal-workstation">
-        <!-- Window Topbar Header -->
-        <header class="term-topbar">
-          <!-- Left Window Dots (Rosé Pine Love, Gold, Foam) -->
-          <div class="window-dots-left">
-            <span class="dot red" title="Clear Screen"></span>
-            <span class="dot yellow" title="Minimize / Restore"></span>
-            <span class="dot green" title="Expand View"></span>
-          </div>
-
-          <!-- Centered Window Title with tmux / zsh session -->
-          <div class="term-title-center font-mono">
-            <span>dakshita@archbox ~ [tmux: sec-ops]</span>
-          </div>
-
-          <!-- Right Pastel Dots Cluster & Quick Nav -->
-          <div class="term-topbar-right">
-            <div class="pastel-dots-cluster">
-              <span class="pastel-dot d1" title="Rosé Love"></span>
-              <span class="pastel-dot d2" title="Rosé Rose"></span>
-              <span class="pastel-dot d3" title="Rosé Gold"></span>
-              <span class="pastel-dot d4" title="Rosé Foam"></span>
-              <span class="pastel-dot d5" title="Rosé Iris"></span>
-            </div>
-
-            <a href="#projects" class="cyber-btn" style="padding:4px 10px; font-size:0.72rem;">
-              [ &darr; Visual Projects ]
-            </a>
-
-            <button class="cyber-btn cyber-btn-outline trigger-resume-modal" style="padding:4px 8px; font-size:0.7rem;">
-              [ CV ]
-            </button>
-          </div>
-        </header>
-
-        <!-- Terminal Screen Buffer -->
-        <div class="term-screen" id="terminal-screen">
-          <!-- Startup Greeting Banner -->
-          <div class="term-intro-startup font-mono">
-            <div>Linux archbox 6.10.8-arch1-1 #1 SMP PREEMPT_DYNAMIC x86_64</div>
-            <div style="margin: 3px 0;">Welcome to Dakshita's interactive security workstation [Rosé Pine].</div>
-            <div>Type <span class="cmd-highlight">help</span> <span class="term-arrow">=&gt;</span> for available commands, or explore the directory below:</div>
-          </div>
-
-          <!-- Starship / Powerlevel10k Prompt Header -->
-          <div class="term-auth-prompt font-mono">
-            <span style="color:var(--rp-foam);">╭─ dakshita@archbox</span> <span style="color:var(--rp-gold);">~/projects/sec-ops</span> <span style="color:var(--rp-iris); font-size:0.75rem;">&#57509; main [&#10004;]</span>
-          </div>
-          <div class="term-executed-row font-mono">
-            <span style="color:var(--rp-love); font-weight:700;">╰─❯</span>
-            <span style="color:var(--rp-text); font-weight:600;">ls -la</span>
-          </div>
-
-          <!-- Real UNIX Directory Listing -->
-          <div class="term-output-card" style="margin: 6px 0 14px;">
-            <div style="font-size:0.8rem; line-height:1.7; color:var(--rp-subtle);">
-              <div><span style="color:var(--rp-muted);">drwxr-xr-x  dakshita users  4.0K</span>  <span class="dir-folder">&#128194; projects/</span></div>
-              <div><span style="color:var(--rp-muted);">drwxr-xr-x  dakshita users  4.0K</span>  <span class="dir-folder">&#128194; research/</span></div>
-              <div><span style="color:var(--rp-muted);">-rwxr-xr-x  dakshita users  8.2K</span>  <span class="dir-exec">&#128013; ThreatLens.py*</span>  <span style="color:var(--rp-muted);"># Flask &amp; VirusTotal threat intel</span></div>
-              <div><span style="color:var(--rp-muted);">-rwxr-xr-x  dakshita users  6.4K</span>  <span class="dir-exec">&#128293; federated_nids.py*</span>  <span style="color:var(--rp-muted);"># Flower + PyTorch NIDS (86% acc)</span></div>
-              <div><span style="color:var(--rp-muted);">-rwxr-xr-x  dakshita users 12.0K</span>  <span class="dir-exec">&#9876; asit2026_ebpf_defense.c*</span>  <span style="color:var(--rp-muted);"># In-kernel ransomware containment</span></div>
-              <div><span style="color:var(--rp-muted);">-rw-r--r--  dakshita users  2.4K</span>  <span class="dir-file">&#128196; isro_internship.log</span>  <span style="color:var(--rp-muted);"># Remote sensing evaluation (98/100)</span></div>
-              <div><span style="color:var(--rp-muted);">-rw-r--r--  dakshita users  1.4K</span>  <span class="dir-file">&#128196; academics.txt</span>  <span style="color:var(--rp-muted);"># VIT-AP CSE (CGPA: 8.54/10)</span></div>
-              <div><span style="color:var(--rp-muted);">-rw-r--r--  dakshita users  980B</span>  <span class="dir-file">&#128196; toolkit.json</span>  <span style="color:var(--rp-muted);"># Technical proficiencies</span></div>
-            </div>
-          </div>
-
-          <!-- Command Directory Table -->
-          <div class="term-output-card">
-            <table class="term-cmd-table font-mono">
-              <tr>
-                <td style="width:130px;"><span class="cmd-name" onclick="window.runTermCmd('help')">help</span> <span class="term-arrow">=&gt;</span></td>
-                <td class="cmd-desc">display command directory</td>
-              </tr>
-              <tr>
-                <td><span class="cmd-name" onclick="window.runTermCmd('clear')">clear</span> <span class="term-arrow">=&gt;</span></td>
-                <td class="cmd-desc">clear terminal screen buffer</td>
-              </tr>
-              <tr>
-                <td><span class="cmd-name" onclick="window.runTermCmd('about')">about</span> <span class="term-arrow">=&gt;</span></td>
-                <td class="cmd-desc">operator briefing (VIT-AP B.Tech CSE, 8.54 CGPA)</td>
-              </tr>
-              <tr>
-                <td><span class="cmd-name" onclick="window.runTermCmd('projects')">projects</span> <span class="term-arrow">=&gt;</span></td>
-                <td class="cmd-desc">inspect ThreatLens, Federated-NIDS, HoverNotes</td>
-              </tr>
-              <tr>
-                <td><span class="cmd-name" onclick="window.runTermCmd('research')">research</span> <span class="term-arrow">=&gt;</span></td>
-                <td class="cmd-desc">ASIT-2026 conference paper: eBPF in-kernel defense</td>
-              </tr>
-              <tr>
-                <td><span class="cmd-name" onclick="window.runTermCmd('skills')">skills</span> <span class="term-arrow">=&gt;</span></td>
-                <td class="cmd-desc">technical toolkit &amp; programming languages</td>
-              </tr>
-              <tr>
-                <td><span class="cmd-name" onclick="window.runTermCmd('experience')">experience</span> <span class="term-arrow">=&gt;</span></td>
-                <td class="cmd-desc">ISRO space academy mission log (Score: 98/100)</td>
-              </tr>
-              <tr>
-                <td><span class="cmd-name" onclick="window.runTermCmd('social')">social</span> <span class="term-arrow">=&gt;</span></td>
-                <td class="cmd-desc">communication uplink &amp; repository links</td>
-              </tr>
-              <tr>
-                <td><span class="cmd-name" onclick="window.runTermCmd('scan')">scan</span> <span class="term-arrow">=&gt;</span></td>
-                <td class="cmd-desc">run client-side SHA-256 hash &amp; threat analysis</td>
-              </tr>
-              <tr>
-                <td><span class="cmd-name" onclick="window.runTermCmd('gui')">gui</span> <span class="term-arrow">=&gt;</span></td>
-                <td class="cmd-desc">scroll down to visual projects &amp; cards dossier</td>
-              </tr>
-              <tr>
-                <td><span class="cmd-name" onclick="window.runTermCmd('tictactoe')">tictactoe</span> <span class="term-arrow">=&gt;</span></td>
-                <td class="cmd-desc">play interactive mini-game in terminal</td>
-              </tr>
-              <tr>
-                <td><span class="cmd-name" onclick="window.runTermCmd('cv')">cv</span> <span class="term-arrow">=&gt;</span></td>
-                <td class="cmd-desc">open printable resume dossier modal</td>
-              </tr>
-            </table>
-          </div>
-
-          <!-- Quick Clickable Command Pills -->
-          <div class="term-pills-row font-mono">
-            <span class="term-pill" data-cmd="help">[ help ]</span>
-            <span class="term-pill" data-cmd="about">[ about ]</span>
-            <span class="term-pill" data-cmd="projects">[ projects ]</span>
-            <span class="term-pill" data-cmd="research">[ research ]</span>
-            <span class="term-pill" data-cmd="skills">[ skills ]</span>
-            <span class="term-pill" data-cmd="experience">[ experience ]</span>
-            <span class="term-pill" data-cmd="social">[ social ]</span>
-            <span class="term-pill" data-cmd="scan">[ scan ]</span>
-            <span class="term-pill" data-cmd="gui">[ &darr; visual cards ]</span>
-            <span class="term-pill" data-cmd="tictactoe">[ tictactoe ]</span>
-            <span class="term-pill" data-cmd="cv">[ cv ]</span>
-            <span class="term-pill" data-cmd="clear">[ clear ]</span>
-          </div>
-
-          <!-- Live Command Output Flow -->
-          <div class="term-history-flow font-mono" id="terminal-log-flow"></div>
-        </div>
-
-        <!-- Terminal Input Row (Starship Prompt) -->
-        <div class="term-input-row font-mono">
-          <div class="term-input-auth-preview">
-            <span style="color:var(--rp-foam);">╭─ dakshita@archbox</span> <span style="color:var(--rp-gold);" id="term-path-preview">~/projects/sec-ops</span> <span style="color:var(--rp-iris); font-size:0.75rem;">&#57509; main</span>
-          </div>
-          <div class="term-input-line-inner">
-            <span style="color:var(--rp-love); font-weight:700;">╰─❯</span>
-            <input 
-              type="text" 
-              id="terminal-input" 
-              class="term-real-input" 
-              placeholder="type 'about', 'projects', 'gui', 'scan', 'ls'..." 
-              autocomplete="off" 
-              spellcheck="false" 
-              autofocus 
-            />
-            <span class="term-hint-badge font-mono">[Tab] autocomplete</span>
-          </div>
-        </div>
-
-        <!-- Terminal Bottom Status Bar -->
-        <footer class="term-footer-status font-mono">
-          <div class="term-footer-left">
-            <span>UTF-8</span>
-            <span>&bull;</span>
-            <span>uptime: <span style="color:var(--accent-red);" id="term-uptime">0s</span></span>
-            <span>&bull;</span>
-            <span>status: <span style="color:var(--accent-cyan);">active</span></span>
-          </div>
-          <div class="term-footer-right">
-            <a href="#projects" style="color:var(--accent-red); text-decoration:underline;">scroll to visual cards &darr;</a>
-            <span>&bull;</span>
-            <span>dakshita@archbox</span>
-          </div>
-        </footer>
+      <!-- Direct Quick Action CTAs -->
+      <div class="hero-cta-row" style="justify-content:center; display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; margin-bottom:36px;">
+        <button class="cyber-btn trigger-resume-modal" style="font-size:0.84rem; padding:8px 18px;">
+          [ &#128196; Access CV Dossier ]
+        </button>
+        <a href="https://github.com/dakshita1010" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-outline" style="font-size:0.84rem; padding:8px 18px;">
+          [ &#62171; GitHub Profile &rarr; ]
+        </a>
+        <a href="https://linkedin.com/in/dakshita-mathur10" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-outline" style="font-size:0.84rem; padding:8px 18px;">
+          [ &#128279; LinkedIn &rarr; ]
+        </a>
+        <a href="#projects" class="cyber-btn cyber-btn-outline" style="font-size:0.84rem; padding:8px 18px;">
+          [ &darr; Explore Projects ]
+        </a>
       </div>
-    </section>
-
-    <!-- Scroll Down Visual Divider -->
-    <div class="section-scroll-divider">
-      <a href="#projects" class="cyber-btn cyber-btn-outline">
-        &darr; Scroll Down for Complete Visual Project &amp; Research Dossier &darr;
-      </a>
-    </div>
+    </header>
 
     <!-- =========================================================================
          SECTION: CLASSIFIED OPERATIONS & PROJECTS
@@ -788,12 +612,11 @@
       <span>&copy; 2026 Dakshita Mathur &bull; Cybersecurity Operations Hub [Rosé Pine]</span>
     </div>
     <div>
-      <a href="#terminal">[ &#62089; Return to Top / Terminal Workstation ]</a>
+      <a href="#top">[ &#8593; Return to Top ]</a>
     </div>
   </footer>
 
   <!-- Scripts -->
-  <script src="js/terminal.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
