@@ -1,5 +1,5 @@
 /**
- * Minimalist Terminal Controller (designby.cc & <ZAFAR/> style)
+ * Grey & Red Terminal Controller (Matching Reference Image)
  * Dakshita Mathur Portfolio
  */
 
@@ -24,67 +24,67 @@
   }, 1000);
 
   const COMMAND_LIST = [
-    { name: '/help', desc: 'show available commands' },
-    { name: '/about', desc: 'about Dakshita Mathur & VIT-AP degree' },
-    { name: '/projects', desc: 'featured projects & GitHub repositories' },
-    { name: '/research', desc: 'ASIT-2026 eBPF in-kernel defense paper' },
-    { name: '/skills', desc: 'technical capabilities & tools' },
-    { name: '/experience', desc: 'ISRO remote sensing internship (98/100)' },
-    { name: '/contact', desc: 'direct email, phone & social links' },
-    { name: '/cv', desc: 'open printable resume dossier' },
-    { name: '/clear', desc: 'clear terminal screen' }
+    { name: 'help', desc: 'for a list of commands' },
+    { name: 'clear', desc: 'to clear the terminal' },
+    { name: 'about', desc: 'to learn more about me' },
+    { name: 'social', desc: 'to see my social & GitHub links' },
+    { name: 'projects', desc: 'to see my projects' },
+    { name: 'research', desc: 'to inspect ASIT-2026 eBPF paper' },
+    { name: 'skills', desc: 'to view technical toolkit' },
+    { name: 'experience', desc: 'to view ISRO mission logs' },
+    { name: 'contact', desc: 'to enquire / send a message' },
+    { name: 'cv', desc: 'to view & print resume dossier' }
   ];
 
   const COMMANDS = {
-    '/help': () => {
+    'help': () => {
       let rows = COMMAND_LIST.map(c => 
-        `<tr><td style="width:120px;"><span style="color:var(--accent-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('${c.name}')">${c.name}</span></td><td style="color:var(--text-muted);">${c.desc}</td></tr>`
+        `<tr><td style="width:130px;"><span class="cmd-name" onclick="window.runTermCmd('${c.name}')">${c.name}</span> <span class="term-arrow">=&gt;</span></td><td class="cmd-desc">${c.desc}</td></tr>`
       ).join('');
       return `
 <div class="term-output-panel">
-  <div style="color:#fff; font-weight:700; margin-bottom:4px;">Available directives:</div>
-  <table class="term-simple-table">${rows}</table>
+  <table class="term-cmd-table">${rows}</table>
 </div>`;
     },
 
-    '/about': () => `
+    'about': () => `
 <div class="term-output-panel">
   <div style="color:#fff; font-weight:700; margin-bottom:4px;">DAKSHITA MATHUR</div>
   <div style="color:var(--text-muted); margin-bottom:8px;">
     B.Tech Computer Science student at <strong>VIT-AP (CGPA: 8.54/10)</strong> with hands-on research and engineering experience in 
-    cybersecurity, machine learning, and systems programming.
+    cybersecurity, machine learning, and systems programming. Author of ASIT-2026 paper on in-kernel ransomware containment.
   </div>
   <div style="font-size:0.8rem; color:var(--text-dim); line-height:1.6;">
-    • <strong>VIT-AP:</strong> B.Tech CSE (Sep 2023 – Present) | <span style="color:var(--accent-green)">CGPA: 8.54/10</span><br>
-    • <strong>Class XII (CBSE):</strong> Rani Laxmi Bai Memorial School | <span style="color:var(--accent-green)">85.2%</span><br>
-    • <strong>Class X (ICSE):</strong> St. Xavier’s Senior Secondary School | <span style="color:var(--accent-green)">89.2%</span>
+    • <strong>VIT-AP:</strong> B.Tech CSE (Sep 2023 – Present) | <span style="color:var(--accent-red)">CGPA: 8.54/10</span><br>
+    • <strong>Class XII (CBSE):</strong> Rani Laxmi Bai Memorial School | <span style="color:var(--accent-red)">85.2%</span><br>
+    • <strong>Class X (ICSE):</strong> St. Xavier’s Senior Secondary School | <span style="color:var(--accent-red)">89.2%</span>
   </div>
 </div>`,
 
-    '/projects': () => `
+    'projects': () => `
 <div class="term-output-panel">
   <div style="color:#fff; font-weight:700; margin-bottom:8px;">FEATURED PROJECTS:</div>
 
   <div style="margin-bottom:10px;">
-    <div style="color:var(--accent-green); font-weight:600;">1. ThreatLens – URL & Hash Threat Intelligence</div>
+    <div style="color:var(--accent-red); font-weight:600;">1. ThreatLens – URL & Hash Threat Intelligence</div>
     <div style="color:var(--text-muted); font-size:0.82rem;">Flask platform using VirusTotal API, local SHA-256 hashing, SQLite, and Chart.js.</div>
     <div><a href="https://github.com/dakshita1010/ThreatLens" target="_blank" style="color:var(--accent-cyan); text-decoration:underline; font-size:0.8rem;">github.com/dakshita1010/ThreatLens</a></div>
   </div>
 
   <div style="margin-bottom:10px;">
-    <div style="color:var(--accent-green); font-weight:600;">2. Federated-NIDS – 4G/5G Intrusion Detection</div>
+    <div style="color:var(--accent-red); font-weight:600;">2. Federated-NIDS – 4G/5G Intrusion Detection</div>
     <div style="color:var(--text-muted); font-size:0.82rem;">PyTorch neural classifiers with Flower (flwr) FedAvg aggregation across 5 base stations. (86% Accuracy).</div>
     <div><a href="https://github.com/maplelattte/federated-nids" target="_blank" style="color:var(--accent-cyan); text-decoration:underline; font-size:0.8rem;">github.com/maplelattte/federated-nids</a></div>
   </div>
 
   <div>
-    <div style="color:var(--accent-green); font-weight:600;">3. HoverNotes – Always-on-Top Floating Notes</div>
+    <div style="color:var(--accent-red); font-weight:600;">3. HoverNotes – Always-on-Top Floating Notes</div>
     <div style="color:var(--text-muted); font-size:0.82rem;">Electron desktop utility with global hotkeys (Alt+Shift+G Ghost Mode), transparency, and local storage.</div>
     <div><a href="https://github.com/dakshita1010/hover-notes" target="_blank" style="color:var(--accent-cyan); text-decoration:underline; font-size:0.8rem;">github.com/dakshita1010/hover-notes</a></div>
   </div>
 </div>`,
 
-    '/research': () => `
+    'research': () => `
 <div class="term-output-panel">
   <div style="color:#fff; font-weight:700;">In-Kernel Defense: Low-Latency In-Kernel Ransomware Containment with eBPF</div>
   <div style="color:var(--accent-purple); font-size:0.8rem; margin:2px 0 6px;">ASIT-2026 International Conference Paper</div>
@@ -95,9 +95,9 @@
   </div>
 </div>`,
 
-    '/skills': () => `
+    'skills': () => `
 <div class="term-output-panel">
-  <div style="color:#fff; font-weight:700; margin-bottom:6px;">TECHNICAL SKILLS:</div>
+  <div style="color:#fff; font-weight:700; margin-bottom:6px;">TECHNICAL TOOLKIT:</div>
   <div style="color:var(--text-muted); font-size:0.82rem; line-height:1.7;">
     • <strong>Languages:</strong> Java, Python, C/C++, JavaScript, SQL, Bash<br>
     • <strong>Cybersecurity:</strong> Network Security, Threat Intelligence, Malware Analysis, Intrusion Detection<br>
@@ -108,7 +108,7 @@
   </div>
 </div>`,
 
-    '/experience': () => `
+    'experience': () => `
 <div class="term-output-panel">
   <div style="color:#fff; font-weight:700;">Remote Sensing & GIS Intern – India Space Academy (ISRO)</div>
   <div style="color:var(--accent-cyan); font-size:0.8rem; margin:2px 0 6px;">January 2026 | Final Project Score: 98 / 100</div>
@@ -119,18 +119,29 @@
   </div>
 </div>`,
 
-    '/contact': () => `
+    'social': () => `
 <div class="term-output-panel">
-  <div style="color:#fff; font-weight:700; margin-bottom:4px;">CONTACT INFORMATION:</div>
+  <div style="color:#fff; font-weight:700; margin-bottom:4px;">SOCIAL & GITHUB LINKS:</div>
   <div style="color:var(--text-muted); font-size:0.84rem; line-height:1.8;">
-    • Email: <a href="mailto:dakshita.mathur03@gmail.com" style="color:var(--accent-green);">dakshita.mathur03@gmail.com</a><br>
-    • Phone: <a href="tel:+919696233384" style="color:var(--accent-green);">+91 9696233384</a><br>
-    • GitHub: <a href="https://github.com/dakshita1010" target="_blank" style="color:var(--accent-green);">github.com/dakshita1010</a><br>
-    • LinkedIn: <a href="https://linkedin.com/in/dakshita-mathur10" target="_blank" style="color:var(--accent-green);">linkedin.com/in/dakshita-mathur10</a>
+    • GitHub: <a href="https://github.com/dakshita1010" target="_blank" style="color:var(--accent-red);">github.com/dakshita1010</a><br>
+    • LinkedIn: <a href="https://linkedin.com/in/dakshita-mathur10" target="_blank" style="color:var(--accent-red);">linkedin.com/in/dakshita-mathur10</a><br>
+    • ThreatLens Repo: <a href="https://github.com/dakshita1010/ThreatLens" target="_blank" style="color:var(--accent-cyan);">github.com/dakshita1010/ThreatLens</a><br>
+    • HoverNotes Repo: <a href="https://github.com/dakshita1010/hover-notes" target="_blank" style="color:var(--accent-cyan);">github.com/dakshita1010/hover-notes</a>
   </div>
 </div>`,
 
-    '/cv': () => {
+    'contact': () => `
+<div class="term-output-panel">
+  <div style="color:#fff; font-weight:700; margin-bottom:4px;">CONTACT INFORMATION:</div>
+  <div style="color:var(--text-muted); font-size:0.84rem; line-height:1.8;">
+    • Email: <a href="mailto:dakshita.mathur03@gmail.com" style="color:var(--accent-red);">dakshita.mathur03@gmail.com</a><br>
+    • Phone: <a href="tel:+919696233384" style="color:var(--accent-red);">+91 9696233384</a><br>
+    • GitHub: <a href="https://github.com/dakshita1010" target="_blank" style="color:var(--accent-red);">github.com/dakshita1010</a><br>
+    • LinkedIn: <a href="https://linkedin.com/in/dakshita-mathur10" target="_blank" style="color:var(--accent-red);">linkedin.com/in/dakshita-mathur10</a>
+  </div>
+</div>`,
+
+    'cv': () => {
       const modal = document.getElementById('resume-modal');
       if (modal) {
         modal.classList.add('active');
@@ -139,32 +150,43 @@
       return `<div class="term-output-panel">Resume modal opened. Press Esc to close.</div>`;
     },
 
-    '/clear': () => {
+    'clear': () => {
       logContainer.innerHTML = '';
       return null;
     }
   };
 
-  COMMANDS['/whoami'] = COMMANDS['/about'];
-  COMMANDS['/cls'] = COMMANDS['/clear'];
+  // Support slash aliases
+  COMMANDS['/help'] = COMMANDS['help'];
+  COMMANDS['/about'] = COMMANDS['about'];
+  COMMANDS['/projects'] = COMMANDS['projects'];
+  COMMANDS['/research'] = COMMANDS['research'];
+  COMMANDS['/skills'] = COMMANDS['skills'];
+  COMMANDS['/experience'] = COMMANDS['experience'];
+  COMMANDS['/social'] = COMMANDS['social'];
+  COMMANDS['/contact'] = COMMANDS['contact'];
+  COMMANDS['/cv'] = COMMANDS['cv'];
+  COMMANDS['/clear'] = COMMANDS['clear'];
+  COMMANDS['ls'] = COMMANDS['help'];
+  COMMANDS['whoami'] = COMMANDS['about'];
+  COMMANDS['cls'] = COMMANDS['clear'];
 
   function execute(raw) {
     const trimmed = raw.trim();
     if (!trimmed) return;
 
-    let normalized = trimmed;
-    if (!normalized.startsWith('/')) {
-      normalized = '/' + normalized;
-    }
-
+    const normalized = trimmed.toLowerCase();
     commandHistory.push(trimmed);
     historyIndex = commandHistory.length;
 
     // Append executed line
     const entry = document.createElement('div');
     entry.innerHTML = `
+      <div class="term-auth-prompt font-mono">
+        <span class="auth-user">$dakshita_mathur</span> <span class="auth-sudo">sudo</span> <span class="auth-path">~/guest</span>
+      </div>
       <div class="term-line-executed">
-        <span class="term-symbol">$</span>
+        <span class="term-symbol">&gt;</span>
         <span style="color:#fff;">${escapeHtml(trimmed)}</span>
       </div>
     `;
@@ -180,7 +202,7 @@
     } else {
       const errDiv = document.createElement('div');
       errDiv.className = 'term-output-panel error';
-      errDiv.innerHTML = `Command not recognized: <strong>${escapeHtml(trimmed)}</strong>. Type <span style="color:var(--accent-green)">/help</span>.`;
+      errDiv.innerHTML = `Command not recognized: <strong>${escapeHtml(trimmed)}</strong>. Type <span style="color:var(--accent-red)">help</span> for a list of commands.`;
       logContainer.appendChild(errDiv);
     }
 
@@ -200,7 +222,7 @@
       e.preventDefault();
       const current = terminalInput.value.trim().toLowerCase();
       if (!current) return;
-      const match = COMMAND_LIST.find(c => c.name.startsWith(current) || c.name.substring(1).startsWith(current));
+      const match = COMMAND_LIST.find(c => c.name.startsWith(current) || ('/' + c.name).startsWith(current));
       if (match) terminalInput.value = match.name + ' ';
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CLEAN MINIMALIST TERMINAL (DESIGNBY.CC & <ZAFAR/> INSPIRED)
+   GREY & RED TERMINAL (MATCHING REFERENCE IMAGE)
    ========================================================================== */
 
 .terminal-wrapper {
@@ -21,14 +21,14 @@
 }
 
 .terminal-box:focus-within {
-  border-color: rgba(0, 230, 118, 0.4);
+  border-color: rgba(244, 63, 94, 0.4);
 }
 
-/* Header */
+/* Header Bar Matching Image */
 .terminal-topbar {
-  background: #0d121c;
+  background: var(--bg-terminal-top);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 12px 18px;
+  padding: 10px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,79 +49,113 @@
 .dot.yellow { background: #ffbd2e; }
 .dot.green { background: #27c93f; }
 
+.right-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.mini-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.mini-dot.p1 { background: #fb7185; }
+.mini-dot.p2 { background: #fde047; }
+.mini-dot.p3 { background: #38bdf8; }
+.mini-dot.p4 { background: #4ade80; }
+.mini-dot.p5 { background: #f1f5f9; }
+
 .window-title {
-  font-size: 0.78rem;
-  color: var(--text-dim);
+  font-size: 0.8rem;
+  color: var(--text-muted);
   letter-spacing: 0.5px;
+  font-weight: 600;
 }
 
-.term-top-action {
-  font-size: 0.72rem;
-  color: var(--text-dim);
-  cursor: pointer;
-  transition: color 0.15s ease;
-}
-.term-top-action:hover {
-  color: var(--accent-green);
-}
-
-/* Body / Screen */
+/* Screen */
 .terminal-screen {
   padding: 24px;
-  min-height: 380px;
-  max-height: 520px;
+  min-height: 400px;
+  max-height: 540px;
   overflow-y: auto;
   font-size: 0.88rem;
-  line-height: 1.65;
+  line-height: 1.7;
   color: #cbd5e1;
 }
 
-.terminal-banner-text {
-  color: var(--accent-green);
-  font-size: 0.82rem;
-  white-space: pre-wrap;
-  margin-bottom: 14px;
-  font-weight: 700;
-  user-select: none;
-}
-
-.terminal-intro-block {
-  margin-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding-bottom: 18px;
-}
-
-.term-role-headline {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 4px;
-}
-
-.term-role-sub {
+.term-startup-msg {
   color: var(--text-muted);
   font-size: 0.85rem;
   margin-bottom: 12px;
+  line-height: 1.6;
 }
 
-.term-help-guide {
-  font-size: 0.8rem;
-  color: var(--text-dim);
+.term-cmd-highlight {
+  color: var(--accent-red);
+  font-weight: 600;
 }
 
-/* Clickable Pills */
+.term-arrow {
+  color: var(--accent-amber);
+}
+
+/* Shell Prompt Line (e.g. $dakshita_mathur sudo ~/guest) */
+.term-auth-prompt {
+  margin: 12px 0 6px;
+  font-size: 0.88rem;
+}
+.auth-user {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+.auth-sudo {
+  color: var(--accent-amber);
+  font-weight: 600;
+}
+.auth-path {
+  color: var(--text-muted);
+}
+
+/* Interactive Directives Table (Matching Image Format) */
+.term-cmd-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 16px;
+  font-size: 0.84rem;
+}
+
+.term-cmd-table td {
+  padding: 4px 6px;
+}
+
+.cmd-name {
+  color: var(--accent-red);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.cmd-name:hover {
+  text-decoration: underline;
+  color: var(--accent-red-bright);
+}
+
+.cmd-desc {
+  color: var(--text-muted);
+}
+
+/* Clickable Pills in Terminal */
 .term-pills-cluster {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 14px;
+  margin: 14px 0 16px;
 }
 
 .term-pill-btn {
   font-family: var(--font-mono);
   font-size: 0.76rem;
-  color: var(--accent-green);
-  background: var(--accent-green-dim);
+  color: var(--accent-red);
+  background: var(--accent-red-dim);
   border: 1px solid var(--border-accent);
   padding: 4px 10px;
   border-radius: 4px;
@@ -131,12 +165,12 @@
 }
 
 .term-pill-btn:hover {
-  background: var(--accent-green);
-  color: #000;
+  background: var(--accent-red);
+  color: #fff;
   transform: translateY(-1px);
 }
 
-/* Log & Outputs */
+/* Log Outputs */
 .terminal-log-flow {
   display: flex;
   flex-direction: column;
@@ -151,13 +185,14 @@
 }
 
 .term-symbol {
-  color: var(--accent-green);
+  color: var(--accent-cyan);
+  font-weight: 700;
 }
 
 .term-output-panel {
   margin-top: 6px;
   padding-left: 12px;
-  border-left: 2px solid var(--accent-green);
+  border-left: 2px solid var(--accent-red);
 }
 
 .term-output-panel.error {
@@ -165,21 +200,9 @@
   color: #fca5a5;
 }
 
-.term-simple-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 8px 0;
-  font-size: 0.82rem;
-}
-
-.term-simple-table td {
-  padding: 5px 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-/* Input Row */
+/* Input Bar */
 .terminal-input-bar {
-  background: #090d16;
+  background: var(--bg-input);
   border-top: 1px solid var(--border-subtle);
   padding: 12px 18px;
   display: flex;
@@ -188,7 +211,7 @@
 }
 
 .terminal-prompt-sym {
-  color: var(--accent-green);
+  color: var(--accent-cyan);
   font-weight: 700;
 }
 
@@ -200,7 +223,7 @@
   color: #fff;
   font-family: var(--font-mono);
   font-size: 0.88rem;
-  caret-color: var(--accent-green);
+  caret-color: var(--accent-red);
 }
 
 .terminal-input-hint {
@@ -211,7 +234,7 @@
 
 /* Bottom Status Bar */
 .terminal-footer-strip {
-  background: #060910;
+  background: #0d1317;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding: 8px 18px;
   display: flex;
@@ -222,5 +245,5 @@
 }
 
 .term-highlight-tag {
-  color: var(--accent-green);
+  color: var(--accent-red);
 }

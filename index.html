@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dakshita Mathur | Cybersecurity Researcher & Systems Developer</title>
   <meta name="description" content="Portfolio of Dakshita Mathur: Cybersecurity researcher, eBPF in-kernel defense author (ASIT-2026), ThreatLens architect, and Federated Learning NIDS developer." />
-  <meta name="theme-color" content="#0b0f19" />
+  <meta name="theme-color" content="#12181c" />
 
   <!-- Google Fonts: JetBrains Mono & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,110 +47,132 @@
 
   <main>
     <!-- =========================================================================
-         1. HERO: SLEEK CENTERED TERMINAL (DESIGNBY.CC STYLE)
+         1. HERO: TERMINAL (MATCHING REFERENCE IMAGE IN GRAPHITE & CORAL RED)
          ========================================================================= -->
     <section class="terminal-wrapper" id="hero-terminal">
       <div class="container">
         <div class="terminal-box">
-          <!-- Window Header Bar -->
+          <!-- Window Header Bar Matching Reference Image -->
           <div class="terminal-topbar">
+            <!-- Left Dots -->
             <div class="window-dots">
               <span class="dot red"></span>
               <span class="dot yellow"></span>
               <span class="dot green"></span>
             </div>
+
+            <!-- Centered Title -->
             <div class="window-title font-mono">
-              dakshita@soc: ~ (zsh)
+              dakshita.sys
             </div>
-            <div class="term-top-action font-mono" onclick="window.runTermCmd('/clear')">
-              clear
+
+            <!-- Right Dots (Matching Image) -->
+            <div class="right-dots">
+              <span class="mini-dot p1"></span>
+              <span class="mini-dot p2"></span>
+              <span class="mini-dot p3"></span>
+              <span class="mini-dot p4"></span>
+              <span class="mini-dot p5"></span>
             </div>
           </div>
 
           <!-- Screen Buffer -->
           <div class="terminal-screen" id="terminal-screen">
-            <!-- ASCII Header & Briefing -->
-            <div class="terminal-banner-text font-mono">
-&lt; DAKSHITA  MATHUR /&gt;
-======================
-            </div>
-
-            <div class="terminal-intro-block">
-              <div class="term-role-headline">
-                Cybersecurity Researcher &bull; Systems Developer &bull; ML Practitioner
-              </div>
-              <div class="term-role-sub">
-                B.Tech Computer Science @ <strong>VIT-AP (CGPA: 8.54/10)</strong> &bull; ASIT-2026 In-Kernel Defense Author
-              </div>
-              <div class="term-help-guide font-mono">
-                Good evening. Type <span style="color:var(--accent-green); font-weight:700;">'/help'</span> or click the command pills below to explore.
-              </div>
-
-              <!-- Clickable Directive Pills -->
-              <div class="term-pills-cluster">
-                <span class="term-pill-btn" data-cmd="/help">[ /help ]</span>
-                <span class="term-pill-btn" data-cmd="/about">[ /about ]</span>
-                <span class="term-pill-btn" data-cmd="/projects">[ /projects ]</span>
-                <span class="term-pill-btn" data-cmd="/research">[ /research ]</span>
-                <span class="term-pill-btn" data-cmd="/skills">[ /skills ]</span>
-                <span class="term-pill-btn" data-cmd="/experience">[ /experience ]</span>
-                <span class="term-pill-btn" data-cmd="/contact">[ /contact ]</span>
-                <span class="term-pill-btn" data-cmd="/cv">[ /cv ]</span>
-                <span class="term-pill-btn" data-cmd="/clear">[ /clear ]</span>
+            <!-- Startup Message (Directly Matching Reference Image) -->
+            <div class="term-startup-msg font-mono">
+              <div>Welcome to the Terminal</div>
+              <div style="margin: 4px 0;">Starting up...</div>
+              <div>You can now interact with the Terminal</div>
+              <div style="margin: 4px 0;">
+                Type <span class="term-cmd-highlight">help</span> <span class="term-arrow">=&gt;</span> for a list of commands
               </div>
             </div>
 
-            <!-- Initial Help Output (Immediately readable) -->
+            <!-- Shell Prompt Line -->
+            <div class="term-auth-prompt font-mono">
+              <span class="auth-user">$dakshita_mathur</span> <span class="auth-sudo">sudo</span> <span class="auth-path">~/guest</span>
+            </div>
             <div class="term-line-executed">
-              <span class="term-symbol">$</span>
-              <span>/help</span>
+              <span class="term-symbol">&gt;</span>
+              <span style="color:#fff;">ls</span>
             </div>
+
+            <!-- Pre-rendered Directives Table (Matching Image Format) -->
             <div class="term-output-panel">
-              <div style="color:#fff; font-weight:700; margin-bottom:4px;">Available directives:</div>
-              <table class="term-simple-table">
+              <table class="term-cmd-table font-mono">
                 <tr>
-                  <td style="width:120px;"><span style="color:var(--accent-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/about')">/about</span></td>
-                  <td style="color:var(--text-muted);">operator profile & academic pedigree (VIT-AP 8.54 CGPA)</td>
+                  <td style="width:130px;"><span class="cmd-name" onclick="window.runTermCmd('help')">help</span> <span class="term-arrow">=&gt;</span></td>
+                  <td class="cmd-desc">for a list of commands</td>
                 </tr>
                 <tr>
-                  <td><span style="color:var(--accent-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/projects')">/projects</span></td>
-                  <td style="color:var(--text-muted);">featured projects (ThreatLens, Federated-NIDS, HoverNotes)</td>
+                  <td><span class="cmd-name" onclick="window.runTermCmd('clear')">clear</span> <span class="term-arrow">=&gt;</span></td>
+                  <td class="cmd-desc">to clear the terminal</td>
                 </tr>
                 <tr>
-                  <td><span style="color:var(--accent-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/research')">/research</span></td>
-                  <td style="color:var(--text-muted);">ASIT-2026 paper: Low-Latency In-Kernel Ransomware Defense</td>
+                  <td><span class="cmd-name" onclick="window.runTermCmd('about')">about</span> <span class="term-arrow">=&gt;</span></td>
+                  <td class="cmd-desc">to learn more about me (VIT-AP, 8.54 CGPA)</td>
                 </tr>
                 <tr>
-                  <td><span style="color:var(--accent-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/skills')">/skills</span></td>
-                  <td style="color:var(--text-muted);">defensive & offensive technical toolkit</td>
+                  <td><span class="cmd-name" onclick="window.runTermCmd('social')">social</span> <span class="term-arrow">=&gt;</span></td>
+                  <td class="cmd-desc">to see my social links & repositories</td>
                 </tr>
                 <tr>
-                  <td><span style="color:var(--accent-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/experience')">/experience</span></td>
-                  <td style="color:var(--text-muted);">ISRO space academy mission log (evaluation: 98/100)</td>
+                  <td><span class="cmd-name" onclick="window.runTermCmd('projects')">projects</span> <span class="term-arrow">=&gt;</span></td>
+                  <td class="cmd-desc">to see my projects (ThreatLens, Federated-NIDS, HoverNotes)</td>
                 </tr>
                 <tr>
-                  <td><span style="color:var(--accent-green); font-weight:600; cursor:pointer;" onclick="window.runTermCmd('/contact')">/contact</span></td>
-                  <td style="color:var(--text-muted);">direct email, phone & social links</td>
+                  <td><span class="cmd-name" onclick="window.runTermCmd('research')">research</span> <span class="term-arrow">=&gt;</span></td>
+                  <td class="cmd-desc">to inspect ASIT-2026 eBPF in-kernel defense paper</td>
+                </tr>
+                <tr>
+                  <td><span class="cmd-name" onclick="window.runTermCmd('skills')">skills</span> <span class="term-arrow">=&gt;</span></td>
+                  <td class="cmd-desc">to view technical toolkit</td>
+                </tr>
+                <tr>
+                  <td><span class="cmd-name" onclick="window.runTermCmd('experience')">experience</span> <span class="term-arrow">=&gt;</span></td>
+                  <td class="cmd-desc">to view ISRO space academy mission log (evaluation: 98/100)</td>
+                </tr>
+                <tr>
+                  <td><span class="cmd-name" onclick="window.runTermCmd('contact')">contact</span> <span class="term-arrow">=&gt;</span></td>
+                  <td class="cmd-desc">to enquire about my work / send message</td>
+                </tr>
+                <tr>
+                  <td><span class="cmd-name" onclick="window.runTermCmd('cv')">cv</span> <span class="term-arrow">=&gt;</span></td>
+                  <td class="cmd-desc">to view & print resume dossier</td>
                 </tr>
               </table>
             </div>
 
-            <!-- Execution Logs -->
+            <!-- Quick Clickable Pills -->
+            <div class="term-pills-cluster">
+              <span class="term-pill-btn" data-cmd="help">[ help ]</span>
+              <span class="term-pill-btn" data-cmd="about">[ about ]</span>
+              <span class="term-pill-btn" data-cmd="projects">[ projects ]</span>
+              <span class="term-pill-btn" data-cmd="research">[ research ]</span>
+              <span class="term-pill-btn" data-cmd="skills">[ skills ]</span>
+              <span class="term-pill-btn" data-cmd="experience">[ experience ]</span>
+              <span class="term-pill-btn" data-cmd="social">[ social ]</span>
+              <span class="term-pill-btn" data-cmd="contact">[ contact ]</span>
+              <span class="term-pill-btn" data-cmd="cv">[ cv ]</span>
+              <span class="term-pill-btn" data-cmd="clear">[ clear ]</span>
+            </div>
+
+            <!-- Dynamic Execution Logs -->
             <div class="terminal-log-flow" id="terminal-log-flow"></div>
           </div>
 
-          <!-- Bottom Input Row -->
+          <!-- Bottom Input Row (Matching Prompt) -->
           <div class="terminal-input-bar">
-            <span class="terminal-prompt-sym font-mono">$</span>
+            <span class="terminal-prompt-sym font-mono">&gt;</span>
             <input 
               type="text" 
               id="terminal-input" 
               class="terminal-input-core" 
-              placeholder="type '/about', '/projects', '/research'..." 
+              placeholder="type 'about', 'projects', 'research', 'social'..." 
               autocomplete="off" 
               spellcheck="false" 
             />
-            <span class="terminal-input-hint font-mono">try /projects</span>
+            <span class="terminal-input-hint font-mono">try 'projects'</span>
           </div>
 
           <!-- Bottom Status Bar -->
@@ -159,11 +181,11 @@
               <span>~</span>
               <span style="margin-left:8px;">uptime: <span class="term-highlight-tag" id="term-uptime">0s</span></span>
               <span style="margin: 0 6px;">&bull;</span>
-              <span>signal: <span class="term-highlight-tag">stable</span></span>
+              <span>status: <span style="color:var(--accent-cyan);">active</span></span>
             </div>
             <div>
-              <span>dakshita-soc v2.6</span>
-              <span style="margin-left:10px;">visitor@terminal</span>
+              <span>dakshita.sys</span>
+              <span style="margin-left:10px; color:var(--text-dim);">visitor@guest</span>
             </div>
           </div>
         </div>
@@ -171,7 +193,7 @@
     </section>
 
     <!-- =========================================================================
-         2. FEATURED PROJECTS (CLEAN, SPACIOUS CARDS)
+         2. FEATURED PROJECTS (GREY & RED THEME)
          ========================================================================= -->
     <section class="section-spacing" id="projects">
       <div class="container">
@@ -259,7 +281,7 @@
           <div class="project-box cyber-card">
             <div>
               <div class="project-top-row">
-                <span class="project-tag" style="color:var(--accent-amber); background:rgba(251,191,36,0.1); border-color:rgba(251,191,36,0.3);">DESKTOP APP</span>
+                <span class="project-tag" style="color:var(--accent-amber); background:rgba(245,158,11,0.1); border-color:rgba(245,158,11,0.3);">DESKTOP APP</span>
                 <span class="font-mono text-dim" style="font-size:0.75rem;">03</span>
               </div>
               <h3 class="project-title">HoverNotes</h3>
@@ -366,8 +388,8 @@
             <h3 class="detail-card-title">Vellore Institute of Technology, AP</h3>
             <div class="detail-card-sub">Bachelor of Technology in Computer Science & Engineering</div>
             <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.7;">
-              • <strong>Class XII (CBSE):</strong> Rani Laxmi Bai Memorial School | <span style="color:var(--accent-green)">85.2%</span><br>
-              • <strong>Class X (ICSE):</strong> St. Xavier’s Senior Secondary School | <span style="color:var(--accent-green)">89.2%</span>
+              • <strong>Class XII (CBSE):</strong> Rani Laxmi Bai Memorial School | <span style="color:var(--accent-red)">85.2%</span><br>
+              • <strong>Class X (ICSE):</strong> St. Xavier’s Senior Secondary School | <span style="color:var(--accent-red)">89.2%</span>
             </div>
           </div>
         </div>
@@ -469,7 +491,7 @@
        CLEAN FOOTER
        ========================================================================= -->
   <footer class="clean-footer container">
-    <div>&copy; 2026 Dakshita Mathur &bull; Cybersecurity & ML</div>
+    <div>&copy; 2026 Dakshita Mathur &bull; Cybersecurity Researcher</div>
     <div class="font-mono">dakshita1010.github.io</div>
   </footer>
 
@@ -565,7 +587,7 @@
       <div class="resume-item-block">
         <div class="resume-item-top">
           <span>ThreatLens – URL & File Hash Threat Intelligence Platform</span>
-          <span><a href="https://github.com/dakshita1010/ThreatLens" target="_blank" style="color:var(--accent-green);">GitHub</a></span>
+          <span><a href="https://github.com/dakshita1010/ThreatLens" target="_blank" style="color:var(--accent-red);">GitHub</a></span>
         </div>
         <ul class="resume-item-bullets">
           <li>Built a Flask-based threat intelligence platform using the VirusTotal API to analyze URLs, file hashes, and local files, with successful end-to-end testing across 5 test cases.</li>
@@ -576,7 +598,7 @@
       <div class="resume-item-block">
         <div class="resume-item-top">
           <span>Federated-NIDS – Privacy-Preserving Network Intrusion Detection System</span>
-          <span><a href="https://github.com/maplelattte/federated-nids" target="_blank" style="color:var(--accent-green);">GitHub</a></span>
+          <span><a href="https://github.com/maplelattte/federated-nids" target="_blank" style="color:var(--accent-red);">GitHub</a></span>
         </div>
         <ul class="resume-item-bullets">
           <li>Built a privacy-preserving NIDS using Federated Learning, training models across distributed clients without centralizing raw network traffic, achieving 86% detection accuracy.</li>
@@ -587,7 +609,7 @@
       <div class="resume-item-block">
         <div class="resume-item-top">
           <span>HoverNotes – Always-on-Top Desktop Notes Application</span>
-          <span><a href="https://github.com/dakshita1010/hover-notes" target="_blank" style="color:var(--accent-green);">GitHub</a></span>
+          <span><a href="https://github.com/dakshita1010/hover-notes" target="_blank" style="color:var(--accent-red);">GitHub</a></span>
         </div>
         <ul class="resume-item-bullets">
           <li>Developed an Electron-based Windows desktop application with global hotkeys, click-through ghost mode (Alt+Shift+G), adjustable transparency, and multi-note tab management.</li>
@@ -598,12 +620,12 @@
       <!-- Technical Skills -->
       <div class="resume-section-title">// TECHNICAL SKILLS</div>
       <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted); line-height:1.7;">
-        <div><strong style="color:var(--accent-green);">Languages:</strong> Java, Python, C/C++</div>
-        <div><strong style="color:var(--accent-green);">Cybersecurity:</strong> Network Security, Threat Intelligence, Malware Analysis, Intrusion Detection</div>
-        <div><strong style="color:var(--accent-green);">Security / Networking:</strong> Wireshark, SHA-256, VirusTotal, eBPF</div>
-        <div><strong style="color:var(--accent-green);">Machine Learning:</strong> PyTorch, Federated Learning, Flower (flwr)</div>
-        <div><strong style="color:var(--accent-green);">Development:</strong> Flask, SQLite, HTML5, CSS3, JavaScript, Electron</div>
-        <div><strong style="color:var(--accent-green);">Tools & Platforms:</strong> Git, GitHub, Linux Environments, REST APIs, JSON</div>
+        <div><strong style="color:var(--accent-red);">Languages:</strong> Java, Python, C/C++</div>
+        <div><strong style="color:var(--accent-red);">Cybersecurity:</strong> Network Security, Threat Intelligence, Malware Analysis, Intrusion Detection</div>
+        <div><strong style="color:var(--accent-red);">Security / Networking:</strong> Wireshark, SHA-256, VirusTotal, eBPF</div>
+        <div><strong style="color:var(--accent-red);">Machine Learning:</strong> PyTorch, Federated Learning, Flower (flwr)</div>
+        <div><strong style="color:var(--accent-red);">Development:</strong> Flask, SQLite, HTML5, CSS3, JavaScript, Electron</div>
+        <div><strong style="color:var(--accent-red);">Tools & Platforms:</strong> Git, GitHub, Linux Environments, REST APIs, JSON</div>
       </div>
     </div>
   </div>
