@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dakshita Mathur | Terminal Workstation</title>
-  <meta name="description" content="Portfolio of Dakshita Mathur: Cybersecurity researcher, eBPF in-kernel defense author (ASIT-2026), ThreatLens architect, and Federated Learning NIDS developer." />
+  <meta name="description" content="Terminal workstation portfolio of Dakshita Mathur: Cybersecurity researcher, eBPF in-kernel defense author (ASIT-2026), ThreatLens architect, and Federated Learning NIDS developer." />
   <meta name="theme-color" content="#11171b" />
 
   <!-- Google Fonts: JetBrains Mono & Outfit -->
@@ -22,14 +22,14 @@
   <canvas id="matrix-canvas"></canvas>
 
   <!-- =========================================================================
-       IMMERSIVE REAL TERMINAL WORKSTATION (FULLSCREEN / OUT-OF-THE-BOX)
+       FRONT PAGE: 100% IMMERSIVE REAL TERMINAL WORKSTATION
        ========================================================================= -->
   <div class="terminal-workstation">
     <!-- 1. Window Header Bar (Matching Reference Image) -->
     <header class="term-topbar">
       <!-- Left Dots -->
       <div class="window-dots-left">
-        <span class="dot red" title="Close Session" onclick="window.runTermCmd('clear')"></span>
+        <span class="dot red" title="Clear Screen" onclick="window.runTermCmd('clear')"></span>
         <span class="dot yellow" title="Minimize"></span>
         <span class="dot green" title="Toggle Fullscreen"></span>
       </div>
@@ -39,7 +39,7 @@
         <span>dakshita.sys</span>
       </div>
 
-      <!-- Right Pastel Dots & Quick Links -->
+      <!-- Right Pastel Dots & Navigation to Other Page -->
       <div class="term-topbar-right">
         <div class="pastel-dots-cluster">
           <span class="pastel-dot d1"></span>
@@ -49,8 +49,13 @@
           <span class="pastel-dot d5"></span>
         </div>
 
-        <button class="cyber-btn cyber-btn-outline trigger-resume-modal" style="padding:3px 8px; font-size:0.7rem;">
-          [ Access CV ]
+        <!-- Button linking to dedicated Visual Portfolio Page -->
+        <a href="portfolio.html" class="cyber-btn" style="padding:4px 10px; font-size:0.72rem;">
+          [ 📂 View Visual Portfolio &rarr; ]
+        </a>
+
+        <button class="cyber-btn cyber-btn-outline trigger-resume-modal" style="padding:4px 8px; font-size:0.7rem;">
+          [ CV ]
         </button>
       </div>
     </header>
@@ -116,6 +121,10 @@
             <td class="cmd-desc">live client-side SHA-256 hash & threat analyzer</td>
           </tr>
           <tr>
+            <td><span class="cmd-name" onclick="window.runTermCmd('gui')">gui</span> <span class="term-arrow">=&gt;</span></td>
+            <td class="cmd-desc">open the dedicated Visual Portfolio page</td>
+          </tr>
+          <tr>
             <td><span class="cmd-name" onclick="window.runTermCmd('tictactoe')">tictactoe</span> <span class="term-arrow">=&gt;</span></td>
             <td class="cmd-desc">play interactive mini-game in terminal</td>
           </tr>
@@ -136,13 +145,14 @@
         <span class="term-pill" data-cmd="experience">[ experience ]</span>
         <span class="term-pill" data-cmd="social">[ social ]</span>
         <span class="term-pill" data-cmd="scan">[ scan ]</span>
+        <span class="term-pill" data-cmd="gui">[ 📂 gui page ]</span>
         <span class="term-pill" data-cmd="tictactoe">[ tictactoe ]</span>
         <span class="term-pill" data-cmd="matrix">[ matrix ]</span>
         <span class="term-pill" data-cmd="cv">[ cv ]</span>
         <span class="term-pill" data-cmd="clear">[ clear ]</span>
       </div>
 
-      <!-- History Stream -->
+      <!-- Execution Log Flow -->
       <div class="term-history-flow font-mono" id="terminal-log-flow"></div>
     </div>
 
@@ -157,7 +167,7 @@
           type="text" 
           id="terminal-input" 
           class="term-real-input" 
-          placeholder="type 'about', 'projects', 'research', 'scan', 'ls'..." 
+          placeholder="type 'about', 'projects', 'gui', 'scan', 'ls'..." 
           autocomplete="off" 
           spellcheck="false" 
           autofocus 
@@ -176,7 +186,7 @@
         <span>status: <span style="color:var(--accent-cyan);">active</span></span>
       </div>
       <div class="term-footer-right">
-        <span>dakshita.sys v2.6</span>
+        <a href="portfolio.html" style="color:var(--accent-red); text-decoration:underline;">open portfolio.html</a>
         <span>&bull;</span>
         <span>visitor@workstation</span>
       </div>
