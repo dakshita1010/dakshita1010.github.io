@@ -1,40 +1,41 @@
 /* ==========================================================================
-   GREY & RED TERMINAL (MATCHING REFERENCE IMAGE)
+   IMMERSIVE REAL TERMINAL WINDOW CSS (MATCHING USER REFERENCE IMAGE)
    ========================================================================== */
 
-.terminal-wrapper {
-  padding-top: 100px;
-  padding-bottom: 50px;
-}
-
-.terminal-box {
-  width: 100%;
+.terminal-workstation {
+  width: 94vw;
+  max-width: 1180px;
+  height: 90vh;
   background: var(--bg-terminal);
   border: 1px solid var(--border-card);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
-  border-radius: 8px;
-  overflow: hidden;
-  font-family: var(--font-mono);
+  border-radius: 10px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
   transition: border-color 0.2s ease;
 }
 
-.terminal-box:focus-within {
-  border-color: rgba(244, 63, 94, 0.4);
+.terminal-workstation:focus-within {
+  border-color: rgba(244, 63, 94, 0.45);
 }
 
-/* Header Bar Matching Image */
-.terminal-topbar {
-  background: var(--bg-terminal-top);
+/* --------------------------------------------------------------------------
+   1. TOPBAR (EXACTLY MATCHING REFERENCE IMAGE)
+   -------------------------------------------------------------------------- */
+.term-topbar {
+  background: var(--bg-terminal-header);
   border-bottom: 1px solid var(--border-subtle);
   padding: 10px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  user-select: none;
 }
 
-.window-dots {
+.window-dots-left {
   display: flex;
   align-items: center;
   gap: 7px;
@@ -44,53 +45,69 @@
   width: 11px;
   height: 11px;
   border-radius: 50%;
+  display: inline-block;
 }
 .dot.red { background: #ff5f56; }
 .dot.yellow { background: #ffbd2e; }
 .dot.green { background: #27c93f; }
 
-.right-dots {
+.term-title-center {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.term-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Pastel dot group from reference image */
+.pastel-dots-cluster {
   display: flex;
   align-items: center;
   gap: 6px;
 }
-.mini-dot {
+
+.pastel-dot {
   width: 9px;
   height: 9px;
   border-radius: 50%;
+  display: inline-block;
 }
-.mini-dot.p1 { background: #fb7185; }
-.mini-dot.p2 { background: #fde047; }
-.mini-dot.p3 { background: #38bdf8; }
-.mini-dot.p4 { background: #4ade80; }
-.mini-dot.p5 { background: #f1f5f9; }
+.pastel-dot.d1 { background: #fb7185; }
+.pastel-dot.d2 { background: #fde047; }
+.pastel-dot.d3 { background: #38bdf8; }
+.pastel-dot.d4 { background: #4ade80; }
+.pastel-dot.d5 { background: #f1f5f9; }
 
-.window-title {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-  font-weight: 600;
-}
-
-/* Screen */
-.terminal-screen {
-  padding: 24px;
-  min-height: 400px;
-  max-height: 540px;
+/* --------------------------------------------------------------------------
+   2. TERMINAL SCREEN / SCROLLABLE CONTENT
+   -------------------------------------------------------------------------- */
+.term-screen {
+  flex: 1;
+  padding: 22px 24px;
   overflow-y: auto;
   font-size: 0.88rem;
-  line-height: 1.7;
+  line-height: 1.65;
   color: #cbd5e1;
+  display: flex;
+  flex-direction: column;
 }
 
-.term-startup-msg {
+.term-intro-startup {
   color: var(--text-muted);
   font-size: 0.85rem;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   line-height: 1.6;
 }
 
-.term-cmd-highlight {
+.cmd-highlight {
   color: var(--accent-red);
   font-weight: 600;
 }
@@ -99,9 +116,9 @@
   color: var(--accent-amber);
 }
 
-/* Shell Prompt Line (e.g. $dakshita_mathur sudo ~/guest) */
+/* Prompt Line in Screen */
 .term-auth-prompt {
-  margin: 12px 0 6px;
+  margin: 12px 0 4px;
   font-size: 0.88rem;
 }
 .auth-user {
@@ -116,11 +133,11 @@
   color: var(--text-muted);
 }
 
-/* Interactive Directives Table (Matching Image Format) */
+/* Command Directory Table (From Reference Image) */
 .term-cmd-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 10px 0 16px;
+  margin: 8px 0 14px;
   font-size: 0.84rem;
 }
 
@@ -143,107 +160,176 @@
   color: var(--text-muted);
 }
 
-/* Clickable Pills in Terminal */
-.term-pills-cluster {
+/* Quick Directive Pills */
+.term-pills-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 14px 0 16px;
+  gap: 7px;
+  margin: 12px 0 16px;
 }
 
-.term-pill-btn {
+.term-pill {
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   color: var(--accent-red);
   background: var(--accent-red-dim);
   border: 1px solid var(--border-accent);
-  padding: 4px 10px;
+  padding: 3px 9px;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.15s ease;
   user-select: none;
 }
 
-.term-pill-btn:hover {
+.term-pill:hover {
   background: var(--accent-red);
   color: #fff;
   transform: translateY(-1px);
 }
 
-/* Log Outputs */
-.terminal-log-flow {
+/* Dynamic History Log */
+.term-history-flow {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.term-line-executed {
+.term-executed-row {
   display: flex;
   align-items: center;
   gap: 8px;
   font-weight: 600;
 }
 
-.term-symbol {
+.term-prompt-chevron {
   color: var(--accent-cyan);
   font-weight: 700;
 }
 
-.term-output-panel {
-  margin-top: 6px;
+.term-output-card {
+  margin-top: 4px;
   padding-left: 12px;
   border-left: 2px solid var(--accent-red);
 }
 
-.term-output-panel.error {
+.term-output-card.error {
   border-left-color: #ef4444;
   color: #fca5a5;
 }
 
-/* Input Bar */
-.terminal-input-bar {
+.term-output-card.info {
+  border-left-color: var(--accent-cyan);
+}
+
+/* Directory Tree View */
+.dir-tree-view {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin: 6px 0;
+}
+.dir-folder { color: var(--accent-cyan); font-weight: 700; }
+.dir-file { color: #f1f5f9; }
+.dir-exec { color: var(--accent-red); font-weight: 600; }
+
+/* --------------------------------------------------------------------------
+   3. BOTTOM INPUT ROW
+   -------------------------------------------------------------------------- */
+.term-input-row {
   background: var(--bg-input);
   border-top: 1px solid var(--border-subtle);
   padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.term-input-auth-preview {
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+.term-input-line-inner {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.terminal-prompt-sym {
+.term-chevron {
   color: var(--accent-cyan);
   font-weight: 700;
+  font-size: 1rem;
 }
 
-.terminal-input-core {
+.term-real-input {
   flex: 1;
   background: transparent;
   border: none;
   outline: none;
   color: #fff;
   font-family: var(--font-mono);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   caret-color: var(--accent-red);
 }
 
-.terminal-input-hint {
-  font-size: 0.75rem;
+.term-hint-badge {
+  font-size: 0.72rem;
   color: var(--text-dim);
   pointer-events: none;
+  user-select: none;
 }
 
-/* Bottom Status Bar */
-.terminal-footer-strip {
-  background: #0d1317;
+/* --------------------------------------------------------------------------
+   4. BOTTOM STATUS BAR
+   -------------------------------------------------------------------------- */
+.term-footer-status {
+  background: var(--bg-terminal-footer);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 8px 18px;
+  padding: 6px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 0.72rem;
   color: var(--text-dim);
+  user-select: none;
 }
 
-.term-highlight-tag {
+.term-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.term-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Tic Tac Toe Grid in Terminal */
+.ttt-grid-box {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 40px);
+  gap: 4px;
+  margin: 10px 0;
+}
+.ttt-cell {
+  width: 40px;
+  height: 40px;
+  background: #1c272e;
+  border: 1px solid var(--border-card);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.ttt-cell:hover {
+  border-color: var(--accent-red);
   color: var(--accent-red);
 }
+.ttt-cell.x { color: var(--accent-red); }
+.ttt-cell.o { color: var(--accent-cyan); }

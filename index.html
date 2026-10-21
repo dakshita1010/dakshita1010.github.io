@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dakshita Mathur | Cybersecurity Researcher & Systems Developer</title>
+  <title>Dakshita Mathur | Terminal Workstation</title>
   <meta name="description" content="Portfolio of Dakshita Mathur: Cybersecurity researcher, eBPF in-kernel defense author (ASIT-2026), ThreatLens architect, and Federated Learning NIDS developer." />
-  <meta name="theme-color" content="#12181c" />
+  <meta name="theme-color" content="#11171b" />
 
   <!-- Google Fonts: JetBrains Mono & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/cyber-theme.css" />
@@ -18,482 +18,170 @@
   <link rel="stylesheet" href="css/components.css" />
 </head>
 <body>
+  <!-- Background Matrix Rain Canvas -->
+  <canvas id="matrix-canvas"></canvas>
+
   <!-- =========================================================================
-       CLEAN TOP NAVBAR
+       IMMERSIVE REAL TERMINAL WORKSTATION (FULLSCREEN / OUT-OF-THE-BOX)
        ========================================================================= -->
-  <header class="clean-navbar">
-    <div class="container clean-nav-content">
-      <a href="#hero-terminal" class="clean-logo">
-        <span class="status-dot"></span>
-        <span>DAKSHITA MATHUR</span>
-      </a>
+  <div class="terminal-workstation">
+    <!-- 1. Window Header Bar (Matching Reference Image) -->
+    <header class="term-topbar">
+      <!-- Left Dots -->
+      <div class="window-dots-left">
+        <span class="dot red" title="Close Session" onclick="window.runTermCmd('clear')"></span>
+        <span class="dot yellow" title="Minimize"></span>
+        <span class="dot green" title="Toggle Fullscreen"></span>
+      </div>
 
-      <nav>
-        <ul class="clean-nav-menu">
-          <li><a href="#hero-terminal" class="clean-nav-link">Terminal</a></li>
-          <li><a href="#projects" class="clean-nav-link">Projects</a></li>
-          <li><a href="#research" class="clean-nav-link">Research</a></li>
-          <li><a href="#experience" class="clean-nav-link">Experience</a></li>
-          <li><a href="#skills" class="clean-nav-link">Skills</a></li>
-          <li><a href="#contact" class="clean-nav-link">Contact</a></li>
-        </ul>
-      </nav>
+      <!-- Centered Title -->
+      <div class="term-title-center font-mono">
+        <span>dakshita.sys</span>
+      </div>
 
-      <button class="cyber-btn cyber-btn-sm trigger-resume-modal">
-        [ Access CV ]
-      </button>
+      <!-- Right Pastel Dots & Quick Links -->
+      <div class="term-topbar-right">
+        <div class="pastel-dots-cluster">
+          <span class="pastel-dot d1"></span>
+          <span class="pastel-dot d2"></span>
+          <span class="pastel-dot d3"></span>
+          <span class="pastel-dot d4"></span>
+          <span class="pastel-dot d5"></span>
+        </div>
+
+        <button class="cyber-btn cyber-btn-outline trigger-resume-modal" style="padding:3px 8px; font-size:0.7rem;">
+          [ Access CV ]
+        </button>
+      </div>
+    </header>
+
+    <!-- 2. Terminal Screen Buffer -->
+    <div class="term-screen" id="terminal-screen">
+      <!-- Startup Greeting (Matching Reference Image) -->
+      <div class="term-intro-startup font-mono">
+        <div>Welcome to the Terminal</div>
+        <div style="margin: 3px 0;">Starting up...</div>
+        <div>You can now interact with the Terminal</div>
+        <div style="margin: 3px 0;">
+          Type <span class="cmd-highlight">help</span> <span class="term-arrow">=&gt;</span> for a list of commands
+        </div>
+      </div>
+
+      <!-- Initial Prompt Line -->
+      <div class="term-auth-prompt font-mono">
+        <span class="auth-user">$dakshita_mathur</span> <span class="auth-sudo">sudo</span> <span class="auth-path">~/guest</span>
+      </div>
+      <div class="term-executed-row font-mono">
+        <span class="term-prompt-chevron">&gt;</span>
+        <span style="color:#fff;">ls</span>
+      </div>
+
+      <!-- Pre-rendered Commands Table (Matching Reference Image) -->
+      <div class="term-output-card">
+        <table class="term-cmd-table font-mono">
+          <tr>
+            <td style="width:130px;"><span class="cmd-name" onclick="window.runTermCmd('help')">help</span> <span class="term-arrow">=&gt;</span></td>
+            <td class="cmd-desc">for a list of commands</td>
+          </tr>
+          <tr>
+            <td><span class="cmd-name" onclick="window.runTermCmd('clear')">clear</span> <span class="term-arrow">=&gt;</span></td>
+            <td class="cmd-desc">to clear the terminal</td>
+          </tr>
+          <tr>
+            <td><span class="cmd-name" onclick="window.runTermCmd('about')">about</span> <span class="term-arrow">=&gt;</span></td>
+            <td class="cmd-desc">to learn more about me (VIT-AP, 8.54 CGPA)</td>
+          </tr>
+          <tr>
+            <td><span class="cmd-name" onclick="window.runTermCmd('social')">social</span> <span class="term-arrow">=&gt;</span></td>
+            <td class="cmd-desc">to see my social links & repositories</td>
+          </tr>
+          <tr>
+            <td><span class="cmd-name" onclick="window.runTermCmd('projects')">projects</span> <span class="term-arrow">=&gt;</span></td>
+            <td class="cmd-desc">to see my projects (ThreatLens, Federated-NIDS, HoverNotes)</td>
+          </tr>
+          <tr>
+            <td><span class="cmd-name" onclick="window.runTermCmd('research')">research</span> <span class="term-arrow">=&gt;</span></td>
+            <td class="cmd-desc">to inspect ASIT-2026 eBPF in-kernel defense paper</td>
+          </tr>
+          <tr>
+            <td><span class="cmd-name" onclick="window.runTermCmd('skills')">skills</span> <span class="term-arrow">=&gt;</span></td>
+            <td class="cmd-desc">to view technical toolkit</td>
+          </tr>
+          <tr>
+            <td><span class="cmd-name" onclick="window.runTermCmd('experience')">experience</span> <span class="term-arrow">=&gt;</span></td>
+            <td class="cmd-desc">to view ISRO space academy mission log (Score: 98/100)</td>
+          </tr>
+          <tr>
+            <td><span class="cmd-name" onclick="window.runTermCmd('scan')">scan</span> <span class="term-arrow">=&gt;</span></td>
+            <td class="cmd-desc">live client-side SHA-256 hash & threat analyzer</td>
+          </tr>
+          <tr>
+            <td><span class="cmd-name" onclick="window.runTermCmd('tictactoe')">tictactoe</span> <span class="term-arrow">=&gt;</span></td>
+            <td class="cmd-desc">play interactive mini-game in terminal</td>
+          </tr>
+          <tr>
+            <td><span class="cmd-name" onclick="window.runTermCmd('cv')">cv</span> <span class="term-arrow">=&gt;</span></td>
+            <td class="cmd-desc">to view & print resume dossier</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Quick Clickable Command Pills -->
+      <div class="term-pills-row font-mono">
+        <span class="term-pill" data-cmd="help">[ help ]</span>
+        <span class="term-pill" data-cmd="about">[ about ]</span>
+        <span class="term-pill" data-cmd="projects">[ projects ]</span>
+        <span class="term-pill" data-cmd="research">[ research ]</span>
+        <span class="term-pill" data-cmd="skills">[ skills ]</span>
+        <span class="term-pill" data-cmd="experience">[ experience ]</span>
+        <span class="term-pill" data-cmd="social">[ social ]</span>
+        <span class="term-pill" data-cmd="scan">[ scan ]</span>
+        <span class="term-pill" data-cmd="tictactoe">[ tictactoe ]</span>
+        <span class="term-pill" data-cmd="matrix">[ matrix ]</span>
+        <span class="term-pill" data-cmd="cv">[ cv ]</span>
+        <span class="term-pill" data-cmd="clear">[ clear ]</span>
+      </div>
+
+      <!-- History Stream -->
+      <div class="term-history-flow font-mono" id="terminal-log-flow"></div>
     </div>
-  </header>
 
-  <main>
-    <!-- =========================================================================
-         1. HERO: TERMINAL (MATCHING REFERENCE IMAGE IN GRAPHITE & CORAL RED)
-         ========================================================================= -->
-    <section class="terminal-wrapper" id="hero-terminal">
-      <div class="container">
-        <div class="terminal-box">
-          <!-- Window Header Bar Matching Reference Image -->
-          <div class="terminal-topbar">
-            <!-- Left Dots -->
-            <div class="window-dots">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
-            </div>
-
-            <!-- Centered Title -->
-            <div class="window-title font-mono">
-              dakshita.sys
-            </div>
-
-            <!-- Right Dots (Matching Image) -->
-            <div class="right-dots">
-              <span class="mini-dot p1"></span>
-              <span class="mini-dot p2"></span>
-              <span class="mini-dot p3"></span>
-              <span class="mini-dot p4"></span>
-              <span class="mini-dot p5"></span>
-            </div>
-          </div>
-
-          <!-- Screen Buffer -->
-          <div class="terminal-screen" id="terminal-screen">
-            <!-- Startup Message (Directly Matching Reference Image) -->
-            <div class="term-startup-msg font-mono">
-              <div>Welcome to the Terminal</div>
-              <div style="margin: 4px 0;">Starting up...</div>
-              <div>You can now interact with the Terminal</div>
-              <div style="margin: 4px 0;">
-                Type <span class="term-cmd-highlight">help</span> <span class="term-arrow">=&gt;</span> for a list of commands
-              </div>
-            </div>
-
-            <!-- Shell Prompt Line -->
-            <div class="term-auth-prompt font-mono">
-              <span class="auth-user">$dakshita_mathur</span> <span class="auth-sudo">sudo</span> <span class="auth-path">~/guest</span>
-            </div>
-            <div class="term-line-executed">
-              <span class="term-symbol">&gt;</span>
-              <span style="color:#fff;">ls</span>
-            </div>
-
-            <!-- Pre-rendered Directives Table (Matching Image Format) -->
-            <div class="term-output-panel">
-              <table class="term-cmd-table font-mono">
-                <tr>
-                  <td style="width:130px;"><span class="cmd-name" onclick="window.runTermCmd('help')">help</span> <span class="term-arrow">=&gt;</span></td>
-                  <td class="cmd-desc">for a list of commands</td>
-                </tr>
-                <tr>
-                  <td><span class="cmd-name" onclick="window.runTermCmd('clear')">clear</span> <span class="term-arrow">=&gt;</span></td>
-                  <td class="cmd-desc">to clear the terminal</td>
-                </tr>
-                <tr>
-                  <td><span class="cmd-name" onclick="window.runTermCmd('about')">about</span> <span class="term-arrow">=&gt;</span></td>
-                  <td class="cmd-desc">to learn more about me (VIT-AP, 8.54 CGPA)</td>
-                </tr>
-                <tr>
-                  <td><span class="cmd-name" onclick="window.runTermCmd('social')">social</span> <span class="term-arrow">=&gt;</span></td>
-                  <td class="cmd-desc">to see my social links & repositories</td>
-                </tr>
-                <tr>
-                  <td><span class="cmd-name" onclick="window.runTermCmd('projects')">projects</span> <span class="term-arrow">=&gt;</span></td>
-                  <td class="cmd-desc">to see my projects (ThreatLens, Federated-NIDS, HoverNotes)</td>
-                </tr>
-                <tr>
-                  <td><span class="cmd-name" onclick="window.runTermCmd('research')">research</span> <span class="term-arrow">=&gt;</span></td>
-                  <td class="cmd-desc">to inspect ASIT-2026 eBPF in-kernel defense paper</td>
-                </tr>
-                <tr>
-                  <td><span class="cmd-name" onclick="window.runTermCmd('skills')">skills</span> <span class="term-arrow">=&gt;</span></td>
-                  <td class="cmd-desc">to view technical toolkit</td>
-                </tr>
-                <tr>
-                  <td><span class="cmd-name" onclick="window.runTermCmd('experience')">experience</span> <span class="term-arrow">=&gt;</span></td>
-                  <td class="cmd-desc">to view ISRO space academy mission log (evaluation: 98/100)</td>
-                </tr>
-                <tr>
-                  <td><span class="cmd-name" onclick="window.runTermCmd('contact')">contact</span> <span class="term-arrow">=&gt;</span></td>
-                  <td class="cmd-desc">to enquire about my work / send message</td>
-                </tr>
-                <tr>
-                  <td><span class="cmd-name" onclick="window.runTermCmd('cv')">cv</span> <span class="term-arrow">=&gt;</span></td>
-                  <td class="cmd-desc">to view & print resume dossier</td>
-                </tr>
-              </table>
-            </div>
-
-            <!-- Quick Clickable Pills -->
-            <div class="term-pills-cluster">
-              <span class="term-pill-btn" data-cmd="help">[ help ]</span>
-              <span class="term-pill-btn" data-cmd="about">[ about ]</span>
-              <span class="term-pill-btn" data-cmd="projects">[ projects ]</span>
-              <span class="term-pill-btn" data-cmd="research">[ research ]</span>
-              <span class="term-pill-btn" data-cmd="skills">[ skills ]</span>
-              <span class="term-pill-btn" data-cmd="experience">[ experience ]</span>
-              <span class="term-pill-btn" data-cmd="social">[ social ]</span>
-              <span class="term-pill-btn" data-cmd="contact">[ contact ]</span>
-              <span class="term-pill-btn" data-cmd="cv">[ cv ]</span>
-              <span class="term-pill-btn" data-cmd="clear">[ clear ]</span>
-            </div>
-
-            <!-- Dynamic Execution Logs -->
-            <div class="terminal-log-flow" id="terminal-log-flow"></div>
-          </div>
-
-          <!-- Bottom Input Row (Matching Prompt) -->
-          <div class="terminal-input-bar">
-            <span class="terminal-prompt-sym font-mono">&gt;</span>
-            <input 
-              type="text" 
-              id="terminal-input" 
-              class="terminal-input-core" 
-              placeholder="type 'about', 'projects', 'research', 'social'..." 
-              autocomplete="off" 
-              spellcheck="false" 
-            />
-            <span class="terminal-input-hint font-mono">try 'projects'</span>
-          </div>
-
-          <!-- Bottom Status Bar -->
-          <div class="terminal-footer-strip font-mono">
-            <div>
-              <span>~</span>
-              <span style="margin-left:8px;">uptime: <span class="term-highlight-tag" id="term-uptime">0s</span></span>
-              <span style="margin: 0 6px;">&bull;</span>
-              <span>status: <span style="color:var(--accent-cyan);">active</span></span>
-            </div>
-            <div>
-              <span>dakshita.sys</span>
-              <span style="margin-left:10px; color:var(--text-dim);">visitor@guest</span>
-            </div>
-          </div>
-        </div>
+    <!-- 3. Bottom Interactive Input Line -->
+    <div class="term-input-row font-mono">
+      <div class="term-input-auth-preview">
+        <span class="auth-user">$dakshita_mathur</span> <span class="auth-sudo">sudo</span> <span class="auth-path" id="term-path-preview">~</span>
       </div>
-    </section>
-
-    <!-- =========================================================================
-         2. FEATURED PROJECTS (GREY & RED THEME)
-         ========================================================================= -->
-    <section class="section-spacing" id="projects">
-      <div class="container">
-        <div class="section-title-wrap">
-          <div class="section-pretitle font-mono">// 01. CLASSIFIED OPERATIONS</div>
-          <h2 class="section-title">Featured Projects</h2>
-          <p class="section-desc">
-            Production-tested threat intelligence utilities, distributed privacy-preserving machine learning, and focused desktop applications.
-          </p>
-        </div>
-
-        <div class="projects-grid">
-          <!-- 1. ThreatLens -->
-          <div class="project-box cyber-card">
-            <div>
-              <div class="project-top-row">
-                <span class="project-tag">THREAT INTELLIGENCE</span>
-                <span class="font-mono text-dim" style="font-size:0.75rem;">01</span>
-              </div>
-              <h3 class="project-title">ThreatLens</h3>
-              <p class="project-summary">
-                URL & file hash threat intelligence platform analyzing IOCs against the VirusTotal API with local cryptographic hashing and custom risk scoring.
-              </p>
-              <ul class="project-bullets">
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Flask platform using VirusTotal API to analyze URLs, hashes, and local files across 5 test cases.</span>
-                </li>
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Local SHA-256 calculation without uploading sensitive files, paired with SQLite scan history and Chart.js reporting.</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <div class="project-tech-strip">
-                <span class="tech-chip">Flask</span>
-                <span class="tech-chip">VirusTotal API</span>
-                <span class="tech-chip">SHA-256</span>
-                <span class="tech-chip">SQLite</span>
-                <span class="tech-chip">Chart.js</span>
-              </div>
-              <a href="https://github.com/dakshita1010/ThreatLens" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-sm" style="width:100%;">
-                View on GitHub &rarr;
-              </a>
-            </div>
-          </div>
-
-          <!-- 2. Federated-NIDS -->
-          <div class="project-box cyber-card">
-            <div>
-              <div class="project-top-row">
-                <span class="project-tag" style="color:var(--accent-cyan); background:var(--accent-cyan-dim); border-color:rgba(56,189,248,0.3);">DISTRIBUTED ML</span>
-                <span class="font-mono text-dim" style="font-size:0.75rem;">02</span>
-              </div>
-              <h3 class="project-title">Federated-NIDS</h3>
-              <p class="project-summary">
-                Privacy-preserving Network Intrusion Detection System using Federated Learning for 4G/5G cellular base stations.
-              </p>
-              <ul class="project-bullets">
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Trained PyTorch neural network classifiers on the CICIDS2017 dataset for multi-class attack detection (DoS, DDoS, Port-Scan).</span>
-                </li>
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Flower (flwr) FedAvg aggregation across 5 client nodes over 10 training rounds, achieving 86% detection accuracy without centralizing raw traffic.</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <div class="project-tech-strip">
-                <span class="tech-chip">PyTorch</span>
-                <span class="tech-chip">Flower (flwr)</span>
-                <span class="tech-chip">Federated Learning</span>
-                <span class="tech-chip">CICIDS2017</span>
-              </div>
-              <a href="https://github.com/maplelattte/federated-nids" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-sm" style="width:100%;">
-                View on GitHub &rarr;
-              </a>
-            </div>
-          </div>
-
-          <!-- 3. HoverNotes -->
-          <div class="project-box cyber-card">
-            <div>
-              <div class="project-top-row">
-                <span class="project-tag" style="color:var(--accent-amber); background:rgba(245,158,11,0.1); border-color:rgba(245,158,11,0.3);">DESKTOP APP</span>
-                <span class="font-mono text-dim" style="font-size:0.75rem;">03</span>
-              </div>
-              <h3 class="project-title">HoverNotes</h3>
-              <p class="project-summary">
-                Lightweight, always-on-top floating desktop notes application for Windows designed for developers, multi-taskers, and researchers.
-              </p>
-              <ul class="project-bullets">
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Built with Electron, featuring global hotkeys, click-through Ghost Mode (Alt+Shift+G), and adjustable window transparency.</span>
-                </li>
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Persistent local storage, collapsible mini-dock, and a quick editor supporting checklists and timestamps.</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <div class="project-tech-strip">
-                <span class="tech-chip">Electron</span>
-                <span class="tech-chip">JavaScript</span>
-                <span class="tech-chip">Windows API</span>
-                <span class="tech-chip">Local Storage</span>
-              </div>
-              <a href="https://github.com/dakshita1010/hover-notes" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-sm" style="width:100%;">
-                View on GitHub &rarr;
-              </a>
-            </div>
-          </div>
-        </div>
+      <div class="term-input-line-inner">
+        <span class="term-chevron">&gt;</span>
+        <input 
+          type="text" 
+          id="terminal-input" 
+          class="term-real-input" 
+          placeholder="type 'about', 'projects', 'research', 'scan', 'ls'..." 
+          autocomplete="off" 
+          spellcheck="false" 
+          autofocus 
+        />
+        <span class="term-hint-badge font-mono">Tab to autocomplete</span>
       </div>
-    </section>
+    </div>
 
-    <!-- =========================================================================
-         3. RESEARCH & PUBLICATIONS
-         ========================================================================= -->
-    <section class="section-spacing" id="research">
-      <div class="container">
-        <div class="section-title-wrap">
-          <div class="section-pretitle font-mono">// 02. PEER-REVIEWED RESEARCH</div>
-          <h2 class="section-title">In-Kernel eBPF Defense</h2>
-        </div>
-
-        <div class="detail-card cyber-card">
-          <div class="detail-card-header">
-            <span class="font-mono" style="font-size:0.75rem; color:var(--accent-purple);">ASIT-2026 INTERNATIONAL CONFERENCE</span>
-            <span class="font-mono text-dim" style="font-size:0.75rem;">SEPTEMBER 2026</span>
-          </div>
-
-          <h3 class="detail-card-title">In-Kernel Defense: Low-Latency In-Kernel Ransomware Containment with eBPF</h3>
-          <div class="detail-card-sub">
-            Hinweis Fifth International Conference on Advances in Software Engineering and Information Technology (ASIT-2026)
-          </div>
-
-          <ul class="project-bullets" style="margin-bottom:0;">
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span><strong>Kernel Behavioral Telemetry:</strong> Proposed an eBPF-based ransomware containment framework using kernel-level behavioral monitoring, entropy analysis, and multi-signal risk scoring for early threat detection.</span>
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span><strong>Shannon Entropy Detection:</strong> Intercepts write syscall payloads inside kernel space to detect sudden data randomness spikes indicative of encryption phases before files hit disk.</span>
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span><strong>Automated SIGSTOP Suspension:</strong> Designed an automated response mechanism to suspend suspicious processes directly in kernel space, drastically reducing containment latency compared to user-space daemons.</span>
-            </li>
-          </ul>
-        </div>
+    <!-- 4. Terminal Bottom Status Bar -->
+    <footer class="term-footer-status font-mono">
+      <div class="term-footer-left">
+        <span>UTF-8</span>
+        <span>&bull;</span>
+        <span>uptime: <span style="color:var(--accent-red);" id="term-uptime">0s</span></span>
+        <span>&bull;</span>
+        <span>status: <span style="color:var(--accent-cyan);">active</span></span>
       </div>
-    </section>
-
-    <!-- =========================================================================
-         4. EXPERIENCE & EDUCATION (2-COL)
-         ========================================================================= -->
-    <section class="section-spacing" id="experience">
-      <div class="container">
-        <div class="section-title-wrap">
-          <div class="section-pretitle font-mono">// 03. BACKGROUND & TRAINING</div>
-          <h2 class="section-title">Experience & Education</h2>
-        </div>
-
-        <div class="two-col-grid">
-          <!-- Experience -->
-          <div class="detail-card cyber-card">
-            <div class="detail-card-header">
-              <span class="font-mono text-dim" style="font-size:0.75rem;">JANUARY 2026</span>
-              <span class="project-tag">SCORE: 98 / 100</span>
-            </div>
-            <h3 class="detail-card-title">India Space Academy (ISRO)</h3>
-            <div class="detail-card-sub">Remote Sensing & GIS Intern</div>
-            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
-              Completed a 4-week winter training programme on remote sensing, GIS, satellite imagery, and AI-powered geospatial analysis. 
-              Engineered an AI-assisted surface water mapping project using NDWI to detect and classify surface water bodies from satellite imagery, scoring <strong>98/100</strong> in final evaluation.
-            </p>
-          </div>
-
-          <!-- Education -->
-          <div class="detail-card cyber-card">
-            <div class="detail-card-header">
-              <span class="font-mono text-dim" style="font-size:0.75rem;">2023 – PRESENT</span>
-              <span class="project-tag">CGPA: 8.54 / 10.0</span>
-            </div>
-            <h3 class="detail-card-title">Vellore Institute of Technology, AP</h3>
-            <div class="detail-card-sub">Bachelor of Technology in Computer Science & Engineering</div>
-            <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.7;">
-              • <strong>Class XII (CBSE):</strong> Rani Laxmi Bai Memorial School | <span style="color:var(--accent-red)">85.2%</span><br>
-              • <strong>Class X (ICSE):</strong> St. Xavier’s Senior Secondary School | <span style="color:var(--accent-red)">89.2%</span>
-            </div>
-          </div>
-        </div>
+      <div class="term-footer-right">
+        <span>dakshita.sys v2.6</span>
+        <span>&bull;</span>
+        <span>visitor@workstation</span>
       </div>
-    </section>
-
-    <!-- =========================================================================
-         5. TECHNICAL SKILLS
-         ========================================================================= -->
-    <section class="section-spacing" id="skills">
-      <div class="container">
-        <div class="section-title-wrap">
-          <div class="section-pretitle font-mono">// 04. TECHNICAL TOOLKIT</div>
-          <h2 class="section-title">Skills & Capabilities</h2>
-        </div>
-
-        <div class="skills-wrapper-box cyber-card">
-          <div class="skills-pills-row">
-            <span class="skill-pill highlight">Java</span>
-            <span class="skill-pill highlight">Python</span>
-            <span class="skill-pill highlight">C/C++</span>
-            <span class="skill-pill">Network Security</span>
-            <span class="skill-pill">Threat Intelligence</span>
-            <span class="skill-pill">Malware Analysis</span>
-            <span class="skill-pill">Intrusion Detection</span>
-            <span class="skill-pill">Wireshark</span>
-            <span class="skill-pill">SHA-256</span>
-            <span class="skill-pill">VirusTotal API</span>
-            <span class="skill-pill highlight">eBPF Kernel Probes</span>
-            <span class="skill-pill highlight">PyTorch</span>
-            <span class="skill-pill highlight">Federated Learning</span>
-            <span class="skill-pill">Flower (flwr)</span>
-            <span class="skill-pill">Flask</span>
-            <span class="skill-pill">SQLite</span>
-            <span class="skill-pill">Electron</span>
-            <span class="skill-pill">Linux Environments</span>
-            <span class="skill-pill">Git & GitHub</span>
-            <span class="skill-pill">REST APIs</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         6. CONTACT & UPLINK
-         ========================================================================= -->
-    <section class="section-spacing" id="contact">
-      <div class="container">
-        <div class="section-title-wrap">
-          <div class="section-pretitle font-mono">// 05. COMMUNICATION UPLINK</div>
-          <h2 class="section-title">Get in Touch</h2>
-          <p class="section-desc">
-            Open for cybersecurity internships, systems engineering, research collaborations, and full-time roles.
-          </p>
-        </div>
-
-        <div class="contact-links-grid">
-          <!-- Email -->
-          <a href="mailto:dakshita.mathur03@gmail.com" class="contact-link-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            <div>
-              <div class="contact-item-label">EMAIL</div>
-              <div class="contact-item-val" style="font-size:0.8rem;">dakshita.mathur03@gmail.com</div>
-            </div>
-          </a>
-
-          <!-- Phone -->
-          <a href="tel:+919696233384" class="contact-link-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            <div>
-              <div class="contact-item-label">PHONE</div>
-              <div class="contact-item-val">+91 9696233384</div>
-            </div>
-          </a>
-
-          <!-- GitHub -->
-          <a href="https://github.com/dakshita1010" target="_blank" rel="noopener noreferrer" class="contact-link-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            <div>
-              <div class="contact-item-label">GITHUB</div>
-              <div class="contact-item-val">dakshita1010</div>
-            </div>
-          </a>
-
-          <!-- LinkedIn -->
-          <a href="https://linkedin.com/in/dakshita-mathur10" target="_blank" rel="noopener noreferrer" class="contact-link-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            <div>
-              <div class="contact-item-label">LINKEDIN</div>
-              <div class="contact-item-val">dakshita-mathur10</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- =========================================================================
-       CLEAN FOOTER
-       ========================================================================= -->
-  <footer class="clean-footer container">
-    <div>&copy; 2026 Dakshita Mathur &bull; Cybersecurity Researcher</div>
-    <div class="font-mono">dakshita1010.github.io</div>
-  </footer>
+    </footer>
+  </div>
 
   <!-- =========================================================================
        PRINTABLE RESUME DOSSIER MODAL
@@ -613,7 +301,7 @@
         </div>
         <ul class="resume-item-bullets">
           <li>Developed an Electron-based Windows desktop application with global hotkeys, click-through ghost mode (Alt+Shift+G), adjustable transparency, and multi-note tab management.</li>
-          <li>Implemented persistent local storage, collapsible mini-dock, and a quick editor supporting checklists, bullet notes, and timestamps.</li>
+          <li>Implemented persistent local storage, a collapsible mini-dock, and a quick editor supporting checklists, bullet notes, and timestamps.</li>
         </ul>
       </div>
 

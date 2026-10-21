@@ -1,79 +1,77 @@
 /* ==========================================================================
-   GREY & RED THEME (GRAPHITE / SLATE & CORAL RED)
-   Target: Dakshita Mathur - Portfolio (Zero Green)
+   IMMERSIVE REAL TERMINAL THEME (GRAPHITE GREY & CORAL RED)
    ========================================================================== */
 
 :root {
-  /* Graphite & Slate Grey Palette */
-  --bg-primary: #12181c;
-  --bg-secondary: #172026;
-  --bg-card: rgba(23, 32, 38, 0.75);
-  --bg-card-hover: rgba(30, 42, 50, 0.9);
-  --bg-terminal: #151e23;
-  --bg-terminal-top: #1e282f;
-  --bg-input: #11171b;
+  /* Dark Graphite Slate Palette */
+  --bg-primary: #11171b;
+  --bg-secondary: #162026;
+  --bg-terminal: #141d22;
+  --bg-terminal-header: #1c272e;
+  --bg-terminal-footer: #0f1519;
+  --bg-input: #0e1418;
 
-  /* Red & Coral Accents (From Image Reference) */
+  /* Red & Coral Accents (Zero Green) */
   --accent-red: #f43f5e;
   --accent-red-bright: #fb7185;
-  --accent-red-dim: rgba(244, 63, 94, 0.12);
-  --accent-red-glow: rgba(244, 63, 94, 0.3);
-  
-  /* Cool Slate Cyan & Amber */
+  --accent-red-dim: rgba(244, 63, 94, 0.14);
+  --accent-red-glow: rgba(244, 63, 94, 0.35);
+
+  /* Cool Cyan & Amber Highlights */
   --accent-cyan: #38bdf8;
   --accent-cyan-dim: rgba(56, 189, 248, 0.12);
   --accent-amber: #f59e0b;
   --accent-purple: #c084fc;
 
-  /* Typography Colors */
+  /* Typography */
   --text-main: #f1f5f9;
   --text-muted: #8fa3ab;
   --text-dim: #5c707a;
 
   /* Borders */
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-card: rgba(255, 255, 255, 0.1);
-  --border-accent: rgba(244, 63, 94, 0.35);
+  --border-card: rgba(255, 255, 255, 0.12);
+  --border-accent: rgba(244, 63, 94, 0.4);
 
   /* Fonts */
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --font-display: 'Outfit', sans-serif;
 }
 
-/* Base Reset */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   background-color: var(--bg-primary);
   color: var(--text-main);
-  font-family: var(--font-display);
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100vh;
-  position: relative;
-  background: radial-gradient(circle at 50% 0%, #1a2329 0%, var(--bg-primary) 70%);
-  line-height: 1.65;
+  font-family: var(--font-mono);
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Scrollbar */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: radial-gradient(circle at 50% 20%, #1a242a 0%, var(--bg-primary) 75%);
+}
+
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #25333a;
+  background: #25343d;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -85,112 +83,55 @@ body {
   color: #fff;
 }
 
-.container {
-  width: 100%;
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0 24px;
+/* Background Matrix Canvas */
+#matrix-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.15;
+  display: none;
+}
+#matrix-canvas.active {
+  display: block;
 }
 
-.section-spacing {
-  padding: 80px 0;
-}
-
-/* Section Title Headers */
-.section-title-wrap {
-  margin-bottom: 36px;
-}
-
-.section-pretitle {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--accent-red);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.section-title {
-  font-size: 1.85rem;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: -0.5px;
-}
-
-.section-desc {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  margin-top: 6px;
-  max-width: 650px;
-}
-
-/* Cyber Buttons */
+/* Cyber Button */
 .cyber-btn {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   font-weight: 600;
   letter-spacing: 0.5px;
-  padding: 8px 16px;
+  padding: 5px 12px;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  gap: 6px;
   text-decoration: none;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 4px;
   border: 1px solid var(--border-accent);
   background: var(--accent-red-dim);
   color: var(--accent-red);
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 .cyber-btn:hover {
   background: var(--accent-red);
   color: #fff;
-  box-shadow: 0 0 15px var(--accent-red-glow);
+  box-shadow: 0 0 12px var(--accent-red-glow);
   transform: translateY(-1px);
 }
 
 .cyber-btn-outline {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: var(--border-card);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-subtle);
   color: var(--text-muted);
 }
 .cyber-btn-outline:hover {
   border-color: var(--accent-red);
   color: #fff;
-  background: rgba(244, 63, 94, 0.1);
-}
-
-.cyber-btn-sm {
-  padding: 6px 12px;
-  font-size: 0.74rem;
-}
-
-/* Card Styling */
-.cyber-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-card);
-  border-radius: 8px;
-  backdrop-filter: blur(12px);
-  transition: all 0.25s ease;
-}
-
-.cyber-card:hover {
-  border-color: rgba(244, 63, 94, 0.25);
-  background: var(--bg-card-hover);
-  transform: translateY(-2px);
-}
-
-/* Status Indicator */
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-  background: var(--accent-red);
-  box-shadow: 0 0 8px var(--accent-red);
+  background: rgba(244, 63, 94, 0.12);
 }
