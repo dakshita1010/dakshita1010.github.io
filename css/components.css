@@ -1,693 +1,401 @@
 /* ==========================================================================
-   SOC DASHBOARD COMPONENTS (TRINITY & BLOCKTRADE INSPIRED)
-   Target: Dakshita Mathur - Cybersecurity Portfolio
+   MINIMALIST COMPONENTS - CLEAN CARDS, NAV & MODAL
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. TOP NAVIGATION BAR (TRINITY STYLE)
+   1. MINIMALIST TOP NAVBAR
    -------------------------------------------------------------------------- */
-.soc-navbar {
+.clean-navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
-  background: var(--bg-hud);
+  height: 64px;
+  background: rgba(11, 15, 25, 0.88);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-card);
-  height: 58px;
+  border-bottom: 1px solid var(--border-subtle);
+  z-index: 1000;
   display: flex;
   align-items: center;
 }
 
-.soc-nav-inner {
+.clean-nav-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.soc-brand {
+.clean-logo {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
   color: #fff;
-}
-
-.brand-icon {
-  width: 30px;
-  height: 30px;
-  background: var(--neon-green-dim);
-  border: 1px solid var(--border-cyber);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--neon-green);
-}
-
-.brand-name {
   font-family: var(--font-mono);
-  font-weight: 800;
-  font-size: 0.98rem;
-  letter-spacing: 1px;
+  font-weight: 700;
+  font-size: 0.95rem;
 }
 
-.brand-badge {
-  font-size: 0.65rem;
-  padding: 1px 6px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-dim);
-}
-
-/* Nav View Switcher Tabs (Trinity Style) */
-.soc-nav-tabs {
+.clean-nav-menu {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 20px;
   list-style: none;
 }
 
-.nav-tab-item {
+.clean-nav-link {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
-  padding: 6px 14px;
-  border-radius: 4px;
   text-decoration: none;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  transition: color 0.15s ease;
 }
 
-.nav-tab-item:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.nav-tab-item.active {
-  color: var(--neon-green);
-  background: var(--neon-green-dim);
-  border: 1px solid var(--border-cyber);
-  font-weight: 600;
-}
-
-/* Right Controls */
-.soc-nav-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.latency-pill {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-dim);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 8px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
-}
-
-.profile-chip {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
-  padding: 4px 10px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.15s ease;
-}
-
-.profile-chip:hover {
-  border-color: var(--neon-green);
-  color: var(--neon-green);
-}
-
-/* Mobile Toggle */
-.mobile-nav-toggle {
-  display: none;
-  background: transparent;
-  border: 1px solid var(--border-subtle);
-  color: var(--text-main);
-  padding: 4px 8px;
-  border-radius: 4px;
-  cursor: pointer;
+.clean-nav-link:hover {
+  color: var(--accent-green);
 }
 
 /* --------------------------------------------------------------------------
-   2. MAIN SOC DASHBOARD LAYOUT (TRINITY / BLOCKTRADE DUAL-COLUMN)
+   2. FEATURED PROJECTS GRID
    -------------------------------------------------------------------------- */
-.soc-dashboard-wrapper {
-  padding-top: 76px;
-  padding-bottom: 70px;
-}
-
-.soc-grid-main {
+.projects-grid {
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 20px;
-  margin-bottom: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
 }
 
-/* Telemetry Chart Card (Trinity Style) */
-.chart-panel-card {
-  padding: 20px;
+.project-box {
+  padding: 26px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.chart-header-row {
+.project-top-row {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 14px;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.chart-metrics-strip {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-}
-
-.chart-title-tag {
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #fff;
-}
-
-.chart-live-val {
-  font-family: var(--font-mono);
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--neon-green);
-  text-shadow: 0 0 10px var(--neon-green-glow);
-}
-
-.metric-badge {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 2px 6px;
-  border-radius: 3px;
-}
-.metric-badge.text-green {
-  background: var(--neon-green-dim);
-  color: var(--neon-green);
-}
-.metric-badge.text-red {
-  background: rgba(239, 68, 68, 0.15);
-  color: var(--neon-red);
-}
-
-.chart-timeframe-selector {
-  display: flex;
-  gap: 4px;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 3px;
-  border-radius: 4px;
-  border: 1px solid var(--border-subtle);
-}
-
-.chart-time-btn {
-  background: transparent;
-  border: none;
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  padding: 3px 8px;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.chart-time-btn:hover {
-  color: #fff;
-}
-
-.chart-time-btn.active {
-  background: var(--neon-green);
-  color: #000;
-  font-weight: 700;
-}
-
-.canvas-chart-holder {
-  width: 100%;
-  height: 240px;
-  position: relative;
-}
-
-/* --------------------------------------------------------------------------
-   3. RIGHT-SIDE THREAT INSPECTOR & CALCULATOR (BLOCKTRADE STYLE)
-   -------------------------------------------------------------------------- */
-.inspector-panel-card {
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.inspector-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 12px;
-  margin-bottom: 16px;
-}
-
-.inspector-title {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 1px;
-}
-
-.inspector-mode-tabs {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-
-.mode-tab-btn {
-  flex: 1;
-  padding: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-dim);
-  border-radius: 4px;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.15s ease;
-}
-
-.mode-tab-btn.active {
-  background: var(--neon-green-dim);
-  border-color: var(--border-cyber);
-  color: var(--neon-green);
-  font-weight: 700;
-}
-
-.inspector-input-box {
-  width: 100%;
-  background: var(--bg-input);
-  border: 1px solid var(--border-subtle);
-  padding: 10px 12px;
-  border-radius: 4px;
-  color: #fff;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  outline: none;
-  margin-bottom: 12px;
-  transition: border-color 0.15s ease;
-}
-
-.inspector-input-box:focus {
-  border-color: var(--neon-green);
-}
-
-.quick-presets-strip {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-
-.preset-chip {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  padding: 3px 8px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-dim);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.preset-chip:hover {
-  border-color: var(--neon-green);
-  color: var(--neon-green);
-}
-
-.hash-preview-card {
-  background: #06090e;
-  border: 1px solid var(--border-subtle);
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 14px;
-}
-
-.hash-label-row {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--text-dim);
-  margin-bottom: 4px;
-}
-
-.hash-value-text {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--neon-green);
-  word-break: break-all;
-  line-height: 1.4;
-}
-
-.risk-consensus-block {
-  margin-bottom: 18px;
-}
-
-.risk-label-row {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-}
-
-.risk-progress-track {
-  height: 6px;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 3px;
-  overflow: hidden;
-  margin-bottom: 8px;
-}
-
-.risk-progress-bar {
-  height: 100%;
-  width: 0%;
-  background: var(--neon-green);
-  transition: width 0.5s ease, background-color 0.3s ease;
-}
-
-.risk-verdict-tag {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 3px;
-  display: inline-block;
-}
-
-.inspector-submit-btn {
-  width: 100%;
-  background: var(--neon-green);
-  color: #000;
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 700;
-  padding: 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: var(--glow-sm);
-}
-
-.inspector-submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--glow-lg);
-}
-
-/* --------------------------------------------------------------------------
-   4. CLASSIFIED OPERATIONS TABLE (TRINITY / BLOCKTRADE POSITIONS STYLE)
-   -------------------------------------------------------------------------- */
-.operations-table-card {
-  padding: 20px;
-  margin-bottom: 24px;
-}
-
-.table-header-strip {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.table-title {
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.5px;
-}
-
-.table-filters-group {
-  display: flex;
-  gap: 6px;
-}
-
-.table-filter-btn {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-dim);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
-  padding: 3px 10px;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.table-filter-btn.active {
-  color: var(--neon-green);
-  border-color: var(--border-cyber);
-  background: var(--neon-green-dim);
-}
-
-.operations-data-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.82rem;
-}
-
-.operations-data-table th {
-  text-align: left;
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  border-bottom: 1px solid var(--border-subtle);
-  padding: 8px 12px;
-}
-
-.operations-data-table td {
-  padding: 14px 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  vertical-align: middle;
-}
-
-.operations-data-table tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.op-name-cell {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.op-avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 800;
-}
-.op-avatar.threat { background: rgba(239, 68, 68, 0.15); color: var(--neon-red); }
-.op-avatar.fl { background: rgba(0, 243, 255, 0.15); color: var(--neon-cyan); }
-.op-avatar.hover { background: rgba(245, 158, 11, 0.15); color: var(--neon-amber); }
-
-.op-title-text {
-  font-weight: 700;
-  color: #fff;
-}
-
-.status-badge {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  padding: 2px 8px;
-  border-radius: 3px;
-  font-weight: 600;
-  display: inline-block;
-}
-.status-badge.complete {
-  background: var(--neon-green-dim);
-  color: var(--neon-green);
-  border: 1px solid var(--border-cyber);
-}
-.status-badge.open {
-  background: rgba(0, 243, 255, 0.12);
-  color: var(--neon-cyan);
-  border: 1px solid var(--border-cyan);
-}
-.status-badge.desktop {
-  background: rgba(245, 158, 11, 0.12);
-  color: var(--neon-amber);
-}
-
-/* --------------------------------------------------------------------------
-   5. RESEARCH & MISSION LOGS PANELS
-   -------------------------------------------------------------------------- */
-.soc-sub-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 24px;
-}
-
-.research-card-panel,
-.mission-card-panel {
-  padding: 22px;
-}
-
-.panel-header-badge {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 12px;
 }
 
-.card-title-lg {
+.project-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--accent-green-dim);
+  color: var(--accent-green);
+  border: 1px solid var(--border-accent);
+}
+
+.project-title {
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #fff;
   margin-bottom: 8px;
 }
 
-.card-desc-muted {
-  font-size: 0.85rem;
+.project-summary {
   color: var(--text-muted);
+  font-size: 0.88rem;
   line-height: 1.6;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
-.bullet-spec-list {
+.project-bullets {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 8px;
   font-size: 0.82rem;
   color: var(--text-muted);
+  margin-bottom: 20px;
 }
 
-.bullet-spec-item {
+.project-bullets li {
   display: flex;
   gap: 8px;
-  line-height: 1.5;
 }
 
-.bullet-spec-item svg {
-  color: var(--neon-green);
+.project-bullets li svg {
+  color: var(--accent-green);
   flex-shrink: 0;
   margin-top: 3px;
 }
 
-/* --------------------------------------------------------------------------
-   6. TECHNICAL ARSENAL / SKILLS ACCORDION
-   -------------------------------------------------------------------------- */
-.skills-matrix-card {
-  padding: 22px;
-  margin-bottom: 24px;
+.project-tech-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
 }
 
-.skills-badge-flow {
+.tech-chip {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-dim);
+  border: 1px solid var(--border-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   3. RESEARCH & EXPERIENCE PANELS
+   -------------------------------------------------------------------------- */
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.detail-card {
+  padding: 28px;
+}
+
+.detail-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.detail-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.detail-card-sub {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent-cyan);
+  margin-bottom: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   4. SKILLS & EDUCATION
+   -------------------------------------------------------------------------- */
+.skills-wrapper-box {
+  padding: 26px;
+}
+
+.skills-pills-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
-.skill-tag-pill {
+.skill-pill {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  padding: 5px 12px;
+  font-size: 0.78rem;
+  padding: 6px 12px;
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-subtle);
-  color: var(--text-main);
+  color: var(--text-muted);
   transition: all 0.15s ease;
 }
 
-.skill-tag-pill:hover {
-  border-color: var(--neon-green);
-  color: var(--neon-green);
-  background: var(--neon-green-dim);
+.skill-pill.highlight {
+  color: var(--accent-green);
+  border-color: var(--border-accent);
+  background: var(--accent-green-dim);
+}
+
+.skill-pill:hover {
+  border-color: var(--accent-green);
+  color: #fff;
 }
 
 /* --------------------------------------------------------------------------
-   7. PERSISTENT BOTTOM TELEMETRY STRIP (TRINITY / BLOCKTRADE)
+   5. CONTACT & FOOTER
    -------------------------------------------------------------------------- */
-.soc-bottom-bar {
+.contact-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.contact-link-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.15s ease;
+}
+
+.contact-link-item:hover {
+  border-color: var(--accent-green);
+  transform: translateY(-2px);
+}
+
+.contact-link-item svg {
+  color: var(--accent-green);
+}
+
+.contact-item-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.contact-item-val {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.clean-footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+/* --------------------------------------------------------------------------
+   6. PRINTABLE RESUME DOSSIER MODAL
+   -------------------------------------------------------------------------- */
+.modal-overlay {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 28px;
-  background: #05070a;
-  border-top: 1px solid var(--border-subtle);
-  z-index: 1000;
-  display: flex;
+  height: 100%;
+  background: rgba(5, 8, 15, 0.9);
+  backdrop-filter: blur(12px);
+  z-index: 2000;
+  display: none;
   align-items: center;
-  padding: 0 20px;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  background: #0e1422;
+  border: 1px solid var(--border-card);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  width: 100%;
+  max-width: 820px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  position: relative;
+  padding: 36px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
   color: var(--text-dim);
+  font-size: 1.2rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.modal-close-btn:hover {
+  color: #fff;
+  border-color: var(--accent-green);
+}
+
+.resume-modal-header {
+  border-bottom: 2px solid var(--accent-green);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+  display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
-.bottom-bar-left {
+.resume-applicant-name {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.resume-contact-inline {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
   display: flex;
-  align-items: center;
-  gap: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 6px;
 }
 
-.bottom-bar-right {
+.resume-section-title {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--accent-green);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 4px;
+  margin: 20px 0 10px;
+  letter-spacing: 1px;
+}
+
+.resume-item-block {
+  margin-bottom: 14px;
+}
+
+.resume-item-top {
   display: flex;
-  align-items: center;
-  gap: 16px;
+  justify-content: space-between;
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.92rem;
 }
 
-/* --------------------------------------------------------------------------
-   8. RESPONSIVE BREAKPOINTS
-   -------------------------------------------------------------------------- */
-@media (max-width: 992px) {
-  .soc-grid-main,
-  .soc-sub-grid {
-    grid-template-columns: 1fr;
-  }
+.resume-item-sub {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  margin-bottom: 4px;
+}
 
-  .soc-nav-tabs {
+.resume-item-bullets {
+  padding-left: 18px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .clean-nav-menu {
     display: none;
   }
-
-  .mobile-nav-toggle {
-    display: block;
+  .two-col-grid {
+    grid-template-columns: 1fr;
+  }
+  .clean-footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
   }
 }
